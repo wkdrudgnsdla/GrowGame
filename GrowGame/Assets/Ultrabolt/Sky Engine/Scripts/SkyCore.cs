@@ -147,7 +147,6 @@ namespace Ultrabolt.SkyEngine
 			float t = Time.deltaTime * weatherSpeed * timeSpeed;
 
 			// Rain
-			rainFx.transform.position = cam.transform.position;
 			if (!rainFx.isPlaying && raining && highCloudDensity < 0.1f) rainFx.Play();
 			else if (rainFx.isPlaying && !raining && highCloudDensity > 0.1f) rainFx.Stop();
 

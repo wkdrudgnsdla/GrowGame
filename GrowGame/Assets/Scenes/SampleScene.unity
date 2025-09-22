@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 7864470}
   - component: {fileID: 7864469}
   m_Layer: 5
-  m_Name: OnionText (Legacy)
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,7 +1248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.0092, y: 0}
+  m_AnchoredPosition: {x: 38.9, y: 0}
   m_SizeDelta: {x: 111.6057, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7864469
@@ -136142,7 +136142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1050185974
 Transform:
   m_ObjectHideFlags: 0
@@ -201418,14 +201418,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2509122754026758605, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509122754026758605, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509122754026758605, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509122754026758605, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062553503803097701, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062553503803097701, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 3634272605967647277, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: m_Name
       value: Sky Engine
       objectReference: {fileID: 0}
     - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: dayLength
-      value: 240
+      value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: statsText
+      value: 
+      objectReference: {fileID: 7864469}
     - target: {fileID: 6457054202449620937, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: gameEvents.Array.size
       value: 0
@@ -254810,6 +254838,7 @@ MonoBehaviour:
   silo4Lev: 1
   storageCount: 0
   animalFarmCount: 0
+  greenHouseCount: 0
 --- !u!4 &2017528149
 Transform:
   m_ObjectHideFlags: 0
@@ -269929,7 +269958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d9173ca8c2c31494aa04ce43dd40db85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0003f194f561735469ddeaa466796987, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
