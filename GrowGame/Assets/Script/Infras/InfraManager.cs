@@ -32,6 +32,11 @@ public class InfraManager : MonoBehaviour
     private GameObject animalFarm1;
     private GameObject animalFarm2;
 
+    [Header("GreenHouse")]
+    public int greenHouseCount = 0;
+    private GameObject GreenHouse1;
+    private GameObject GreenHouse2;
+
     private void Awake()
     {
         //silo
@@ -52,6 +57,9 @@ public class InfraManager : MonoBehaviour
         //animal_Farm
         animalFarm1 = GameObject.Find("Animal_Farm1");
         animalFarm2 = GameObject.Find("Animal_Farm2");
+
+        GreenHouse1 = GameObject.Find("GreenHouse1");
+        GreenHouse2 = GameObject.Find("GreenHouse2");
     }
 
     private void Start()
@@ -64,6 +72,7 @@ public class InfraManager : MonoBehaviour
         SiloManage();
         StorageManage();
         AnimalFarmManage();
+        GreenHouseManage();
     }
 
     private void SiloManage()
@@ -131,7 +140,6 @@ public class InfraManager : MonoBehaviour
                 break;
         }
     }
-
     private void StorageManage()
     {
         switch (storageCount)
@@ -165,6 +173,22 @@ public class InfraManager : MonoBehaviour
                 break;
             case 2:
                 animalFarm2.SetActive(true);
+                break;
+        }
+    }
+    private void GreenHouseManage()
+    {
+        switch (greenHouseCount)
+        {
+            case 0:
+                GreenHouse1.SetActive(false);
+                GreenHouse2.SetActive(false);
+                break;
+            case 1:
+                GreenHouse1.SetActive(true);
+                break;
+            case 2:
+                GreenHouse2.SetActive(true);
                 break;
         }
     }
