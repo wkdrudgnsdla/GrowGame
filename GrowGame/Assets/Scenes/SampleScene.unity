@@ -201442,9 +201442,17 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 3062553503803097701, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3634272605967647277, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: m_Name
       value: Sky Engine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
+      propertyPath: dayCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: dayLength
