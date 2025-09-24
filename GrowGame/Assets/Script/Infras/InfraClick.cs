@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ClickToShowUI_InfraTag : MonoBehaviour
+public class InfraClick : MonoBehaviour
 {
     public Camera cam;                     // 비워두면 Camera.main 사용
     public float maxDistance = 500f;
