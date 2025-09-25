@@ -256433,12 +256433,13 @@ MonoBehaviour:
   countText: {fileID: 0}
   statusText: {fileID: 0}
   uiImage: {fileID: 845998095}
-  maxMoveSpeed: 20
-  minMoveSpeed: 2
+  maxMoveSpeed: 100
+  minMoveSpeed: 40
   stopDistance: 0.15
   minY: 12
   minZ: 6
   returnY: 30
+  uiOffsetX: 5
   smoothTimeMin: 0.04
   smoothTimeMax: 0.12
 --- !u!1001 &2017933076
