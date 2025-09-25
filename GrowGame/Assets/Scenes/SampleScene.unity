@@ -256420,7 +256420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54a60f7091397f4b9f948092c63e2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerView: {fileID: 0}
+  playerView: {fileID: 46754887}
   cam: {fileID: 0}
   maxDistance: 500
   uiPanel: {fileID: 173940361}
@@ -256434,10 +256434,13 @@ MonoBehaviour:
   statusText: {fileID: 0}
   uiImage: {fileID: 845998095}
   maxMoveSpeed: 20
-  minMoveSpeed: 5
+  minMoveSpeed: 2
   stopDistance: 0.15
   minY: 12
   minZ: 6
+  returnY: 30
+  smoothTimeMin: 0.04
+  smoothTimeMax: 0.12
 --- !u!1001 &2017933076
 PrefabInstance:
   m_ObjectHideFlags: 0
