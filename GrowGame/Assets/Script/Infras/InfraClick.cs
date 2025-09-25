@@ -256,7 +256,7 @@ public class InfraClick : MonoBehaviour
                 {
                     uiImage.sprite = info.infraImage.sprite;
                     uiImage.gameObject.SetActive(true);
-                }
+                }   
                 else
                 {
                     uiImage.gameObject.SetActive(false);
