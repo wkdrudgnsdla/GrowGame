@@ -81732,11 +81732,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 610541203}
-  - component: {fileID: 610541205}
-  - component: {fileID: 610541204}
   m_Layer: 0
   m_Name: Reservoir
-  m_TagString: Infra
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81758,44 +81756,6 @@ Transform:
   - {fileID: 1050185974}
   m_Father: {fileID: 211765874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &610541204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610541202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Reservoir
-  level: 0
-  infraCount: 0
-  status: 
-  infraImage: {fileID: 0}
---- !u!65 &610541205
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610541202}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 105, y: 1, z: 29}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &610698626
 GameObject:
   m_ObjectHideFlags: 0
@@ -122335,8 +122295,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -256472,6 +256432,7 @@ MonoBehaviour:
   levelText: {fileID: 0}
   countText: {fileID: 0}
   statusText: {fileID: 0}
+  upgradeType: {fileID: 0}
   uiImage: {fileID: 845998095}
   maxMoveSpeed: 100
   minMoveSpeed: 40
@@ -256482,6 +256443,8 @@ MonoBehaviour:
   uiOffsetX: 5
   smoothTimeMin: 0.04
   smoothTimeMax: 0.12
+  isReturning: 0
+  returnFinished: 0
 --- !u!1001 &2017933076
 PrefabInstance:
   m_ObjectHideFlags: 0
