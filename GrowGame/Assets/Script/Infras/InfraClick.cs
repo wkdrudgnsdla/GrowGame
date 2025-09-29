@@ -11,7 +11,7 @@ public class InfraClick : MonoBehaviour
     public Camera cam;
     public float maxDistance = 500f;
 
-    [Header("UI (Screen Space - Panel)")]
+    [Header("UI")]
     public GameObject uiPanel;
 
     public TextMeshProUGUI titleTMP;
@@ -38,13 +38,9 @@ public class InfraClick : MonoBehaviour
 
     public float returnY = 30f;
 
-    [Tooltip("인프라 클릭 시 목표 X에 더해질 오프셋 (예: UI와 겹치지 않게 오른쪽으로 이동)")]
     public float uiOffsetX = 5f;
 
-    [Header("Smooth Movement Tuning")]
-    [Tooltip("가장 즉각적으로 이동할 때(멀리 있을 때) 적용될 최소 smoothTime")]
     public float smoothTimeMin = 0.04f;
-    [Tooltip("가까울 때 더 부드럽게 정지시키기 위한 최대 smoothTime")]
     public float smoothTimeMax = 0.12f;
 
     private bool isMoving = false;
@@ -58,6 +54,9 @@ public class InfraClick : MonoBehaviour
 
     private bool forceZToSixActive = false;
 
+    public bool isReturning = false;
+    public bool returnFinished = true;
+
     private void Awake()
     {
         if (playerView == null)
@@ -66,6 +65,7 @@ public class InfraClick : MonoBehaviour
 
     void Start()
     {
+        returnFinished = true;
         if (cam == null) cam = Camera.main;
         if (uiPanel != null) uiPanel.SetActive(false);
 
@@ -82,7 +82,6 @@ public class InfraClick : MonoBehaviour
             if (corrected)
             {
                 playerView.transform.position = pos;
-                Debug.LogWarning("playerView의 Y/Z가 최소값보다 낮아 보정했습니다.");
             }
         }
     }
@@ -138,6 +137,8 @@ public class InfraClick : MonoBehaviour
     {
         if (playerView == null) return;
 
+        returnFinished = false;
+
         target.y = Mathf.Max(target.y, minY);
 
         if (forceZToSix)
@@ -145,6 +146,7 @@ public class InfraClick : MonoBehaviour
             target.z = 6f;
             target.x += uiOffsetX;
             forceZToSixActive = true;
+            isReturning = false;
         }
         else
         {
@@ -173,6 +175,13 @@ public class InfraClick : MonoBehaviour
             isMoving = false;
             moveVelocity = Vector3.zero;
             forceZToSixActive = false;
+
+            if (isReturning)
+            {
+                returnFinished = true;
+                isReturning = false;
+            }
+
             return;
         }
 
@@ -256,7 +265,7 @@ public class InfraClick : MonoBehaviour
                 {
                     uiImage.sprite = info.infraImage.sprite;
                     uiImage.gameObject.SetActive(true);
-                }   
+                }
                 else
                 {
                     uiImage.gameObject.SetActive(false);
@@ -277,6 +286,9 @@ public class InfraClick : MonoBehaviour
             Vector3 returnTarget = preClickPosition;
             returnTarget.y = returnY;
             returnTarget.z = Mathf.Max(returnTarget.z, minZ);
+
+            isReturning = true;
+            returnFinished = false;
 
             StartMoveTo(returnTarget, forceZToSix: false);
 

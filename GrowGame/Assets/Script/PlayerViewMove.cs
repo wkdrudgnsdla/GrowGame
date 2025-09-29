@@ -6,7 +6,6 @@ public class PlayerViewMove : MonoBehaviour
 {
     public float moveSpeed;
 
-    // 경계값 (인스펙터에서 조정 가능)
     public float minX = -20f;
     public float maxX = 100f;
     public float minZ = -105f;
@@ -35,7 +34,6 @@ public class PlayerViewMove : MonoBehaviour
         if (dir != Vector3.zero)
         {
             transform.Translate(dir.normalized * moveSpeed * Time.deltaTime, Space.Self);
-            // 만약 월드 좌표 기준으로 이동하고 싶으면 Space.Self를 Space.World로 바꾸세요.
         }
     }
 
