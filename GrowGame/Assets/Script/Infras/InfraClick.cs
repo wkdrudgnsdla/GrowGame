@@ -23,6 +23,7 @@ public class InfraClick : MonoBehaviour
     public Text levelText;
     public Text countText;
     public Text statusText;
+    public TextMeshProUGUI upgradeType;
 
     public Image uiImage;
 
@@ -65,6 +66,8 @@ public class InfraClick : MonoBehaviour
 
     void Start()
     {
+        upgradeType = GameObject.Find("UpgradeStatusTitleText").GetComponent<TextMeshProUGUI>();
+
         returnFinished = true;
         if (cam == null) cam = Camera.main;
         if (uiPanel != null) uiPanel.SetActive(false);
@@ -233,6 +236,28 @@ public class InfraClick : MonoBehaviour
         if (statusTMP != null) statusTMP.text = status;
         else if (statusText != null) statusText.text = status;
 
+        string titleForCheck = !string.IsNullOrEmpty(title) ? title : (titleTMP != null ? titleTMP.text : titleText.text);
+
+        if (upgradeType != null)
+        {
+            if (titleForCheck == "Silo" || titleForCheck == "Storage")
+            {
+                upgradeType.text = "Storage Capacity ↑";
+            }
+            else if (titleForCheck == "GreenHouse")
+            {
+                upgradeType.text = "Extra Production ↑";
+            }
+            else if (titleForCheck == "Barn")
+            {
+                upgradeType.text = "Sell Price ↑";
+            }
+            else
+            {
+                upgradeType.text = "-";
+            }
+        }
+
         if (uiImage != null)
         {
             string objectName = info.gameObject.name;
@@ -269,11 +294,12 @@ public class InfraClick : MonoBehaviour
                 else
                 {
                     uiImage.gameObject.SetActive(false);
-                    Debug.Log($"이미지 없음: Resources/Image/{objectName} 또는 InfraInfo.infraImage에 스프라이트 없음.");
                 }
             }
         }
     }
+
+
 
     void HideUI()
     {
