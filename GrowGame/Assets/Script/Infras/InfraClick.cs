@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEditor.Build.Content;
 
 public class InfraClick : MonoBehaviour
 {
     public GameObject playerView;
-    public InfraManager iManager;
+    private InfraManager iManager;
 
     public Camera cam;
     public float maxDistance = 500f;
@@ -20,7 +21,6 @@ public class InfraClick : MonoBehaviour
     public TextMeshProUGUI levelTMP;
     public TextMeshProUGUI countTMP;
     public TextMeshProUGUI statusTMP;
-
     public TextMeshProUGUI upgradeType;
 
     public Image uiImage;
@@ -58,9 +58,9 @@ public class InfraClick : MonoBehaviour
 
     private void Awake()
     {
+        iManager = gameObject.GetComponent<InfraManager>();
         if (playerView == null)
             playerView = GameObject.Find("PlayerView");
-        iManager = gameObject.GetComponent<InfraManager>();
     }
 
     void Start()
@@ -98,11 +98,6 @@ public class InfraClick : MonoBehaviour
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
-        HandleMovement();
-
-        if (isReturning)
-            return;
-
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -118,10 +113,13 @@ public class InfraClick : MonoBehaviour
                         if (playerView != null)
                         {
                             preClickPosition = playerView.transform.position;
+                            preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
+                            preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
                             hasPreClickPosition = true;
                         }
 
                         ShowUI(info);
+
                     }
                     else
                     {
@@ -129,7 +127,7 @@ public class InfraClick : MonoBehaviour
                         HideUI();
                     }
 
-                    StartMoveTo(hitObj.transform.position, forceZToSix: true, preserveZ: false);
+                    StartMoveTo(hitObj.transform.position, forceZToSix: true);
                     return;
                 }
             }
@@ -139,25 +137,28 @@ public class InfraClick : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
             HideUI();
+
+        HandleMovement();
     }
 
-    void StartMoveTo(Vector3 target, bool forceZToSix = false, bool preserveZ = false)
+    void StartMoveTo(Vector3 target, bool forceZToSix = false)
     {
         if (playerView == null) return;
+
+        returnFinished = false;
 
         target.y = Mathf.Max(target.y, minY);
 
         if (forceZToSix)
         {
-            target.z = 10f;
+            target.z = 6f;
             target.x += uiOffsetX;
             forceZToSixActive = true;
             isReturning = false;
         }
         else
         {
-            if (!preserveZ)
-                target.z = Mathf.Max(target.z, minZ);
+            target.z = Mathf.Max(target.z, minZ);
             forceZToSixActive = false;
         }
 
@@ -224,13 +225,12 @@ public class InfraClick : MonoBehaviour
         uiPanel.SetActive(true);
 
         string title = info.title ?? "";
-        string status = string.IsNullOrEmpty(info.status) ? "-" : info.status;
 
         if (titleTMP != null) titleTMP.text = title;
 
-        if (statusTMP != null) statusTMP.text = status;
-
-        string titleForCheck = title;
+        string titleForCheck = !string.IsNullOrEmpty(title)
+            ? title
+            : (titleTMP != null && !string.IsNullOrEmpty(titleTMP.text) ? titleTMP.text : "-");
 
         if (upgradeType != null)
         {
@@ -293,6 +293,8 @@ public class InfraClick : MonoBehaviour
         }
     }
 
+
+
     void HideUI()
     {
         if (uiPanel == null) return;
@@ -303,11 +305,12 @@ public class InfraClick : MonoBehaviour
         {
             Vector3 returnTarget = preClickPosition;
             returnTarget.y = returnY;
+            returnTarget.z = Mathf.Max(returnTarget.z, minZ);
 
             isReturning = true;
             returnFinished = false;
 
-            StartMoveTo(returnTarget, forceZToSix: false, preserveZ: true);
+            StartMoveTo(returnTarget, forceZToSix: false);
 
             hasPreClickPosition = false;
         }
@@ -321,6 +324,7 @@ public class InfraClick : MonoBehaviour
         {
             if (levelTMP != null) levelTMP.text = "Level." + iManager.siloLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
+            if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.siloCapacity;
         }
         else
         {

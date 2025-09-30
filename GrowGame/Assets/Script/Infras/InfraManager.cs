@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class InfraManager : MonoBehaviour
 {
+    private InfraClick infraclick;
+
     [Header("Slio")]
+    public int siloLevel = 0;
+
     public int siloCont = 0;
     public int silo1Lev = 1;
     public int silo2Lev = 1;
     public int silo3Lev = 1;
     public int silo4Lev = 1;
+    public int siloCapacity;
 
     private GameObject silo1Lev1;
     private GameObject silo2Lev1;
@@ -39,6 +44,8 @@ public class InfraManager : MonoBehaviour
 
     private void Awake()
     {
+        infraclick = GameObject.Find("GameManager").GetComponent<InfraClick>();
+
         //silo
         silo1Lev1 = GameObject.Find("lev1Silo1");
         silo2Lev1 = GameObject.Find("lev1Silo2");
@@ -69,10 +76,59 @@ public class InfraManager : MonoBehaviour
 
     private void Update()
     {
+        SiloUpgrade();
         SiloManage();
         StorageManage();
         AnimalFarmManage();
         GreenHouseManage();
+    }
+
+
+    private void SiloUpgrade()
+    {
+        switch(siloLevel)
+        {
+            case 1:
+                siloCont = 1;
+                silo1Lev = 1;
+                siloCapacity = 300;
+                break;
+            case 2:
+                siloCont = 1;
+                silo1Lev = 2;
+                siloCapacity = 500;
+                break;
+            case 3:
+                siloCont = 2;
+                silo2Lev = 1;
+                siloCapacity = 800;
+                break;
+            case 4:
+                siloCont = 2;
+                silo2Lev = 2;
+                siloCapacity = 1000;
+                break;
+            case 5:
+                siloCont = 3;
+                silo3Lev = 1;
+                siloCapacity = 1300;
+                break;
+            case 6:
+                siloCont = 3;
+                silo3Lev = 2;
+                siloCapacity = 1500;
+                break;
+            case 7:
+                siloCont = 4;
+                silo4Lev = 1;
+                siloCapacity = 1800;
+                break;
+            case 8:
+                siloCont = 4;
+                silo4Lev = 2;
+                siloCapacity = 2000;
+                break;
+        }
     }
 
     private void SiloManage()
@@ -90,7 +146,7 @@ public class InfraManager : MonoBehaviour
                 silo3Lev2.SetActive(false);
                 silo4Lev2.SetActive(false);
                 break;
-            case <=1:
+            case 1:
                 if(silo1Lev == 1)
                 {
                     silo1Lev1.SetActive(true);
@@ -99,10 +155,10 @@ public class InfraManager : MonoBehaviour
                 else if(silo1Lev == 2)
                 {
                     silo1Lev1.SetActive(false);
-                    silo1Lev2 .SetActive(true);
+                    silo1Lev2.SetActive(true);
                 }
                 break;
-            case <=2:
+            case 2:
                 if (silo2Lev == 1)
                 {
                     silo2Lev1.SetActive(true);
@@ -114,7 +170,7 @@ public class InfraManager : MonoBehaviour
                     silo2Lev2.SetActive(true);
                 }
                 break;
-            case <=3:
+            case 3:
                 if (silo3Lev == 1)
                 {
                     silo3Lev1.SetActive(true);
@@ -191,5 +247,17 @@ public class InfraManager : MonoBehaviour
                 GreenHouse2.SetActive(true);
                 break;
         }
+    }
+
+    public void OnClickUpgrade()
+    {
+        if(siloLevel != 8)
+        {
+            if (infraclick.hitObj.name == "Silo")
+            {
+                siloLevel += 1;
+            }
+        }
+
     }
 }
