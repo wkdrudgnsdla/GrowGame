@@ -136900,6 +136900,34 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2017528148}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InfraManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722790511566355210, guid: adaa4a040c11d414c948362349441105, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8942148911383861397, guid: adaa4a040c11d414c948362349441105, type: 3}
       propertyPath: m_text
       value: Upgrade
@@ -256385,6 +256413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b31e8871b1d41488d181f8ec76b5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  siloLevel: 0
   siloCont: 0
   silo1Lev: 1
   silo2Lev: 1
@@ -256421,24 +256450,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 46754887}
+  iManager: {fileID: 0}
   cam: {fileID: 0}
   maxDistance: 500
+  hitObj: {fileID: 0}
   uiPanel: {fileID: 173940361}
   titleTMP: {fileID: 571755853}
   levelTMP: {fileID: 1376177183}
   countTMP: {fileID: 1653463656}
   statusTMP: {fileID: 512103724}
-  titleText: {fileID: 0}
-  levelText: {fileID: 0}
-  countText: {fileID: 0}
-  statusText: {fileID: 0}
   upgradeType: {fileID: 0}
   uiImage: {fileID: 845998095}
   maxMoveSpeed: 100
   minMoveSpeed: 40
   stopDistance: 0.15
   minY: 12
-  minZ: 6
+  minZ: -10000
   returnY: 30
   uiOffsetX: 5
   smoothTimeMin: 0.04
