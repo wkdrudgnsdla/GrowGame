@@ -9,6 +9,7 @@ public class InfraClick : MonoBehaviour
 {
     public GameObject playerView;
     private InfraManager iManager;
+    public InfraInfo info;
 
     public Camera cam;
     public float maxDistance = 500f;
@@ -92,7 +93,7 @@ public class InfraClick : MonoBehaviour
     {
         if (uiPanel.activeSelf)
         {
-            LevelTxt();
+            LevelTxt(info);
         }
 
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
@@ -107,7 +108,7 @@ public class InfraClick : MonoBehaviour
 
                 if (hitObj.CompareTag("Infra"))
                 {
-                    InfraInfo info = hitObj.GetComponent<InfraInfo>();
+                    info = hitObj.GetComponent<InfraInfo>();
                     if (info != null)
                     {
                         if (playerView != null)
@@ -327,12 +328,16 @@ public class InfraClick : MonoBehaviour
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
             info.infraCount = iManager.siloCont;
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.siloCapacity;
+            info.status = "Silo Capacity  + " + iManager.siloCapacity;
         }
         else if (hitObj.name == "Storages")
         {
             if (levelTMP != null) levelTMP.text = "Level." + iManager.storageLevel;
+            info.level = iManager.storageLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.storageCount;
+            info.infraCount = iManager.storageCount;
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.storageCapacity;
+            info.status = "Silo Capacity  + " + iManager.storageCapacity;
         }
         else
         {
