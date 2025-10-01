@@ -8,7 +8,6 @@ public class InfraInfo : MonoBehaviour
     public int level = 0;
     public int infraCount = 0;
     public string status = "";
-    private int siloCapacity;
 
     public Image infraImage;
 }
