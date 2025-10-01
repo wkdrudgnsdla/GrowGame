@@ -316,14 +316,16 @@ public class InfraClick : MonoBehaviour
         }
     }
 
-    void LevelTxt()
+    void LevelTxt(InfraInfo info)
     {
         if (iManager == null || hitObj == null) return;
 
         if (hitObj.name == "Silo")
         {
             if (levelTMP != null) levelTMP.text = "Level." + iManager.siloLevel;
+            info.level = iManager.siloLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
+            info.infraCount = iManager.siloCont;
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.siloCapacity;
         }
         else if (hitObj.name == "Storages")
