@@ -27,6 +27,8 @@ public class InfraManager : MonoBehaviour
     private GameObject silo4Lev2;
 
     [Header("Storage")]
+    public int storageLevel;
+    public int storageCapacity;
     public int storageCount = 0;
     private GameObject storage1;
     private GameObject storage2;
@@ -79,6 +81,7 @@ public class InfraManager : MonoBehaviour
         SiloUpgrade();
         SiloManage();
         StorageManage();
+        StrageUpgrade();
         AnimalFarmManage();
         GreenHouseManage();
     }
@@ -196,6 +199,26 @@ public class InfraManager : MonoBehaviour
                 break;
         }
     }
+
+    private void StrageUpgrade()
+    {
+        switch (storageLevel)
+        {
+            case 1:
+                storageCount = 1;
+                storageCapacity = 1500;
+                break;
+            case 2:
+                storageCount = 2;
+                storageCapacity = 3000;
+                break;
+            case 3:
+                storageCount = 3;
+                storageCapacity = 4500;
+                break;
+        }
+    }
+
     private void StorageManage()
     {
         switch (storageCount)
@@ -251,11 +274,18 @@ public class InfraManager : MonoBehaviour
 
     public void OnClickUpgrade()
     {
-        if(siloLevel != 8)
+        if (infraclick.hitObj.name == "Silo")
         {
-            if (infraclick.hitObj.name == "Silo")
+            if (siloLevel != 8)
             {
                 siloLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Storages")
+        {
+            if (storageLevel != 3)
+            {
+                storageLevel += 1;
             }
         }
 

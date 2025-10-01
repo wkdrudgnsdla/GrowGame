@@ -326,6 +326,12 @@ public class InfraClick : MonoBehaviour
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.siloCapacity;
         }
+        else if (hitObj.name == "Storages")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + iManager.storageLevel;
+            if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.storageCount;
+            if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.storageCapacity;
+        }
         else
         {
             if (levelTMP != null) levelTMP.text = "Level." + "???";
