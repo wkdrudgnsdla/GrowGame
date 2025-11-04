@@ -345,8 +345,17 @@ public class InfraClick : MonoBehaviour
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
             info.infraCount = iManager.greenHouseCount;
-            if (statusTMP != null) statusTMP.text =  /*선택된작물*/  " + "  + iManager.storageCapacity;
-            info.status = "Silo Capacity  + " + iManager.storageCapacity;
+            if (statusTMP != null) statusTMP.text =  /*선택된작물 생산량 증가*/  " + "  + iManager.storageCapacity  /*<- 추가 생산량(교체필요)*/;
+            info.status = "Silo Capacity  + " /*<- 추가 생산량(교체필요)*/ + iManager.storageCapacity;
+        }
+        else if (hitObj.name == "Animal_Farms")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + iManager.animalFarmLevel;
+            info.level = iManager.animalFarmLevel;
+            if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.animalFarmCount;
+            info.infraCount = iManager.animalFarmCount;
+            if (statusTMP != null) statusTMP.text = "increase in profits + " + (20*iManager.animalFarmCount).ToString() + "%";
+            info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
         }
         else
         {

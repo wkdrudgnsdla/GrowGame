@@ -35,6 +35,7 @@ public class InfraManager : MonoBehaviour
     private GameObject storage3;
 
     [Header("Animal_Farms")]
+    public int animalFarmLevel;
     public int animalFarmCount = 0;
     private GameObject animalFarm1;
     private GameObject animalFarm2;
@@ -68,6 +69,7 @@ public class InfraManager : MonoBehaviour
         animalFarm1 = GameObject.Find("Animal_Farm1");
         animalFarm2 = GameObject.Find("Animal_Farm2");
 
+        //GreenHouse
         GreenHouse1 = GameObject.Find("GreenHouse1");
         GreenHouse2 = GameObject.Find("GreenHouse2");
     }
@@ -81,9 +83,13 @@ public class InfraManager : MonoBehaviour
     {
         SiloUpgrade();
         SiloManage();
+
         StorageManage();
         StrageUpgrade();
+
+        AnimalFarmUpgrade();
         AnimalFarmManage();
+
         GreenHouseUpgrade();
         GreenHouseManage();
     }
@@ -241,6 +247,19 @@ public class InfraManager : MonoBehaviour
                 break;
         }
     }
+
+    private void AnimalFarmUpgrade()
+    {
+        switch (animalFarmLevel)
+        {
+            case 1:
+                animalFarmCount = 1;
+                break;
+            case 2:
+                animalFarmCount = 2;
+                break;
+        }
+    }
     private void AnimalFarmManage()
     {
         switch (animalFarmCount)
@@ -309,6 +328,13 @@ public class InfraManager : MonoBehaviour
             if (greenHouseLevel != 2)
             {
                 greenHouseLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Animal_Farms")
+        {
+            if (animalFarmLevel != 2)
+            {
+                animalFarmLevel += 1;
             }
         }
     }
