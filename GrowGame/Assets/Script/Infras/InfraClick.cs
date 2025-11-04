@@ -99,7 +99,7 @@ public class InfraClick : MonoBehaviour
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
@@ -337,6 +337,15 @@ public class InfraClick : MonoBehaviour
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.storageCount;
             info.infraCount = iManager.storageCount;
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.storageCapacity;
+            info.status = "Silo Capacity  + " + iManager.storageCapacity;
+        }
+        else if(hitObj.name == "GreenHouses")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + iManager.greenHouseLevel;
+            info.level = iManager.greenHouseLevel;
+            if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
+            info.infraCount = iManager.greenHouseCount;
+            if (statusTMP != null) statusTMP.text =  /*선택된작물*/  " + "  + iManager.storageCapacity;
             info.status = "Silo Capacity  + " + iManager.storageCapacity;
         }
         else

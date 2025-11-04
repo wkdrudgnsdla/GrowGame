@@ -40,6 +40,7 @@ public class InfraManager : MonoBehaviour
     private GameObject animalFarm2;
 
     [Header("GreenHouse")]
+    public int greenHouseLevel;
     public int greenHouseCount = 0;
     private GameObject GreenHouse1;
     private GameObject GreenHouse2;
@@ -83,6 +84,7 @@ public class InfraManager : MonoBehaviour
         StorageManage();
         StrageUpgrade();
         AnimalFarmManage();
+        GreenHouseUpgrade();
         GreenHouseManage();
     }
 
@@ -255,6 +257,20 @@ public class InfraManager : MonoBehaviour
                 break;
         }
     }
+
+    private void GreenHouseUpgrade()
+    {
+        switch (greenHouseLevel)
+        {
+            case 1:
+                greenHouseCount = 1;
+                break;
+            case 2:
+                greenHouseCount = 2;
+                break;
+        }
+    }
+
     private void GreenHouseManage()
     {
         switch (greenHouseCount)
@@ -288,6 +304,12 @@ public class InfraManager : MonoBehaviour
                 storageLevel += 1;
             }
         }
-
+        else if (infraclick.hitObj.name == "GreenHouses")
+        {
+            if (greenHouseLevel != 2)
+            {
+                greenHouseLevel += 1;
+            }
+        }
     }
 }
