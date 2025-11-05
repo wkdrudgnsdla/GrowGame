@@ -23,6 +23,7 @@ public class InfraClick : MonoBehaviour
     public TextMeshProUGUI countTMP;
     public TextMeshProUGUI statusTMP;
     public TextMeshProUGUI upgradeType;
+    public TextMeshProUGUI UpgradeStatusText;
 
     public Image uiImage;
 
@@ -320,6 +321,8 @@ public class InfraClick : MonoBehaviour
     void LevelTxt(InfraInfo info)
     {
         if (iManager == null || hitObj == null) return;
+
+        if (UpgradeStatusText != null) UpgradeStatusText.text = iManager.UpgradeStatus;
 
         if (hitObj.name == "Silo")
         {

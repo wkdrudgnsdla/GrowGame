@@ -7,6 +7,8 @@ public class InfraManager : MonoBehaviour
 {
     private InfraClick infraclick;
 
+    public string UpgradeStatus;
+
     [Header("Slio")]
     public int siloLevel = 0;
 
@@ -92,8 +94,87 @@ public class InfraManager : MonoBehaviour
 
         GreenHouseUpgrade();
         GreenHouseManage();
+
+        UpgradeStatusManage();
     }
 
+    private void UpgradeStatusManage()
+    {
+        if (infraclick.hitObj == null) return;
+
+        switch (infraclick.hitObj.name)
+        {
+            case "Silo":
+                switch (siloLevel)
+                {
+                    case 0:
+                        UpgradeStatus = "0 => 300";
+                        break;
+                    case 1:
+                        UpgradeStatus = "300 => 500";
+                        break;
+                    case 2:
+                        UpgradeStatus = "500 => 800";
+                        break;
+                    case 3:
+                        UpgradeStatus = "800 => 1000";
+                        break;
+                    case 4:
+                        UpgradeStatus = "1000 => 1300";
+                        break;
+                    case 5:
+                        UpgradeStatus = "1300 => 1500";
+                        break;
+                    case 6:
+                        UpgradeStatus = "1500 => 1800";
+                        break;
+                    case 7:
+                        UpgradeStatus = "1800 => 2000";
+                        break;
+                    case 8:
+                        UpgradeStatus = "MAX LEVEL";
+                        break;
+                }
+                break;
+            case "Storages":
+                switch (storageLevel)
+                {
+                    case 0:
+                        UpgradeStatus = "0 => 1500";
+                        break;
+                    case 1:
+                        UpgradeStatus = "1500 => 3000";
+                        break;
+                    case 2:
+                        UpgradeStatus = "3000 => 4500";
+                        break;
+                    case 3:
+                        UpgradeStatus = "MAX LEVEL";
+                        break;
+                }
+                break;
+            /*case "GreenHouses":
+                switch (greenHouseLevel)
+                {
+                    
+                }
+                break;*/
+            case "Animal_Farms":
+                switch (animalFarmLevel)
+                {
+                    case 0:
+                        UpgradeStatus = "0% => 20%";
+                        break;
+                    case 1:
+                        UpgradeStatus = "20% => 40%";
+                        break;
+                    case 2:
+                        UpgradeStatus = "MAX LEVEL";
+                        break;
+                }
+                break;
+        }
+    }
 
     private void SiloUpgrade()
     {

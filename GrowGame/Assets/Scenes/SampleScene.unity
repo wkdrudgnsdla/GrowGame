@@ -202909,7 +202909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: dayCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227501200796505955, guid: b3b589db5935ca7408762ae229e5eb04, type: 3}
       propertyPath: dayLength
@@ -256555,8 +256555,12 @@ MonoBehaviour:
   silo3Lev: 1
   silo4Lev: 1
   siloCapacity: 0
+  storageLevel: 0
+  storageCapacity: 0
   storageCount: 0
+  animalFarmLevel: 0
   animalFarmCount: 0
+  greenHouseLevel: 0
   greenHouseCount: 0
 --- !u!4 &2017528149
 Transform:
@@ -256586,6 +256590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 46754887}
+  info: {fileID: 0}
   cam: {fileID: 0}
   maxDistance: 500
   hitObj: {fileID: 0}
