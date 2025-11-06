@@ -25,6 +25,7 @@ public class FarmManager : MonoBehaviour
         if (nowCrops < totalCrops)
         {
             GrowWheat();
+            GrowCarrot();
         }
     }
 
@@ -62,4 +63,41 @@ public class FarmManager : MonoBehaviour
         }
        
     }
+
+    public void GrowCarrot()
+    {
+        if (!IManager.carrotFarmWater)
+        {
+            switch (IManager.carrotFarmLevell)
+            {
+                case 1:
+                    nowCarrot += perSecondBase[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowCarrot += perSecondBase[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowCarrot += perSecondBase[2] * Time.deltaTime;
+                    break;
+            }
+        }
+        else
+        {
+            switch (IManager.carrotFarmLevell)
+            {
+                case 1:
+                    nowCarrot += perSecondWater[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowCarrot += perSecondWater[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowCarrot += perSecondWater[2] * Time.deltaTime;
+                    break;
+            }
+        }
+
+    }
+
+
 }
