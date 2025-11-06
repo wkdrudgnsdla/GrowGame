@@ -256548,6 +256548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b31e8871b1d41488d181f8ec76b5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeStatus: 
   siloLevel: 0
   siloCont: 0
   silo1Lev: 1
@@ -256600,6 +256601,7 @@ MonoBehaviour:
   countTMP: {fileID: 1653463656}
   statusTMP: {fileID: 512103724}
   upgradeType: {fileID: 0}
+  UpgradeStatusText: {fileID: 751722822}
   uiImage: {fileID: 845998095}
   maxMoveSpeed: 100
   minMoveSpeed: 40
