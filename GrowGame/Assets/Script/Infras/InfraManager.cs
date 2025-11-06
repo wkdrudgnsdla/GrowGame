@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InfraManager : MonoBehaviour
 {
-    private InfraClick infraclick;
+    [SerializeField] private InfraClick infraclick;
 
     public string UpgradeStatus;
 
@@ -19,62 +19,38 @@ public class InfraManager : MonoBehaviour
     public int silo4Lev = 1;
     public int siloCapacity;
 
-    private GameObject silo1Lev1;
-    private GameObject silo2Lev1;
-    private GameObject silo3Lev1;
-    private GameObject silo4Lev1;
-    private GameObject silo1Lev2;
-    private GameObject silo2Lev2;
-    private GameObject silo3Lev2;
-    private GameObject silo4Lev2;
+    [SerializeField] private GameObject silo1Lev1;
+    [SerializeField] private GameObject silo2Lev1;
+    [SerializeField] private GameObject silo3Lev1;
+    [SerializeField] private GameObject silo4Lev1;
+    [SerializeField] private GameObject silo1Lev2;
+    [SerializeField] private GameObject silo2Lev2;
+    [SerializeField] private GameObject silo3Lev2;
+    [SerializeField] private GameObject silo4Lev2;
 
     [Header("Storage")]
     public int storageLevel;
     public int storageCapacity;
     public int storageCount = 0;
-    private GameObject storage1;
-    private GameObject storage2;
-    private GameObject storage3;
+    [SerializeField] private GameObject storage1;
+    [SerializeField] private GameObject storage2;
+    [SerializeField] private GameObject storage3;
 
     [Header("Animal_Farms")]
     public int animalFarmLevel;
     public int animalFarmCount = 0;
-    private GameObject animalFarm1;
-    private GameObject animalFarm2;
+    [SerializeField] private GameObject animalFarm1;
+    [SerializeField] private GameObject animalFarm2;
 
     [Header("GreenHouse")]
     public int greenHouseLevel;
     public int greenHouseCount = 0;
-    private GameObject GreenHouse1;
-    private GameObject GreenHouse2;
+    [SerializeField] private GameObject GreenHouse1;
+    [SerializeField] private GameObject GreenHouse2;
 
-    private void Awake()
-    {
-        infraclick = GameObject.Find("GameManager").GetComponent<InfraClick>();
 
-        //silo
-        silo1Lev1 = GameObject.Find("lev1Silo1");
-        silo2Lev1 = GameObject.Find("lev1Silo2");
-        silo3Lev1 = GameObject.Find("lev1Silo3");
-        silo4Lev1 = GameObject.Find("lev1Silo4");
-        silo1Lev2 = GameObject.Find("lev2Silo1");
-        silo2Lev2 = GameObject.Find("lev2Silo2");
-        silo3Lev2 = GameObject.Find("lev2Silo3");
-        silo4Lev2 = GameObject.Find("lev2Silo4");
-
-        //storage
-        storage1 = GameObject.Find("Storage1");
-        storage2 = GameObject.Find("Storage2");
-        storage3 = GameObject.Find("Storage3");
-
-        //animal_Farm
-        animalFarm1 = GameObject.Find("Animal_Farm1");
-        animalFarm2 = GameObject.Find("Animal_Farm2");
-
-        //GreenHouse
-        GreenHouse1 = GameObject.Find("GreenHouse1");
-        GreenHouse2 = GameObject.Find("GreenHouse2");
-    }
+    [Header("Farms")]
+    public int wheatFarmLevel;
 
     private void Start()
     {
@@ -100,79 +76,80 @@ public class InfraManager : MonoBehaviour
 
     private void UpgradeStatusManage()
     {
-        if (infraclick.hitObj == null) return;
-
-        switch (infraclick.hitObj.name)
+        if (infraclick.hitObj != null)
         {
-            case "Silo":
-                switch (siloLevel)
-                {
-                    case 0:
-                        UpgradeStatus = "0 => 300";
-                        break;
-                    case 1:
-                        UpgradeStatus = "300 => 500";
-                        break;
-                    case 2:
-                        UpgradeStatus = "500 => 800";
-                        break;
-                    case 3:
-                        UpgradeStatus = "800 => 1000";
-                        break;
-                    case 4:
-                        UpgradeStatus = "1000 => 1300";
-                        break;
-                    case 5:
-                        UpgradeStatus = "1300 => 1500";
-                        break;
-                    case 6:
-                        UpgradeStatus = "1500 => 1800";
-                        break;
-                    case 7:
-                        UpgradeStatus = "1800 => 2000";
-                        break;
-                    case 8:
-                        UpgradeStatus = "MAX LEVEL";
-                        break;
-                }
-                break;
-            case "Storages":
-                switch (storageLevel)
-                {
-                    case 0:
-                        UpgradeStatus = "0 => 1500";
-                        break;
-                    case 1:
-                        UpgradeStatus = "1500 => 3000";
-                        break;
-                    case 2:
-                        UpgradeStatus = "3000 => 4500";
-                        break;
-                    case 3:
-                        UpgradeStatus = "MAX LEVEL";
-                        break;
-                }
-                break;
-            /*case "GreenHouses":
-                switch (greenHouseLevel)
-                {
-                    
-                }
-                break;*/
-            case "Animal_Farms":
-                switch (animalFarmLevel)
-                {
-                    case 0:
-                        UpgradeStatus = "0% => 20%";
-                        break;
-                    case 1:
-                        UpgradeStatus = "20% => 40%";
-                        break;
-                    case 2:
-                        UpgradeStatus = "MAX LEVEL";
-                        break;
-                }
-                break;
+            switch (infraclick.hitObj.name)
+            {
+                case "Silo":
+                    switch (siloLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "0 => 300";
+                            break;
+                        case 1:
+                            UpgradeStatus = "300 => 500";
+                            break;
+                        case 2:
+                            UpgradeStatus = "500 => 800";
+                            break;
+                        case 3:
+                            UpgradeStatus = "800 => 1000";
+                            break;
+                        case 4:
+                            UpgradeStatus = "1000 => 1300";
+                            break;
+                        case 5:
+                            UpgradeStatus = "1300 => 1500";
+                            break;
+                        case 6:
+                            UpgradeStatus = "1500 => 1800";
+                            break;
+                        case 7:
+                            UpgradeStatus = "1800 => 2000";
+                            break;
+                        case 8:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                case "Storages":
+                    switch (storageLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "0 => 1500";
+                            break;
+                        case 1:
+                            UpgradeStatus = "1500 => 3000";
+                            break;
+                        case 2:
+                            UpgradeStatus = "3000 => 4500";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                /*case "GreenHouses":
+                    switch (greenHouseLevel)
+                    {
+
+                    }
+                    break;*/
+                case "Animal_Farms":
+                    switch (animalFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "0% => 20%";
+                            break;
+                        case 1:
+                            UpgradeStatus = "20% => 40%";
+                            break;
+                        case 2:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+            }
         }
     }
 
