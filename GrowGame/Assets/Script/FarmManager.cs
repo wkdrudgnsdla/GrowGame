@@ -26,6 +26,7 @@ public class FarmManager : MonoBehaviour
         {
             GrowWheat();
             GrowCarrot();
+            GrowCucumber();
         }
     }
 
@@ -106,28 +107,63 @@ public class FarmManager : MonoBehaviour
             switch (IManager.cucumberFarmLevel)
             {
                 case 1:
-                    nowCarrot += perSecondBase[0] * Time.deltaTime;
+                    nowCucumber += perSecondBase[0] * Time.deltaTime;
                     break;
                 case 2:
-                    nowCarrot += perSecondBase[1] * Time.deltaTime;
+                    nowCucumber += perSecondBase[1] * Time.deltaTime;
                     break;
                 case 3:
-                    nowCarrot += perSecondBase[2] * Time.deltaTime;
+                    nowCucumber += perSecondBase[2] * Time.deltaTime;
                     break;
             }
         }
         else
         {
-            switch (IManager.carrotFarmLevell)
+            switch (IManager.cucumberFarmLevel)
             {
                 case 1:
-                    nowCarrot += perSecondWater[0] * Time.deltaTime;
+                    nowCucumber += perSecondWater[0] * Time.deltaTime;
                     break;
                 case 2:
-                    nowCarrot += perSecondWater[1] * Time.deltaTime;
+                    nowCucumber += perSecondWater[1] * Time.deltaTime;
                     break;
                 case 3:
-                    nowCarrot += perSecondWater[2] * Time.deltaTime;
+                    nowCucumber += perSecondWater[2] * Time.deltaTime;
+                    break;
+            }
+        }
+
+    }
+
+    public void GrowPotato()
+    {
+        if (!IManager.potatoFarmWater)
+        {
+            switch (IManager.potatoFarmLevel)
+            {
+                case 1:
+                    nowPotato += perSecondBase[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowPotato += perSecondBase[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowPotato += perSecondBase[2] * Time.deltaTime;
+                    break;
+            }
+        }
+        else
+        {
+            switch (IManager.potatoFarmLevel)
+            {
+                case 1:
+                    nowPotato += perSecondWater[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowPotato += perSecondWater[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowPotato += perSecondWater[2] * Time.deltaTime;
                     break;
             }
         }
