@@ -27,6 +27,8 @@ public class FarmManager : MonoBehaviour
             GrowWheat();
             GrowCarrot();
             GrowCucumber();
+            GrowPotato();
+            GrowOnion();
         }
     }
 
@@ -164,6 +166,41 @@ public class FarmManager : MonoBehaviour
                     break;
                 case 3:
                     nowPotato += perSecondWater[2] * Time.deltaTime;
+                    break;
+            }
+        }
+
+    }
+
+    public void GrowOnion()
+    {
+        if (!IManager.onionFarmWater)
+        {
+            switch (IManager.onionFarmLevel)
+            {
+                case 1:
+                    nowOnion += perSecondBase[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowOnion += perSecondBase[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowOnion += perSecondBase[2] * Time.deltaTime;
+                    break;
+            }
+        }
+        else
+        {
+            switch (IManager.onionFarmLevel)
+            {
+                case 1:
+                    nowOnion += perSecondWater[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowOnion += perSecondWater[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowOnion += perSecondWater[2] * Time.deltaTime;
                     break;
             }
         }
