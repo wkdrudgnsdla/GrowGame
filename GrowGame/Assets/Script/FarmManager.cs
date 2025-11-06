@@ -68,7 +68,42 @@ public class FarmManager : MonoBehaviour
     {
         if (!IManager.carrotFarmWater)
         {
-            switch (IManager.carrotFarmLevell)
+            switch (IManager.carrotFarmLevel)
+            {
+                case 1:
+                    nowCarrot += perSecondBase[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowCarrot += perSecondBase[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowCarrot += perSecondBase[2] * Time.deltaTime;
+                    break;
+            }
+        }
+        else
+        {
+            switch (IManager.carrotFarmLevel)
+            {
+                case 1:
+                    nowCarrot += perSecondWater[0] * Time.deltaTime;
+                    break;
+                case 2:
+                    nowCarrot += perSecondWater[1] * Time.deltaTime;
+                    break;
+                case 3:
+                    nowCarrot += perSecondWater[2] * Time.deltaTime;
+                    break;
+            }
+        }
+
+    }
+
+    public void GrowCucumber()
+    {
+        if (!IManager.cucumberFarmWater)
+        {
+            switch (IManager.cucumberFarmLevel)
             {
                 case 1:
                     nowCarrot += perSecondBase[0] * Time.deltaTime;
@@ -98,6 +133,4 @@ public class FarmManager : MonoBehaviour
         }
 
     }
-
-
 }

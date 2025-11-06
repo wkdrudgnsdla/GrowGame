@@ -51,7 +51,7 @@ public class InfraManager : MonoBehaviour
 
     [Header("Farms")]
     public int wheatFarmLevel;
-    public int carrotFarmLevell;
+    public int carrotFarmLevel;
     public int cucumberFarmLevel;
     public int potatoFarmLevel;
     public int onionFarmLevel;
