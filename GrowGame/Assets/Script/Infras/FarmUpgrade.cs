@@ -42,7 +42,7 @@ public class FarmUpgrade : MonoBehaviour
 
     private void Update()
     {
-        WheatManage();
+        CarrotManage();
     }
 
     private void WheatManage()
@@ -88,6 +88,54 @@ public class FarmUpgrade : MonoBehaviour
                 {
                     wheatFarm[3].SetActive(false);
                     wheat_water[2].SetActive(true);
+                }
+                break;
+        }
+    }
+
+    private void CarrotManage()
+    {
+        switch (carrotFarmLevel)
+        {
+            case 1:
+                carrotFarm[0].SetActive(false);
+                if (!carrotFarmWater)
+                {
+                    carrotFarm[1].SetActive(true);
+                    carrot_water[0].SetActive(false);
+                }
+                else
+                {
+                    carrotFarm[1].SetActive(false);
+                    carrot_water[0].SetActive(true);
+                }
+                break;
+            case 2:
+                carrotFarm[1].SetActive(false);
+                carrot_water[0].SetActive(false);
+                if (!carrotFarmWater)
+                {
+                    carrotFarm[2].SetActive(true);
+                    carrot_water[1].SetActive(false);
+                }
+                else
+                {
+                    carrotFarm[2].SetActive(false);
+                    carrot_water[1].SetActive(true);
+                }
+                break;
+            case 3:
+                carrotFarm[2].SetActive(false);
+                carrot_water[1].SetActive(false);
+                if (!carrotFarmWater)
+                {
+                    carrotFarm[3].SetActive(true);
+                    carrot_water[2].SetActive(false);
+                }
+                else
+                {
+                    carrotFarm[3].SetActive(false);
+                    carrot_water[2].SetActive(true);
                 }
                 break;
         }
