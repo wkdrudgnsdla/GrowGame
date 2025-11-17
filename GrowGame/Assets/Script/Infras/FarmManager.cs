@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class FarmManager : MonoBehaviour
 {
-    public InfraManager IManager;
+    public FarmUpgrade FU;
+    public InfraManager IM;
 
     public int basicCrops = 3500;
-    public int totalCrops => basicCrops + IManager.siloCapacity + 
-        IManager.storageCapacity;
+    public int totalCrops => basicCrops + IM.siloCapacity +
+        IM.storageCapacity;
 
     public float nowWheat;
     public float nowCarrot;
@@ -34,9 +35,9 @@ public class FarmManager : MonoBehaviour
 
     public void GrowWheat()
     {
-        if (!IManager.wheatFarmWater)
+        if (!FU.wheatFarmWater)
         {
-            switch (IManager.wheatFarmLevel)
+            switch (FU.wheatFarmLevel)
             {
                 case 1:
                     nowWheat += perSecondBase[0] * Time.deltaTime;
@@ -51,7 +52,7 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            switch (IManager.wheatFarmLevel)
+            switch (FU.wheatFarmLevel)
             {
                 case 1:
                     nowWheat += perSecondWater[0] * Time.deltaTime;
@@ -69,9 +70,9 @@ public class FarmManager : MonoBehaviour
 
     public void GrowCarrot()
     {
-        if (!IManager.carrotFarmWater)
+        if (!FU.carrotFarmWater)
         {
-            switch (IManager.carrotFarmLevel)
+            switch (FU.carrotFarmLevel)
             {
                 case 1:
                     nowCarrot += perSecondBase[0] * Time.deltaTime;
@@ -86,7 +87,7 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            switch (IManager.carrotFarmLevel)
+            switch (FU.carrotFarmLevel)
             {
                 case 1:
                     nowCarrot += perSecondWater[0] * Time.deltaTime;
@@ -104,9 +105,9 @@ public class FarmManager : MonoBehaviour
 
     public void GrowCucumber()
     {
-        if (!IManager.cucumberFarmWater)
+        if (!FU.cucumberFarmWater)
         {
-            switch (IManager.cucumberFarmLevel)
+            switch (FU.cucumberFarmLevel)
             {
                 case 1:
                     nowCucumber += perSecondBase[0] * Time.deltaTime;
@@ -121,7 +122,7 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            switch (IManager.cucumberFarmLevel)
+            switch (FU.cucumberFarmLevel)
             {
                 case 1:
                     nowCucumber += perSecondWater[0] * Time.deltaTime;
@@ -139,9 +140,9 @@ public class FarmManager : MonoBehaviour
 
     public void GrowPotato()
     {
-        if (!IManager.potatoFarmWater)
+        if (!FU.potatoFarmWater)
         {
-            switch (IManager.potatoFarmLevel)
+            switch (FU.potatoFarmLevel)
             {
                 case 1:
                     nowPotato += perSecondBase[0] * Time.deltaTime;
@@ -156,7 +157,7 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            switch (IManager.potatoFarmLevel)
+            switch (FU.potatoFarmLevel)
             {
                 case 1:
                     nowPotato += perSecondWater[0] * Time.deltaTime;
@@ -174,9 +175,9 @@ public class FarmManager : MonoBehaviour
 
     public void GrowOnion()
     {
-        if (!IManager.onionFarmWater)
+        if (!FU.onionFarmWater)
         {
-            switch (IManager.onionFarmLevel)
+            switch (FU.onionFarmLevel)
             {
                 case 1:
                     nowOnion += perSecondBase[0] * Time.deltaTime;
@@ -191,7 +192,7 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            switch (IManager.onionFarmLevel)
+            switch (FU.onionFarmLevel)
             {
                 case 1:
                     nowOnion += perSecondWater[0] * Time.deltaTime;

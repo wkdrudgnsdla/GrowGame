@@ -256595,6 +256595,7 @@ GameObject:
   - component: {fileID: 2017528148}
   - component: {fileID: 2017528150}
   - component: {fileID: 2017528151}
+  - component: {fileID: 2017528153}
   - component: {fileID: 2017528152}
   m_Layer: 0
   m_Name: GameManager
@@ -256646,16 +256647,6 @@ MonoBehaviour:
   greenHouseCount: 0
   GreenHouse1: {fileID: 577661703}
   GreenHouse2: {fileID: 485902667}
-  wheatFarmLevel: 0
-  carrotFarmLevel: 0
-  cucumberFarmLevel: 0
-  potatoFarmLevel: 0
-  onionFarmLevel: 0
-  wheatFarmWater: 0
-  carrotFarmWater: 0
-  cucumberFarmWater: 0
-  potatoFarmWater: 0
-  onionFarmWater: 0
 --- !u!4 &2017528149
 Transform:
   m_ObjectHideFlags: 0
@@ -256719,7 +256710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8731a5f4fd1a4e04f9a3bad94a5edb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IManager: {fileID: 2017528148}
+  FU: {fileID: 2017528153}
+  IM: {fileID: 2017528148}
   basicCrops: 3500
   nowWheat: 0
   nowCarrot: 0
@@ -256745,6 +256737,54 @@ MonoBehaviour:
   nowCucumberText: {fileID: 2051459748}
   nowPotatoText: {fileID: 1659090512}
   nowOnionText: {fileID: 1290165192}
+--- !u!114 &2017528153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017528147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ce81374ac7e14eabc8b0d3e2ccf9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FM: {fileID: 2017528151}
+  wheatFarm: []
+  wheat_water:
+  - {fileID: 620421547}
+  - {fileID: 1509648211}
+  - {fileID: 146216314}
+  carrotFarm: []
+  carrot_water:
+  - {fileID: 2066866292}
+  - {fileID: 205455379}
+  - {fileID: 620289693}
+  cucumberFarm: []
+  cucumber_water:
+  - {fileID: 343893605}
+  - {fileID: 812153366}
+  - {fileID: 697883868}
+  potatoFarm: []
+  potato_water:
+  - {fileID: 2143938417}
+  - {fileID: 518000076}
+  - {fileID: 1318024401}
+  onionFarm: []
+  onion_water:
+  - {fileID: 216106414}
+  - {fileID: 1050533300}
+  - {fileID: 1132439924}
+  wheatFarmLevel: 0
+  carrotFarmLevel: 0
+  cucumberFarmLevel: 0
+  potatoFarmLevel: 0
+  onionFarmLevel: 0
+  wheatFarmWater: 0
+  carrotFarmWater: 0
+  cucumberFarmWater: 0
+  potatoFarmWater: 0
+  onionFarmWater: 0
 --- !u!1001 &2017933076
 PrefabInstance:
   m_ObjectHideFlags: 0

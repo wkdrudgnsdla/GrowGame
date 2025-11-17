@@ -49,19 +49,6 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse2;
 
 
-    [Header("Farms")]
-    public int wheatFarmLevel;
-    public int carrotFarmLevel;
-    public int cucumberFarmLevel;
-    public int potatoFarmLevel;
-    public int onionFarmLevel;
-
-    public bool wheatFarmWater;
-    public bool carrotFarmWater;
-    public bool cucumberFarmWater;
-    public bool potatoFarmWater;
-    public bool onionFarmWater;
-
     private void Update()
     {
         SiloUpgrade();
