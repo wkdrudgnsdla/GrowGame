@@ -40,13 +40,22 @@ public class FarmUpgrade : MonoBehaviour
     public bool potatoFarmWater;
     public bool onionFarmWater;
 
+    private int lastWheatLevel = -1;
+    private bool lastWheatWater = false;
+
     private void Update()
     {
+        WheatManage();
         CarrotManage();
     }
 
     private void WheatManage()
     {
+        if (wheatFarmLevel == lastWheatLevel && wheatFarmWater == lastWheatWater) return;
+
+        lastWheatLevel = wheatFarmLevel;
+        lastWheatWater = wheatFarmWater;
+
         switch (wheatFarmLevel)
         {
             case 1:
