@@ -42,6 +42,8 @@ public class FarmUpgrade : MonoBehaviour
 
     private int lastWheatLevel = -1;
     private bool lastWheatWater = false;
+    private int lastCarrotLevel = -1;
+    private bool lastCarrotWater = false;
 
     private void Update()
     {
@@ -104,6 +106,11 @@ public class FarmUpgrade : MonoBehaviour
 
     private void CarrotManage()
     {
+        if (carrotFarmLevel == lastCarrotLevel && carrotFarmWater == lastCarrotWater) return;
+
+        lastCarrotLevel = carrotFarmLevel;
+        lastCarrotWater = carrotFarmWater;
+
         switch (carrotFarmLevel)
         {
             case 1:
