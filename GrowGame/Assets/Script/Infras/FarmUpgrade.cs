@@ -44,11 +44,14 @@ public class FarmUpgrade : MonoBehaviour
     private bool lastWheatWater = false;
     private int lastCarrotLevel = -1;
     private bool lastCarrotWater = false;
+    private int lastCucumberLevel = -1;
+    private bool lastCucumberWater = false;
 
     private void Update()
     {
         WheatManage();
         CarrotManage();
+        CucumberManage();
     }
 
     private void WheatManage()
@@ -152,6 +155,59 @@ public class FarmUpgrade : MonoBehaviour
                 {
                     carrotFarm[3].SetActive(false);
                     carrot_water[2].SetActive(true);
+                }
+                break;
+        }
+    }
+
+    private void CucumberManage()
+    {
+        if (cucumberFarmLevel == lastCucumberLevel && cucumberFarmWater == lastCucumberWater) return;
+
+        lastCucumberLevel = cucumberFarmLevel;
+        lastCucumberWater = cucumberFarmWater;
+
+        switch (cucumberFarmLevel)
+        {
+            case 1:
+                cucumberFarm[0].SetActive(false);
+                if (!cucumberFarmWater)
+                {
+                    cucumberFarm[1].SetActive(true);
+                    cucumber_water[0].SetActive(false);
+                }
+                else
+                {
+                    cucumberFarm[1].SetActive(false);
+                    cucumber_water[0].SetActive(true);
+                }
+                break;
+            case 2:
+                cucumberFarm[1].SetActive(false);
+                cucumber_water[0].SetActive(false);
+                if (!cucumberFarmWater)
+                {
+                    cucumberFarm[2].SetActive(true);
+                    cucumber_water[1].SetActive(false);
+                }
+                else
+                {
+                    cucumberFarm[2].SetActive(false);
+                    cucumber_water[1].SetActive(true);
+                }
+                break;
+            case 3:
+                cucumberFarm[2].SetActive(false);
+                cucumber_water[1].SetActive(false);
+                if (!cucumberFarmWater)
+                {
+                    cucumberFarm[3].SetActive(true);
+                    cucumber_water[2].SetActive(false);
+                }
+                else
+                {
+                    cucumberFarm[3].SetActive(false);
+                    cucumber_water[2].SetActive(true);
                 }
                 break;
         }

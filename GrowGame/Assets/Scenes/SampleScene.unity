@@ -256769,10 +256769,10 @@ MonoBehaviour:
   - {fileID: 205455379}
   - {fileID: 620289693}
   cucumberFarm:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1096845298}
+  - {fileID: 841737067}
+  - {fileID: 2079206392}
+  - {fileID: 1750713700}
   cucumber_water:
   - {fileID: 343893605}
   - {fileID: 812153366}
