@@ -46,12 +46,15 @@ public class FarmUpgrade : MonoBehaviour
     private bool lastCarrotWater = false;
     private int lastCucumberLevel = -1;
     private bool lastCucumberWater = false;
+    private int lastPotatoLevel = -1;
+    private bool lastPotatoWater = false;
 
     private void Update()
     {
         WheatManage();
         CarrotManage();
         CucumberManage();
+        PotatoManage();
     }
 
     private void WheatManage()
@@ -208,6 +211,59 @@ public class FarmUpgrade : MonoBehaviour
                 {
                     cucumberFarm[3].SetActive(false);
                     cucumber_water[2].SetActive(true);
+                }
+                break;
+        }
+    }
+
+    private void PotatoManage()
+    {
+        if (potatoFarmLevel == lastPotatoLevel && potatoFarmWater == lastPotatoWater) return;
+
+        lastPotatoLevel = potatoFarmLevel;
+        lastPotatoWater = potatoFarmWater;
+
+        switch (potatoFarmLevel)
+        {
+            case 1:
+                potatoFarm[0].SetActive(false);
+                if (!potatoFarmWater)
+                {
+                    potatoFarm[1].SetActive(true);
+                    potato_water[0].SetActive(false);
+                }
+                else
+                {
+                    potatoFarm[1].SetActive(false);
+                    potato_water[0].SetActive(true);
+                }
+                break;
+            case 2:
+                potatoFarm[1].SetActive(false);
+                potato_water[0].SetActive(false);
+                if (!potatoFarmWater)
+                {
+                    potatoFarm[2].SetActive(true);
+                    potato_water[1].SetActive(false);
+                }
+                else
+                {
+                    potatoFarm[2].SetActive(false);
+                    potato_water[1].SetActive(true);
+                }
+                break;
+            case 3:
+                potatoFarm[2].SetActive(false);
+                potato_water[1].SetActive(false);
+                if (!potatoFarmWater)
+                {
+                    potatoFarm[3].SetActive(true);
+                    potato_water[2].SetActive(false);
+                }
+                else
+                {
+                    potatoFarm[3].SetActive(false);
+                    potato_water[2].SetActive(true);
                 }
                 break;
         }

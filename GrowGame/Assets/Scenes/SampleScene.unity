@@ -256778,10 +256778,10 @@ MonoBehaviour:
   - {fileID: 812153366}
   - {fileID: 697883868}
   potatoFarm:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2058640306}
+  - {fileID: 1680123031}
+  - {fileID: 1255488262}
+  - {fileID: 602346021}
   potato_water:
   - {fileID: 2143938417}
   - {fileID: 518000076}
