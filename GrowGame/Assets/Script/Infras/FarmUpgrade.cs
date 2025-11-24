@@ -48,6 +48,8 @@ public class FarmUpgrade : MonoBehaviour
     private bool lastCucumberWater = false;
     private int lastPotatoLevel = -1;
     private bool lastPotatoWater = false;
+    private int lastOnioinLevel = -1;
+    private bool lastOnioinWater = false;
 
     private void Update()
     {
@@ -55,6 +57,7 @@ public class FarmUpgrade : MonoBehaviour
         CarrotManage();
         CucumberManage();
         PotatoManage();
+        OnionManage();
     }
 
     private void WheatManage()
@@ -264,6 +267,59 @@ public class FarmUpgrade : MonoBehaviour
                 {
                     potatoFarm[3].SetActive(false);
                     potato_water[2].SetActive(true);
+                }
+                break;
+        }
+    }
+
+    private void OnionManage()
+    {
+        if (onionFarmLevel == lastOnioinLevel && onionFarmWater == lastOnioinWater) return;
+
+        lastOnioinLevel = onionFarmLevel;
+        lastOnioinWater = onionFarmWater;
+
+        switch (onionFarmLevel)
+        {
+            case 1:
+                onionFarm[0].SetActive(false);
+                if (!onionFarmWater)
+                {
+                    onionFarm[1].SetActive(true);
+                    onion_water[0].SetActive(false);
+                }
+                else
+                {
+                    onionFarm[1].SetActive(false);
+                    onion_water[0].SetActive(true);
+                }
+                break;
+            case 2:
+                onionFarm[1].SetActive(false);
+                onion_water[0].SetActive(false);
+                if (!onionFarmWater)
+                {
+                    onionFarm[2].SetActive(true);
+                    onion_water[1].SetActive(false);
+                }
+                else
+                {
+                    onionFarm[2].SetActive(false);
+                    onion_water[1].SetActive(true);
+                }
+                break;
+            case 3:
+                onionFarm[2].SetActive(false);
+                onion_water[1].SetActive(false);
+                if (!onionFarmWater)
+                {
+                    onionFarm[3].SetActive(true);
+                    onion_water[2].SetActive(false);
+                }
+                else
+                {
+                    onionFarm[3].SetActive(false);
+                    onion_water[2].SetActive(true);
                 }
                 break;
         }
