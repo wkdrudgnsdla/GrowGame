@@ -314,16 +314,6 @@ public class InfraClick : MonoBehaviour
     {
         hitObj = infraObj;
 
-        if (infraObj == Silo) hitObj.name = "Silo";
-        else if (infraObj == Storages) hitObj.name = "Storages";
-        else if (infraObj == GreenHouses) hitObj.name = "GreenHouses";
-        else if (infraObj == Animal_Farms) hitObj.name = "Animal_Farms";
-        else if (infraObj == WheatField) hitObj.name = "WheatField";
-        else if (infraObj == CarrotField) hitObj.name = "CarrotField";
-        else if (infraObj == CucumberField) hitObj.name = "CucumberField";
-        else if (infraObj == PotatoField) hitObj.name = "PotatoField";
-        else if (infraObj == OnionField) hitObj.name = "OnionField";
-
         info = infraObj.GetComponent<InfraInfo>();
         if (info != null)
         {
@@ -446,40 +436,40 @@ public class InfraClick : MonoBehaviour
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.wheatFarmLevel;
             info.level = farmUpgrade.wheatFarmLevel;
             //물주기 버튼
-            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
-            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+            if (statusTMP != null) statusTMP.text ="+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
+            info.status = "+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
         }
         else if (hitObj.name == "CarrotField")
         {
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.carrotFarmLevel;
             info.level = farmUpgrade.carrotFarmLevel;
             //물주기 버튼
-            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
-            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
+            info.status =  "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
         }
         else if (hitObj.name == "CucumberField")
         {
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.cucumberFarmLevel;
             info.level = farmUpgrade.cucumberFarmLevel;
             //물주기 버튼
-            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
-            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.cucumberFarmLevel) + "/min";
+            info.status = "+" + (25 * farmUpgrade.cucumberFarmLevel) + "/min";
         }
         else if (hitObj.name == "PotatoField")
         {
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.potatoFarmLevel;
             info.level = farmUpgrade.potatoFarmLevel;
             //물주기 버튼
-            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
-            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.potatoFarmLevel) + "/min";
+            info.status = "+" + (25 * farmUpgrade.potatoFarmLevel) + "/min";
         }
         else if (hitObj.name == "OnionField")
         {
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.onionFarmLevel;
             info.level = farmUpgrade.onionFarmLevel;
             //물주기 버튼
-            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
-            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.onionFarmLevel) + "/min";
+            info.status = "+" + (25 * farmUpgrade.onionFarmLevel) + "/min";
         }
         else
         {

@@ -259599,7 +259599,7 @@ MonoBehaviour:
   minMoveSpeed: 40
   stopDistance: 0.15
   minY: 12
-  minZ: -10000
+  minZ: 6
   returnY: 30
   uiOffsetX: 5
   smoothTimeMin: 0.04
@@ -259622,19 +259622,19 @@ MonoBehaviour:
   AnimalFarmsUseForceZ: 1
   WheatField: {fileID: 247133600}
   WheatFieldViewTarget: {fileID: 691831821}
-  WheatFieldUseForceZ: 0
+  WheatFieldUseForceZ: 1
   CarrotField: {fileID: 1469106899}
   CarrotFieldViewTarget: {fileID: 1151642892}
-  CarrotFieldUseForceZ: 0
+  CarrotFieldUseForceZ: 1
   CucumberField: {fileID: 703837691}
   CucumberFieldViewTarget: {fileID: 181342119}
-  CucumberFieldUseForceZ: 0
+  CucumberFieldUseForceZ: 1
   PotatoField: {fileID: 1708912988}
   PotatoFieldViewTarget: {fileID: 1061267079}
-  PotatoFieldUseForceZ: 0
+  PotatoFieldUseForceZ: 1
   OnionField: {fileID: 1921351367}
   OnionFieldViewTarget: {fileID: 1980984520}
-  OnionFieldUseForceZ: 0
+  OnionFieldUseForceZ: 1
 --- !u!114 &2017528151
 MonoBehaviour:
   m_ObjectHideFlags: 0

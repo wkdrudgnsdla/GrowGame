@@ -142,6 +142,91 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
+                case "WheatField":
+                    switch (farmUpgrade.wheatFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "+0/min => +20/min";
+                            break;
+                        case 1:
+                            UpgradeStatus = "+25/min => +50/min";
+                            break;
+                        case 2:
+                            UpgradeStatus = "+50/min => +75/min";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                case "CarrotField":
+                    switch (farmUpgrade.carrotFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "+0/min => +20/min";
+                            break;
+                        case 1:
+                            UpgradeStatus = "+25/min => +50/min";
+                            break;
+                        case 2:
+                            UpgradeStatus = "+50/min => +75/min";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                case "CucumberField":
+                    switch (farmUpgrade.cucumberFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "+0/min => +20/min";
+                            break;
+                        case 1:
+                            UpgradeStatus = "+25/min => +50/min";
+                            break;
+                        case 2:
+                            UpgradeStatus = "+50/min => +75/min";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                case "PotatoField":
+                    switch (farmUpgrade.potatoFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "+0/min => +20/min";
+                            break;
+                        case 1:
+                            UpgradeStatus = "+25/min => +50/min";
+                            break;
+                        case 2:
+                            UpgradeStatus = "+50/min => +75/min";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
+                case "OnionField":
+                    switch (farmUpgrade.onionFarmLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "+0/min => +20/min";
+                            break;
+                        case 1:
+                            UpgradeStatus = "+25/min => +50/min";
+                            break;
+                        case 2:
+                            UpgradeStatus = "+50/min => +75/min";
+                            break;
+                        case 3:
+                            UpgradeStatus = "MAX LEVEL";
+                            break;
+                    }
+                    break;
             }
         }
     }
