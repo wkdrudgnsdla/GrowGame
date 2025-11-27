@@ -24370,6 +24370,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5864282540933235337, guid: c754dcd1fe6a015409569af86c7c1863, type: 3}
   m_PrefabInstance: {fileID: 324138313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &181342118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181342119}
+  - component: {fileID: 181342120}
+  m_Layer: 0
+  m_Name: Cucumber CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181342119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181342118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 703837692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &181342120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181342118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: CucumberField
+  level: 0
+  infraCount: 0
+  status: 
+  infraImage: {fileID: 0}
 --- !u!1001 &181635023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33762,7 +33811,8 @@ Transform:
   m_LocalPosition: {x: -21.1, y: -8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 691831821}
   m_Father: {fileID: 1231482738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &247133602
@@ -93046,6 +93096,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1669781109300623314, guid: e41f2185f1c11a8409ff3cd219f789a1, type: 3}
   m_PrefabInstance: {fileID: 690959593}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &691831820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691831821}
+  - component: {fileID: 691831822}
+  m_Layer: 0
+  m_Name: Wheat CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &691831821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691831820}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 247133601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &691831822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691831820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: WheatField
+  level: 0
+  infraCount: 0
+  status: 
+  infraImage: {fileID: 0}
 --- !u!1001 &692423370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94629,7 +94728,8 @@ Transform:
   m_LocalPosition: {x: 20.24, y: -8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 181342119}
   m_Father: {fileID: 1231482738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &703837693
@@ -140633,6 +140733,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1669781109300623314, guid: e41f2185f1c11a8409ff3cd219f789a1, type: 3}
   m_PrefabInstance: {fileID: 1060380570}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061267078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061267079}
+  - component: {fileID: 1061267080}
+  m_Layer: 0
+  m_Name: Potato CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061267079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061267078}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1708912989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061267080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061267078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: PotatoField
+  level: 0
+  infraCount: 0
+  status: 
+  infraImage: {fileID: 0}
 --- !u!1001 &1061302499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151021,6 +151170,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5778138390825640786, guid: de9ace0cdea0f94488f03b52bbbe082b, type: 3}
   m_PrefabInstance: {fileID: 1151596367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1151642891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151642892}
+  - component: {fileID: 1151642893}
+  m_Layer: 0
+  m_Name: Carrot CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151642892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151642891}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1469106900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151642893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151642891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: CarrotField
+  level: 0
+  infraCount: 0
+  status: 
+  infraImage: {fileID: 0}
 --- !u!1 &1152090375
 GameObject:
   m_ObjectHideFlags: 0
@@ -190484,7 +190682,8 @@ Transform:
   m_LocalPosition: {x: -0.21, y: -8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1151642892}
   m_Father: {fileID: 1231482738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1469106901
@@ -221440,7 +221639,8 @@ Transform:
   m_LocalPosition: {x: 39.67, y: -8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1061267079}
   m_Father: {fileID: 1231482738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1708912990
@@ -248142,7 +248342,8 @@ Transform:
   m_LocalPosition: {x: 63.12, y: -8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1980984520}
   m_Father: {fileID: 1231482738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1921351369
@@ -255061,6 +255262,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1669781109300623314, guid: e41f2185f1c11a8409ff3cd219f789a1, type: 3}
   m_PrefabInstance: {fileID: 1980583277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1980984519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980984520}
+  - component: {fileID: 1980984521}
+  m_Layer: 0
+  m_Name: Onion CamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1980984520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980984519}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1921351368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1980984521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980984519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c917c7c0a3f124faf67b65de787797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: OnionField
+  level: 0
+  infraCount: 0
+  status: 
+  infraImage: {fileID: 0}
 --- !u!1001 &1981954357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259370,20 +259620,20 @@ MonoBehaviour:
   AnimalFarmsViewTarget: {fileID: 0}
   AnimalFarmsUseForceZ: 1
   WheatField: {fileID: 247133600}
-  WheatFieldViewTarget: {fileID: 0}
-  WheatFieldUseForceZ: 1
+  WheatFieldViewTarget: {fileID: 691831821}
+  WheatFieldUseForceZ: 0
   CarrotField: {fileID: 1469106899}
-  CarrotFieldViewTarget: {fileID: 0}
-  CarrotFieldUseForceZ: 1
+  CarrotFieldViewTarget: {fileID: 1151642892}
+  CarrotFieldUseForceZ: 0
   CucumberField: {fileID: 703837691}
-  CucumberFieldViewTarget: {fileID: 0}
-  CucumberFieldUseForceZ: 1
+  CucumberFieldViewTarget: {fileID: 181342119}
+  CucumberFieldUseForceZ: 0
   PotatoField: {fileID: 1708912988}
-  PotatoFieldViewTarget: {fileID: 0}
-  PotatoFieldUseForceZ: 1
+  PotatoFieldViewTarget: {fileID: 1061267079}
+  PotatoFieldUseForceZ: 0
   OnionField: {fileID: 1921351367}
-  OnionFieldViewTarget: {fileID: 0}
-  OnionFieldUseForceZ: 1
+  OnionFieldViewTarget: {fileID: 1980984520}
+  OnionFieldUseForceZ: 0
 --- !u!114 &2017528151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259454,7 +259704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FM: {fileID: 2017528151}
-  infraclick: {fileID: 0}
   wheatFarm:
   - {fileID: 428851262}
   - {fileID: 1757200222}

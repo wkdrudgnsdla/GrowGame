@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 public class FarmUpgrade : MonoBehaviour
 {
     [SerializeField] private FarmManager FM;
-    [SerializeField] private InfraClick infraclick;
 
     [Header("Wheat")]
     [SerializeField] private List<GameObject> wheatFarm = new List<GameObject>();
