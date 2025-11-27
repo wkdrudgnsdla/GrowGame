@@ -326,35 +326,4 @@ public class FarmUpgrade : MonoBehaviour
         }
     }
 
-    public void OnClickFarmUpgrade()
-    {
-        //if (infraclick.hitObj.name == "Silo")
-        //{
-        //    if (siloLevel != 8)
-        //    {
-        //        siloLevel += 1;
-        //    }
-        //}
-        //else if (infraclick.hitObj.name == "Storages")
-        //{
-        //    if (storageLevel != 3)
-        //    {
-        //        storageLevel += 1;
-        //    }
-        //}
-        //else if (infraclick.hitObj.name == "GreenHouses")
-        //{
-        //    if (greenHouseLevel != 2)
-        //    {
-        //        greenHouseLevel += 1;
-        //    }
-        //}
-        //else if (infraclick.hitObj.name == "Animal_Farms")
-        //{
-        //    if (animalFarmLevel != 2)
-        //    {
-        //        animalFarmLevel += 1;
-        //    }
-        //}
-    }
 }

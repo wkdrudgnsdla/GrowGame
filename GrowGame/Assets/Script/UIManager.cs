@@ -15,16 +15,32 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text nowOnionText;
 
     [Header("infraButtons")]
+    //Infras
     [SerializeField] private GameObject siloButton;
     [SerializeField] private GameObject storagesButton;
     [SerializeField] private GameObject animalFarmsButton;
     [SerializeField] private GameObject greenHousesButton;
 
+    //Farms
+    [SerializeField] private GameObject WheatFieldButton;
+    [SerializeField] private GameObject CarrotFieldButton;
+    [SerializeField] private GameObject CucumberFieldButton;
+    [SerializeField] private GameObject PotatoFieldButton;
+    [SerializeField] private GameObject OnionFieldButton;
+
     [Header("infraPosition")]
+    //Infras
     [SerializeField] private GameObject silo;
     [SerializeField] private GameObject storages;
     [SerializeField] private GameObject animalFarms;
     [SerializeField] private GameObject greenHouses;
+
+    //Farms
+    [SerializeField] private GameObject WheatField;
+    [SerializeField] private GameObject CarrotField;
+    [SerializeField] private GameObject CucumberField;
+    [SerializeField] private GameObject PotatoField;
+    [SerializeField] private GameObject OnionField;
 
     public void Update()
     {
@@ -42,5 +58,11 @@ public class UIManager : MonoBehaviour
         storagesButton.transform.position = Camera.main.WorldToScreenPoint(storages.transform.position);
         animalFarmsButton.transform.position = Camera.main.WorldToScreenPoint(animalFarms.transform.position);
         greenHousesButton.transform.position = Camera.main.WorldToScreenPoint(greenHouses.transform.position);
+
+        WheatFieldButton.transform.position = Camera.main.WorldToScreenPoint(WheatField.transform.position);
+        CarrotFieldButton.transform.position = Camera.main.WorldToScreenPoint(CarrotField.transform.position);
+        CucumberFieldButton.transform.position = Camera.main.WorldToScreenPoint(CucumberField.transform.position);
+        PotatoFieldButton.transform.position = Camera.main.WorldToScreenPoint(PotatoField.transform.position);
+        OnionFieldButton.transform.position = Camera.main.WorldToScreenPoint(OnionField.transform.position);
     }
 }

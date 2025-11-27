@@ -6,6 +6,7 @@ using UnityEngine;
 public class InfraManager : MonoBehaviour
 {
     [SerializeField] private InfraClick infraclick;
+    [SerializeField] private FarmUpgrade farmUpgrade;
 
     public string UpgradeStatus;
 
@@ -385,6 +386,42 @@ public class InfraManager : MonoBehaviour
             if (animalFarmLevel != 2)
             {
                 animalFarmLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Wheat")
+        {
+            if (farmUpgrade.wheatFarmLevel != 3)
+            {
+                farmUpgrade.wheatFarmLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Carrot")
+        {
+            if (farmUpgrade.carrotFarmLevel != 3)
+            {
+                farmUpgrade.carrotFarmLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Cucumber")
+        {
+            if (farmUpgrade.cucumberFarmLevel != 3)
+            {
+                farmUpgrade.cucumberFarmLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Potato")
+        {
+            if (farmUpgrade.potatoFarmLevel != 3)
+            {
+                farmUpgrade.potatoFarmLevel += 1;
+            }
+
+            else if (infraclick.hitObj.name == "Onion")
+            {
+                if (farmUpgrade.onionFarmLevel != 3)
+                {
+                    farmUpgrade.onionFarmLevel += 1;
+                }
             }
         }
     }

@@ -74,6 +74,27 @@ public class InfraClick : MonoBehaviour
     public Transform AnimalFarmsViewTarget;
     public bool AnimalFarmsUseForceZ = true;
 
+    //farms
+    public GameObject WheatField;
+    public Transform WheatFieldViewTarget;
+    public bool WheatFieldUseForceZ = true;
+
+    public GameObject CarrotField;
+    public Transform CarrotFieldViewTarget;
+    public bool CarrotFieldUseForceZ = true;
+
+    public GameObject CucumberField;
+    public Transform CucumberFieldViewTarget;
+    public bool CucumberFieldUseForceZ = true;
+
+    public GameObject PotatoField;
+    public Transform PotatoFieldViewTarget;
+    public bool PotatoFieldUseForceZ = true;
+
+    public GameObject OnionField;
+    public Transform OnionFieldViewTarget;
+    public bool OnionFieldUseForceZ = true;
+
     private void Awake()
     {
         iManager = gameObject.GetComponent<InfraManager>();
@@ -89,11 +110,7 @@ public class InfraClick : MonoBehaviour
         if (cam == null) cam = Camera.main;
         if (uiPanel != null) uiPanel.SetActive(false);
 
-        if (playerView == null)
-        {
-            Debug.LogWarning("playerView가 세팅되지 않았습니다. PlayerView를 찾아보세요.");
-        }
-        else
+        if(playerView != null)
         {
             Vector3 pos = playerView.transform.position;
             bool corrected = false;
@@ -294,18 +311,17 @@ public class InfraClick : MonoBehaviour
 
     private void HandleButtonClick(GameObject infraObj, Transform viewTarget, bool useForceZ)
     {
-        if (infraObj == null)
-        {
-            Debug.LogWarning("Infra object가 할당되어 있지 않습니다.");
-            return;
-        }
-
         hitObj = infraObj;
 
         if (infraObj == Silo) hitObj.name = "Silo";
         else if (infraObj == Storages) hitObj.name = "Storages";
         else if (infraObj == GreenHouses) hitObj.name = "GreenHouses";
         else if (infraObj == Animal_Farms) hitObj.name = "Animal_Farms";
+        else if (infraObj == Silo) hitObj.name = "WheatField";
+        else if (infraObj == Silo) hitObj.name = "CarrotField";
+        else if (infraObj == Silo) hitObj.name = "CucumberField";
+        else if (infraObj == Silo) hitObj.name = "PotatoField";
+        else if (infraObj == Silo) hitObj.name = "OnionField";
 
         info = infraObj.GetComponent<InfraInfo>();
         if (info != null)
@@ -326,7 +342,6 @@ public class InfraClick : MonoBehaviour
             HideUI();
         }
 
-        // viewTarget이 있으면 그 위치로, 없으면 오브젝트 월드 포지션으로 이동
         if (viewTarget != null)
         {
             StartMoveTo(viewTarget.position, forceZToSix: useForceZ);
@@ -355,6 +370,31 @@ public class InfraClick : MonoBehaviour
     public void OnClickAnimalFarms()
     {
         HandleButtonClick(Animal_Farms, AnimalFarmsViewTarget, AnimalFarmsUseForceZ);
+    }
+
+    public void OnClickWheatField()
+    {
+        HandleButtonClick(WheatField, WheatFieldViewTarget, WheatFieldUseForceZ);
+    }
+
+    public void OnClickCarrotField()
+    {
+        HandleButtonClick(CarrotField, CarrotFieldViewTarget, CarrotFieldUseForceZ);
+    }
+
+    public void OnClickCucumberField()
+    {
+        HandleButtonClick(CucumberField, CucumberFieldViewTarget, CucumberFieldUseForceZ);
+    }
+
+    public void OnClickPotatoField()
+    {
+        HandleButtonClick(PotatoField, PotatoFieldViewTarget, PotatoFieldUseForceZ);
+    }
+
+    public void OnClickOnionField()
+    {
+        HandleButtonClick(OnionField, OnionFieldViewTarget, OnionFieldUseForceZ);
     }
 
     void LevelTxt(InfraInfo info)
