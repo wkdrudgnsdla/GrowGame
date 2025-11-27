@@ -259582,6 +259582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 46754887}
+  farmUpgrade: {fileID: 2017528153}
   info: {fileID: 0}
   cam: {fileID: 0}
   maxDistance: 500

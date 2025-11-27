@@ -8,6 +8,7 @@ public class InfraClick : MonoBehaviour
 {
     public GameObject playerView;
     private InfraManager iManager;
+    [SerializeField] private FarmUpgrade farmUpgrade;
     public InfraInfo info;
 
     public Camera cam;
@@ -317,11 +318,11 @@ public class InfraClick : MonoBehaviour
         else if (infraObj == Storages) hitObj.name = "Storages";
         else if (infraObj == GreenHouses) hitObj.name = "GreenHouses";
         else if (infraObj == Animal_Farms) hitObj.name = "Animal_Farms";
-        else if (infraObj == Silo) hitObj.name = "WheatField";
-        else if (infraObj == Silo) hitObj.name = "CarrotField";
-        else if (infraObj == Silo) hitObj.name = "CucumberField";
-        else if (infraObj == Silo) hitObj.name = "PotatoField";
-        else if (infraObj == Silo) hitObj.name = "OnionField";
+        else if (infraObj == WheatField) hitObj.name = "WheatField";
+        else if (infraObj == CarrotField) hitObj.name = "CarrotField";
+        else if (infraObj == CucumberField) hitObj.name = "CucumberField";
+        else if (infraObj == PotatoField) hitObj.name = "PotatoField";
+        else if (infraObj == OnionField) hitObj.name = "OnionField";
 
         info = infraObj.GetComponent<InfraInfo>();
         if (info != null)
@@ -438,6 +439,47 @@ public class InfraClick : MonoBehaviour
             info.infraCount = iManager.animalFarmCount;
             if (statusTMP != null) statusTMP.text = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
             info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
+        }
+        //famrs
+        else if (hitObj.name == "WheatField")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.wheatFarmLevel;
+            info.level = farmUpgrade.wheatFarmLevel;
+            //물주기 버튼
+            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
+            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+        }
+        else if (hitObj.name == "CarrotField")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.carrotFarmLevel;
+            info.level = farmUpgrade.carrotFarmLevel;
+            //물주기 버튼
+            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
+            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+        }
+        else if (hitObj.name == "CucumberField")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.cucumberFarmLevel;
+            info.level = farmUpgrade.cucumberFarmLevel;
+            //물주기 버튼
+            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
+            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+        }
+        else if (hitObj.name == "PotatoField")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.potatoFarmLevel;
+            info.level = farmUpgrade.potatoFarmLevel;
+            //물주기 버튼
+            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
+            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
+        }
+        else if (hitObj.name == "OnionField")
+        {
+            if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.onionFarmLevel;
+            info.level = farmUpgrade.onionFarmLevel;
+            //물주기 버튼
+            //if (statusTMP != null) statusTMP.text = " + " + farmUpgrade.storageCapacity;//생산량
+            //info.status = "Silo Capacity  + " + farmUpgrade.storageCapacity;
         }
         else
         {

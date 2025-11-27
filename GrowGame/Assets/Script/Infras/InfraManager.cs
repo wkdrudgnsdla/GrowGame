@@ -148,7 +148,7 @@ public class InfraManager : MonoBehaviour
 
     private void SiloUpgrade()
     {
-        switch(siloLevel)
+        switch (siloLevel)
         {
             case 1:
                 siloCont = 1;
@@ -209,12 +209,12 @@ public class InfraManager : MonoBehaviour
                 silo4Lev2.SetActive(false);
                 break;
             case 1:
-                if(silo1Lev == 1)
+                if (silo1Lev == 1)
                 {
                     silo1Lev1.SetActive(true);
                     silo1Lev2.SetActive(false);
                 }
-                else if(silo1Lev == 2)
+                else if (silo1Lev == 2)
                 {
                     silo1Lev1.SetActive(false);
                     silo1Lev2.SetActive(true);
@@ -388,41 +388,43 @@ public class InfraManager : MonoBehaviour
                 animalFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "Wheat")
+        else if (infraclick.hitObj.name == "WheatField")
         {
             if (farmUpgrade.wheatFarmLevel != 3)
             {
                 farmUpgrade.wheatFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "Carrot")
+        else if (infraclick.hitObj.name == "CarrotField")
         {
             if (farmUpgrade.carrotFarmLevel != 3)
             {
                 farmUpgrade.carrotFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "Cucumber")
+        else if (infraclick.hitObj.name == "CucumberField")
         {
             if (farmUpgrade.cucumberFarmLevel != 3)
             {
                 farmUpgrade.cucumberFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "Potato")
+        else if (infraclick.hitObj.name == "PotatoField")
         {
             if (farmUpgrade.potatoFarmLevel != 3)
             {
                 farmUpgrade.potatoFarmLevel += 1;
             }
+        }
 
-            else if (infraclick.hitObj.name == "Onion")
+        else if (infraclick.hitObj.name == "OnionField")
+        {
+            if (farmUpgrade.onionFarmLevel != 3)
             {
-                if (farmUpgrade.onionFarmLevel != 3)
-                {
-                    farmUpgrade.onionFarmLevel += 1;
-                }
+                farmUpgrade.onionFarmLevel += 1;
             }
         }
     }
+
 }
+
