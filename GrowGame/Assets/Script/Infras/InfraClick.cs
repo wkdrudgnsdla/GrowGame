@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-using UnityEditor.Build.Content;
 
 public class InfraClick : MonoBehaviour
 {
@@ -48,8 +47,8 @@ public class InfraClick : MonoBehaviour
     private Vector3 moveTarget;
     private float initialDistance = 0f;
 
-    private Vector3 preClickPosition;
-    private bool hasPreClickPosition = false;
+    [SerializeField] private Vector3 preClickPosition;
+    [SerializeField] private bool hasPreClickPosition = false;
 
     private Vector3 moveVelocity = Vector3.zero;
 
@@ -57,6 +56,23 @@ public class InfraClick : MonoBehaviour
 
     public bool isReturning = false;
     public bool returnFinished = true;
+
+    [Header("infraData")]
+    public GameObject Silo;
+    public Transform SiloViewTarget;
+    public bool SiloUseForceZ = true;
+
+    public GameObject Storages;
+    public Transform StoragesViewTarget;
+    public bool StoragesUseForceZ = true;
+
+    public GameObject GreenHouses;
+    public Transform GreenHousesViewTarget;
+    public bool GreenHousesUseForceZ = true;
+
+    public GameObject Animal_Farms;
+    public Transform AnimalFarmsViewTarget;
+    public bool AnimalFarmsUseForceZ = true;
 
     private void Awake()
     {
@@ -92,49 +108,9 @@ public class InfraClick : MonoBehaviour
 
     void Update()
     {
-        if (uiPanel.activeSelf)
+        if (uiPanel != null && uiPanel.activeSelf)
         {
             LevelTxt(info);
-        }
-
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
-            {
-                hitObj = hit.collider.gameObject;
-
-                if (hitObj.CompareTag("Infra"))
-                {
-                    info = hitObj.GetComponent<InfraInfo>();
-                    if (info != null)
-                    {
-                        if (playerView != null)
-                        {
-                            preClickPosition = playerView.transform.position;
-                            preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
-                            preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
-                            hasPreClickPosition = true;
-                        }
-
-                        ShowUI(info);
-
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"[{hitObj.name}]에 InfraInfo 컴포넌트가 없습니다.");
-                        HideUI();
-                    }
-
-                    StartMoveTo(hitObj.transform.position, forceZToSix: true);
-                    return;
-                }
-            }
-
-            HideUI();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -295,8 +271,6 @@ public class InfraClick : MonoBehaviour
         }
     }
 
-
-
     void HideUI()
     {
         if (uiPanel == null) return;
@@ -316,6 +290,71 @@ public class InfraClick : MonoBehaviour
 
             hasPreClickPosition = false;
         }
+    }
+
+    private void HandleButtonClick(GameObject infraObj, Transform viewTarget, bool useForceZ)
+    {
+        if (infraObj == null)
+        {
+            Debug.LogWarning("Infra object가 할당되어 있지 않습니다.");
+            return;
+        }
+
+        hitObj = infraObj;
+
+        if (infraObj == Silo) hitObj.name = "Silo";
+        else if (infraObj == Storages) hitObj.name = "Storages";
+        else if (infraObj == GreenHouses) hitObj.name = "GreenHouses";
+        else if (infraObj == Animal_Farms) hitObj.name = "Animal_Farms";
+
+        info = infraObj.GetComponent<InfraInfo>();
+        if (info != null)
+        {
+            if (playerView != null)
+            {
+                preClickPosition = playerView.transform.position;
+                preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
+                preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
+                hasPreClickPosition = true;
+            }
+
+            ShowUI(info);
+        }
+        else
+        {
+            Debug.LogWarning($"[{infraObj.name}]에 InfraInfo 컴포넌트가 없습니다.");
+            HideUI();
+        }
+
+        // viewTarget이 있으면 그 위치로, 없으면 오브젝트 월드 포지션으로 이동
+        if (viewTarget != null)
+        {
+            StartMoveTo(viewTarget.position, forceZToSix: useForceZ);
+        }
+        else
+        {
+            StartMoveTo(infraObj.transform.position, forceZToSix: useForceZ);
+        }
+    }
+
+    public void OnClickSilo()
+    {
+        HandleButtonClick(Silo, SiloViewTarget, SiloUseForceZ);
+    }
+
+    public void OnClickStorages()
+    {
+        HandleButtonClick(Storages, StoragesViewTarget, StoragesUseForceZ);
+    }
+
+    public void OnClickGreenHouses()
+    {
+        HandleButtonClick(GreenHouses, GreenHousesViewTarget, GreenHousesUseForceZ);
+    }
+
+    public void OnClickAnimalFarms()
+    {
+        HandleButtonClick(Animal_Farms, AnimalFarmsViewTarget, AnimalFarmsUseForceZ);
     }
 
     void LevelTxt(InfraInfo info)
@@ -342,14 +381,14 @@ public class InfraClick : MonoBehaviour
             if (statusTMP != null) statusTMP.text = "Silo Capacity  + " + iManager.storageCapacity;
             info.status = "Silo Capacity  + " + iManager.storageCapacity;
         }
-        else if(hitObj.name == "GreenHouses")
+        else if (hitObj.name == "GreenHouses")
         {
             if (levelTMP != null) levelTMP.text = "Level." + iManager.greenHouseLevel;
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
             info.infraCount = iManager.greenHouseCount;
-            if (statusTMP != null) statusTMP.text =  /*선택된작물 생산량 증가*/  " + "  + iManager.storageCapacity  /*<- 추가 생산량(교체필요)*/;
-            info.status = "Silo Capacity  + " /*<- 추가 생산량(교체필요)*/ + iManager.storageCapacity;
+            if (statusTMP != null) statusTMP.text = " + " + iManager.storageCapacity;
+            info.status = "Silo Capacity  + " + iManager.storageCapacity;
         }
         else if (hitObj.name == "Animal_Farms")
         {
@@ -357,7 +396,7 @@ public class InfraClick : MonoBehaviour
             info.level = iManager.animalFarmLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.animalFarmCount;
             info.infraCount = iManager.animalFarmCount;
-            if (statusTMP != null) statusTMP.text = "increase in profits + " + (20*iManager.animalFarmCount).ToString() + "%";
+            if (statusTMP != null) statusTMP.text = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
             info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
         }
         else

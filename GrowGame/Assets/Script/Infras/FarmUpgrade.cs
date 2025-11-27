@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class FarmUpgrade : MonoBehaviour
 {
     [SerializeField] private FarmManager FM;
+    [SerializeField] private InfraClick infraclick;
 
     [Header("Wheat")]
     [SerializeField] private List<GameObject> wheatFarm = new List<GameObject>();
@@ -323,5 +324,37 @@ public class FarmUpgrade : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void OnClickFarmUpgrade()
+    {
+        //if (infraclick.hitObj.name == "Silo")
+        //{
+        //    if (siloLevel != 8)
+        //    {
+        //        siloLevel += 1;
+        //    }
+        //}
+        //else if (infraclick.hitObj.name == "Storages")
+        //{
+        //    if (storageLevel != 3)
+        //    {
+        //        storageLevel += 1;
+        //    }
+        //}
+        //else if (infraclick.hitObj.name == "GreenHouses")
+        //{
+        //    if (greenHouseLevel != 2)
+        //    {
+        //        greenHouseLevel += 1;
+        //    }
+        //}
+        //else if (infraclick.hitObj.name == "Animal_Farms")
+        //{
+        //    if (animalFarmLevel != 2)
+        //    {
+        //        animalFarmLevel += 1;
+        //    }
+        //}
     }
 }
