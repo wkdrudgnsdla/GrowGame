@@ -96,6 +96,8 @@ public class InfraClick : MonoBehaviour
     public Transform OnionFieldViewTarget;
     public bool OnionFieldUseForceZ = true;
 
+    [SerializeField] private GameObject waterButton;
+
     private void Awake()
     {
         iManager = gameObject.GetComponent<InfraManager>();
@@ -396,6 +398,14 @@ public class InfraClick : MonoBehaviour
 
         if (hitObj.name == "Silo")
         {
+            if (waterButton.activeSelf)
+            {
+                waterButton.SetActive(false);
+            }
+            if (!countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(true);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + iManager.siloLevel;
             info.level = iManager.siloLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
@@ -405,6 +415,14 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Storages")
         {
+            if (waterButton.activeSelf)
+            {
+                waterButton.SetActive(false);
+            }
+            if (!countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(true);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + iManager.storageLevel;
             info.level = iManager.storageLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.storageCount;
@@ -414,6 +432,14 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "GreenHouses")
         {
+            if (waterButton.activeSelf)
+            {
+                waterButton.SetActive(false);
+            }
+            if (!countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(true);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + iManager.greenHouseLevel;
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
@@ -423,6 +449,14 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Animal_Farms")
         {
+            if (waterButton.activeSelf)
+            {
+                waterButton.SetActive(false);
+            }
+            if (!countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(true);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + iManager.animalFarmLevel;
             info.level = iManager.animalFarmLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.animalFarmCount;
@@ -431,43 +465,78 @@ public class InfraClick : MonoBehaviour
             info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
         }
         //famrs
-        else if (hitObj.name == "WheatField")
+        else if (hitObj.name == "Wheat")
         {
+            if (!waterButton.activeSelf)
+            {
+                waterButton.SetActive(true);
+            }
+            if (countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(false);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.wheatFarmLevel;
             info.level = farmUpgrade.wheatFarmLevel;
-            //물주기 버튼
             if (statusTMP != null) statusTMP.text ="+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
             info.status = "+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
         }
-        else if (hitObj.name == "CarrotField")
+        else if (hitObj.name == "Carrot")
         {
+            if (!waterButton.activeSelf)
+            {
+                waterButton.SetActive(true);
+            }
+            if (countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(false);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.carrotFarmLevel;
             info.level = farmUpgrade.carrotFarmLevel;
-            //물주기 버튼
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
             info.status =  "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
         }
-        else if (hitObj.name == "CucumberField")
+        else if (hitObj.name == "Cucumber")
         {
+            if (!waterButton.activeSelf)
+            {
+                waterButton.SetActive(true);
+            }
+            if (countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(false);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.cucumberFarmLevel;
             info.level = farmUpgrade.cucumberFarmLevel;
-            //물주기 버튼
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.cucumberFarmLevel) + "/min";
             info.status = "+" + (25 * farmUpgrade.cucumberFarmLevel) + "/min";
         }
-        else if (hitObj.name == "PotatoField")
+        else if (hitObj.name == "Potato")
         {
+            if (!waterButton.activeSelf)
+            {
+                waterButton.SetActive(true);
+            }
+            if (countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(false);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.potatoFarmLevel;
             info.level = farmUpgrade.potatoFarmLevel;
-            //물주기 버튼
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.potatoFarmLevel) + "/min";
             info.status = "+" + (25 * farmUpgrade.potatoFarmLevel) + "/min";
         }
-        else if (hitObj.name == "OnionField")
+        else if (hitObj.name == "Onion")
         {
+            if (!waterButton.activeSelf)
+            {
+                waterButton.SetActive(true);
+            }
+            if (countTMP.gameObject.activeSelf)
+            {
+                countTMP.gameObject.SetActive(false);
+            }
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.onionFarmLevel;
             info.level = farmUpgrade.onionFarmLevel;
-            //물주기 버튼
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.onionFarmLevel) + "/min";
             info.status = "+" + (25 * farmUpgrade.onionFarmLevel) + "/min";
         }

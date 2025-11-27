@@ -49,9 +49,38 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
+    [Header("Farm")]
+    public float WheatWaterCol;
+    public float CarrotWaterCol;
+    public float CucumberWaterCol;
+    public float PotatoWaterCol;
+    public float OnionWaterCol;
+
+    [SerializeField] private float wheatWaterTime;
+    [SerializeField] private float carrotWaterTime;
+    [SerializeField] private float cucumberWaterTime;
+    [SerializeField] private float potatoWaterTime;
+    [SerializeField] private float onionWaterTime;
+
+    private void Start()
+    {
+        WheatWaterCol = 480;
+        CarrotWaterCol = 480;
+        CucumberWaterCol = 480;
+        PotatoWaterCol = 480;
+        OnionWaterCol = 480;
+
+        wheatWaterTime = 180;
+        carrotWaterTime = 180;
+        cucumberWaterTime = 180;
+        potatoWaterTime = 180;
+        onionWaterTime = 180;
+    }
 
     private void Update()
     {
+        WaterManage();
+
         SiloUpgrade();
         SiloManage();
 
@@ -65,6 +94,101 @@ public class InfraManager : MonoBehaviour
         GreenHouseManage();
 
         UpgradeStatusManage();
+    }
+
+    private void WaterManage()
+    {
+        if (WheatWaterCol > 0)
+        {
+            WheatWaterCol -= Time.deltaTime;
+        }
+        if (CarrotWaterCol > 0)
+        {
+            CarrotWaterCol -= Time.deltaTime;
+        }
+        if (CucumberWaterCol > 0)
+        {
+            CucumberWaterCol -= Time.deltaTime;
+        }
+        if (PotatoWaterCol > 0)
+        {
+            PotatoWaterCol -= Time.deltaTime;
+        }
+        if (OnionWaterCol > 0)
+        {
+            OnionWaterCol -= Time.deltaTime;
+        }
+
+        if (farmUpgrade.wheatFarmWater)
+        {
+            wheatWaterTime -= Time.deltaTime;
+        }
+        else if (!farmUpgrade.wheatFarmWater)
+        {
+            wheatWaterTime = 180;
+        }
+
+        if (farmUpgrade.carrotFarmWater)
+        {
+            carrotWaterTime -= Time.deltaTime;
+        }
+        else if (!farmUpgrade.carrotFarmWater)
+        {
+            carrotWaterTime = 180;
+        }
+
+        if (farmUpgrade.cucumberFarmWater)
+        {
+            cucumberWaterTime -= Time.deltaTime;
+        }
+        else if (!farmUpgrade.cucumberFarmWater)
+        {
+            cucumberWaterTime = 180;
+        }
+
+        if (farmUpgrade.potatoFarmWater)
+        {
+            potatoWaterTime -= Time.deltaTime;
+        }
+        else if (!farmUpgrade.potatoFarmWater)
+        {
+            potatoWaterTime = 180;
+        }
+
+        if (farmUpgrade.onionFarmWater)
+        {
+            onionWaterTime -= Time.deltaTime;
+        }
+        else if (!farmUpgrade.onionFarmWater)
+        {
+            onionWaterTime = 180;
+        }
+
+        if (wheatWaterTime <= 0)
+        {
+            WheatWaterCol = 480;
+            farmUpgrade.wheatFarmWater = false;
+        }
+        if (carrotWaterTime <= 0)
+        {
+            CarrotWaterCol = 480;
+            farmUpgrade.carrotFarmWater = false;
+        }
+        if (cucumberWaterTime <= 0)
+        {
+            CucumberWaterCol = 480;
+            farmUpgrade.cucumberFarmWater = false;
+        }
+        if (potatoWaterTime <= 0)
+        {
+            PotatoWaterCol = 480;
+            farmUpgrade.potatoFarmWater = false;
+        }
+        if (onionWaterTime <= 0)
+        {
+            OnionWaterCol = 480;
+            farmUpgrade.onionFarmWater = false;
+        }
     }
 
     private void UpgradeStatusManage()
@@ -443,6 +567,46 @@ public class InfraManager : MonoBehaviour
         }
     }
 
+    public void OnClickWater()
+    {
+        if (infraclick.hitObj.name == "Wheat")
+        {
+            if (!farmUpgrade.wheatFarmWater && WheatWaterCol <= 0)
+            {
+                farmUpgrade.wheatFarmWater = true;
+            }
+        }
+        else if (infraclick.hitObj.name == "Carrot")
+        {
+            if (!farmUpgrade.carrotFarmWater && CarrotWaterCol <= 0)
+            {
+                farmUpgrade.carrotFarmWater = true;
+            }
+        }
+        else if (infraclick.hitObj.name == "Cucumber")
+        {
+            if (!farmUpgrade.cucumberFarmWater && CarrotWaterCol <= 0)
+            {
+                farmUpgrade.cucumberFarmWater = true;
+            }
+        }
+        else if (infraclick.hitObj.name == "Potato")
+        {
+            if (!farmUpgrade.potatoFarmWater && CarrotWaterCol <= 0)
+            {
+                farmUpgrade.potatoFarmWater = true;
+            }
+        }
+
+        else if (infraclick.hitObj.name == "Onion")
+        {
+            if (!farmUpgrade.onionFarmWater && CarrotWaterCol <= 0)
+            {
+                farmUpgrade.onionFarmWater = true;
+            }
+        }
+    }
+
     public void OnClickUpgrade()
     {
         if (infraclick.hitObj.name == "Silo")
@@ -473,28 +637,28 @@ public class InfraManager : MonoBehaviour
                 animalFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "WheatField")
+        else if (infraclick.hitObj.name == "Wheat")
         {
             if (farmUpgrade.wheatFarmLevel != 3)
             {
                 farmUpgrade.wheatFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "CarrotField")
+        else if (infraclick.hitObj.name == "Carrot")
         {
             if (farmUpgrade.carrotFarmLevel != 3)
             {
                 farmUpgrade.carrotFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "CucumberField")
+        else if (infraclick.hitObj.name == "Cucumber")
         {
             if (farmUpgrade.cucumberFarmLevel != 3)
             {
                 farmUpgrade.cucumberFarmLevel += 1;
             }
         }
-        else if (infraclick.hitObj.name == "PotatoField")
+        else if (infraclick.hitObj.name == "Potato")
         {
             if (farmUpgrade.potatoFarmLevel != 3)
             {
@@ -502,7 +666,7 @@ public class InfraManager : MonoBehaviour
             }
         }
 
-        else if (infraclick.hitObj.name == "OnionField")
+        else if (infraclick.hitObj.name == "Onion")
         {
             if (farmUpgrade.onionFarmLevel != 3)
             {
