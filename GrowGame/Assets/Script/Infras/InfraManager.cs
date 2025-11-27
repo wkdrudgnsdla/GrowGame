@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfraManager : MonoBehaviour
 {
@@ -62,13 +63,15 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private float potatoWaterTime;
     [SerializeField] private float onionWaterTime;
 
+    [SerializeField] private Image WaterUIImage;
+
     private void Start()
     {
-        WheatWaterCol = 480;
-        CarrotWaterCol = 480;
-        CucumberWaterCol = 480;
-        PotatoWaterCol = 480;
-        OnionWaterCol = 480;
+        WheatWaterCol = 300;
+        CarrotWaterCol = 300;
+        CucumberWaterCol = 300;
+        PotatoWaterCol = 300;
+        OnionWaterCol = 300;
 
         wheatWaterTime = 180;
         carrotWaterTime = 180;
@@ -79,6 +82,28 @@ public class InfraManager : MonoBehaviour
 
     private void Update()
     {
+        if (infraclick.hitObj != null)
+        {
+            switch (infraclick.hitObj.name)
+            {
+                case "Wheat":
+                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    break;
+                case "Carrot":
+                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    break;
+                case "Cucumber":
+                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    break;
+                case "Potato":
+                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    break;
+                case "Onion":
+                    WaterUIImage.fillAmount = 1- WheatWaterCol / 300;
+                    break;
+            }
+        }
+
         WaterManage();
 
         SiloUpgrade();
@@ -266,7 +291,7 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
-                case "WheatField":
+                case "Wheat":
                     switch (farmUpgrade.wheatFarmLevel)
                     {
                         case 0:
@@ -283,7 +308,7 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
-                case "CarrotField":
+                case "Carrot":
                     switch (farmUpgrade.carrotFarmLevel)
                     {
                         case 0:
@@ -300,7 +325,7 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
-                case "CucumberField":
+                case "Cucumber":
                     switch (farmUpgrade.cucumberFarmLevel)
                     {
                         case 0:
@@ -317,7 +342,7 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
-                case "PotatoField":
+                case "Potato":
                     switch (farmUpgrade.potatoFarmLevel)
                     {
                         case 0:
@@ -334,7 +359,7 @@ public class InfraManager : MonoBehaviour
                             break;
                     }
                     break;
-                case "OnionField":
+                case "Onion":
                     switch (farmUpgrade.onionFarmLevel)
                     {
                         case 0:
