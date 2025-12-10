@@ -16,14 +16,12 @@ public class InfraClick : MonoBehaviour
 
     [Header("UI")]
     public GameObject uiPanel;
-
     public TextMeshProUGUI titleTMP;
     public TextMeshProUGUI levelTMP;
     public TextMeshProUGUI countTMP;
     public TextMeshProUGUI statusTMP;
     public TextMeshProUGUI upgradeType;
     public TextMeshProUGUI UpgradeStatusText;
-
     public Image uiImage;
 
     private Dictionary<string, Sprite> spriteCache = new Dictionary<string, Sprite>();
@@ -32,67 +30,62 @@ public class InfraClick : MonoBehaviour
     public float maxMoveSpeed = 20f;
     public float minMoveSpeed = 2f;
     public float stopDistance = 0.15f;
-
     public float minY = 12f;
     public float minZ = 6f;
-
     public float returnY = 30f;
-
     public float uiOffsetX = 5f;
-
     public float smoothTimeMin = 0.04f;
     public float smoothTimeMax = 0.12f;
 
     private bool isMoving = false;
     private Vector3 moveTarget;
     private float initialDistance = 0f;
-
     [SerializeField] private Vector3 preClickPosition;
     [SerializeField] private bool hasPreClickPosition = false;
-
     private Vector3 moveVelocity = Vector3.zero;
 
     private bool forceZToSixActive = false;
+    private bool ignoreMinZForThisMove = false;
 
     public bool isReturning = false;
     public bool returnFinished = true;
 
-    [Header("infraData")]
+    [Header("infraData (use float Z instead of Transform)")]
     public GameObject Silo;
-    public Transform SiloViewTarget;
+    public float SiloViewZ = 6f;
     public bool SiloUseForceZ = true;
 
     public GameObject Storages;
-    public Transform StoragesViewTarget;
+    public float StoragesViewZ = 6f;
     public bool StoragesUseForceZ = true;
 
     public GameObject GreenHouses;
-    public Transform GreenHousesViewTarget;
+    public float GreenHousesViewZ = 6f;
     public bool GreenHousesUseForceZ = true;
 
     public GameObject Animal_Farms;
-    public Transform AnimalFarmsViewTarget;
+    public float AnimalFarmsViewZ = 6f;
     public bool AnimalFarmsUseForceZ = true;
 
-    //farms
+    // farms
     public GameObject WheatField;
-    public Transform WheatFieldViewTarget;
+    public float WheatFieldViewZ = 6f;
     public bool WheatFieldUseForceZ = true;
 
     public GameObject CarrotField;
-    public Transform CarrotFieldViewTarget;
+    public float CarrotFieldViewZ = 6f;
     public bool CarrotFieldUseForceZ = true;
 
     public GameObject CucumberField;
-    public Transform CucumberFieldViewTarget;
+    public float CucumberFieldViewZ = 6f;
     public bool CucumberFieldUseForceZ = true;
 
     public GameObject PotatoField;
-    public Transform PotatoFieldViewTarget;
+    public float PotatoFieldViewZ = 6f;
     public bool PotatoFieldUseForceZ = true;
 
     public GameObject OnionField;
-    public Transform OnionFieldViewTarget;
+    public float OnionFieldViewZ = 6f;
     public bool OnionFieldUseForceZ = true;
 
     [SerializeField] private GameObject waterButton;
@@ -106,22 +99,23 @@ public class InfraClick : MonoBehaviour
 
     void Start()
     {
-        upgradeType = GameObject.Find("UpgradeStatusTitleText").GetComponent<TextMeshProUGUI>();
+        if (upgradeType == null)
+        {
+            var tmp = GameObject.Find("UpgradeStatusTitleText");
+            if (tmp != null) upgradeType = tmp.GetComponent<TextMeshProUGUI>();
+        }
 
         returnFinished = true;
         if (cam == null) cam = Camera.main;
         if (uiPanel != null) uiPanel.SetActive(false);
 
-        if(playerView != null)
+        if (playerView != null)
         {
             Vector3 pos = playerView.transform.position;
             bool corrected = false;
             if (pos.y < minY) { pos.y = minY; corrected = true; }
             if (pos.z < minZ) { pos.z = minZ; corrected = true; }
-            if (corrected)
-            {
-                playerView.transform.position = pos;
-            }
+            if (corrected) playerView.transform.position = pos;
         }
     }
 
@@ -138,7 +132,7 @@ public class InfraClick : MonoBehaviour
         HandleMovement();
     }
 
-    void StartMoveTo(Vector3 target, bool forceZToSix = false)
+    void StartMoveTo(Vector3 target, bool forceZToSix = false, float? zOverride = null)
     {
         if (playerView == null) return;
 
@@ -151,19 +145,27 @@ public class InfraClick : MonoBehaviour
             target.z = 6f;
             target.x += uiOffsetX;
             forceZToSixActive = true;
+            ignoreMinZForThisMove = true; 
             isReturning = false;
         }
         else
         {
-            target.z = Mathf.Max(target.z, minZ);
             forceZToSixActive = false;
+            if (zOverride.HasValue)
+            {
+                target.z = zOverride.Value;  
+                ignoreMinZForThisMove = true;
+            }
+            else
+            {
+                target.z = Mathf.Max(target.z, minZ);
+                ignoreMinZForThisMove = false;
+            }
         }
 
         moveTarget = target;
         initialDistance = Vector3.Distance(playerView.transform.position, moveTarget);
-
         moveVelocity = Vector3.zero;
-
         isMoving = initialDistance > stopDistance;
     }
 
@@ -180,6 +182,7 @@ public class InfraClick : MonoBehaviour
             isMoving = false;
             moveVelocity = Vector3.zero;
             forceZToSixActive = false;
+            ignoreMinZForThisMove = false;
 
             if (isReturning)
             {
@@ -194,7 +197,6 @@ public class InfraClick : MonoBehaviour
         ratio = Mathf.Clamp01(ratio);
 
         float desiredMaxSpeed = Mathf.Lerp(minMoveSpeed, maxMoveSpeed, ratio);
-
         float smoothTime = Mathf.Lerp(smoothTimeMax, smoothTimeMin, ratio);
 
         Vector3 newPos = Vector3.SmoothDamp(
@@ -208,7 +210,7 @@ public class InfraClick : MonoBehaviour
 
         newPos.y = Mathf.Max(newPos.y, minY);
 
-        if (!forceZToSixActive)
+        if (!forceZToSixActive && !ignoreMinZForThisMove)
         {
             newPos.z = Mathf.Max(newPos.z, minZ);
         }
@@ -222,7 +224,6 @@ public class InfraClick : MonoBehaviour
         uiPanel.SetActive(true);
 
         string title = info.title ?? "";
-
         if (titleTMP != null) titleTMP.text = title;
 
         string titleForCheck = !string.IsNullOrEmpty(title)
@@ -232,21 +233,13 @@ public class InfraClick : MonoBehaviour
         if (upgradeType != null)
         {
             if (titleForCheck == "Silo" || titleForCheck == "Storage")
-            {
                 upgradeType.text = "Storage Capacity ก่";
-            }
             else if (titleForCheck == "GreenHouse")
-            {
                 upgradeType.text = "Extra Production ก่";
-            }
             else if (titleForCheck == "Barn")
-            {
                 upgradeType.text = "Sell Price ก่";
-            }
             else
-            {
                 upgradeType.text = "-";
-            }
         }
 
         if (uiImage != null)
@@ -255,18 +248,13 @@ public class InfraClick : MonoBehaviour
             Sprite loaded = null;
 
             if (!string.IsNullOrEmpty(objectName) && spriteCache.TryGetValue(objectName, out Sprite cached))
-            {
                 loaded = cached;
-            }
             else
             {
                 if (!string.IsNullOrEmpty(objectName))
                 {
                     loaded = Resources.Load<Sprite>($"Image/{objectName}");
-                    if (loaded != null)
-                    {
-                        spriteCache[objectName] = loaded;
-                    }
+                    if (loaded != null) spriteCache[objectName] = loaded;
                 }
             }
 
@@ -275,17 +263,14 @@ public class InfraClick : MonoBehaviour
                 uiImage.sprite = loaded;
                 uiImage.gameObject.SetActive(true);
             }
+            else if (info.infraImage != null && info.infraImage.sprite != null)
+            {
+                uiImage.sprite = info.infraImage.sprite;
+                uiImage.gameObject.SetActive(true);
+            }
             else
             {
-                if (info.infraImage != null && info.infraImage.sprite != null)
-                {
-                    uiImage.sprite = info.infraImage.sprite;
-                    uiImage.gameObject.SetActive(true);
-                }
-                else
-                {
-                    uiImage.gameObject.SetActive(false);
-                }
+                uiImage.gameObject.SetActive(false);
             }
         }
     }
@@ -311,7 +296,7 @@ public class InfraClick : MonoBehaviour
         }
     }
 
-    private void HandleButtonClick(GameObject infraObj, Transform viewTarget, bool useForceZ)
+    private void HandleButtonClick(GameObject infraObj, float viewZ, bool useForceZ)
     {
         hitObj = infraObj;
 
@@ -334,59 +319,54 @@ public class InfraClick : MonoBehaviour
             HideUI();
         }
 
-        if (viewTarget != null)
-        {
-            StartMoveTo(viewTarget.position, forceZToSix: useForceZ);
-        }
-        else
-        {
-            StartMoveTo(infraObj.transform.position, forceZToSix: useForceZ);
-        }
+        Vector3 targetPos = infraObj.transform.position;
+        targetPos.y = Mathf.Max(targetPos.y, minY);
+        StartMoveTo(targetPos, forceZToSix: useForceZ, zOverride: viewZ);
     }
 
     public void OnClickSilo()
     {
-        HandleButtonClick(Silo, SiloViewTarget, SiloUseForceZ);
+        HandleButtonClick(Silo, SiloViewZ, SiloUseForceZ);
     }
 
     public void OnClickStorages()
     {
-        HandleButtonClick(Storages, StoragesViewTarget, StoragesUseForceZ);
+        HandleButtonClick(Storages, StoragesViewZ, StoragesUseForceZ);
     }
 
     public void OnClickGreenHouses()
     {
-        HandleButtonClick(GreenHouses, GreenHousesViewTarget, GreenHousesUseForceZ);
+        HandleButtonClick(GreenHouses, GreenHousesViewZ, GreenHousesUseForceZ);
     }
 
     public void OnClickAnimalFarms()
     {
-        HandleButtonClick(Animal_Farms, AnimalFarmsViewTarget, AnimalFarmsUseForceZ);
+        HandleButtonClick(Animal_Farms, AnimalFarmsViewZ, AnimalFarmsUseForceZ);
     }
 
     public void OnClickWheatField()
     {
-        HandleButtonClick(WheatField, WheatFieldViewTarget, WheatFieldUseForceZ);
+        HandleButtonClick(WheatField, WheatFieldViewZ, WheatFieldUseForceZ);
     }
 
     public void OnClickCarrotField()
     {
-        HandleButtonClick(CarrotField, CarrotFieldViewTarget, CarrotFieldUseForceZ);
+        HandleButtonClick(CarrotField, CarrotFieldViewZ, CarrotFieldUseForceZ);
     }
 
     public void OnClickCucumberField()
     {
-        HandleButtonClick(CucumberField, CucumberFieldViewTarget, CucumberFieldUseForceZ);
+        HandleButtonClick(CucumberField, CucumberFieldViewZ, CucumberFieldUseForceZ);
     }
 
     public void OnClickPotatoField()
     {
-        HandleButtonClick(PotatoField, PotatoFieldViewTarget, PotatoFieldUseForceZ);
+        HandleButtonClick(PotatoField, PotatoFieldViewZ, PotatoFieldUseForceZ);
     }
 
     public void OnClickOnionField()
     {
-        HandleButtonClick(OnionField, OnionFieldViewTarget, OnionFieldUseForceZ);
+        HandleButtonClick(OnionField, OnionFieldViewZ, OnionFieldUseForceZ);
     }
 
     void LevelTxt(InfraInfo info)
@@ -397,14 +377,8 @@ public class InfraClick : MonoBehaviour
 
         if (hitObj.name == "Silo")
         {
-            if (waterButton.activeSelf)
-            {
-                waterButton.SetActive(false);
-            }
-            if (!countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(true);
-            }
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
             if (levelTMP != null) levelTMP.text = "Level." + iManager.siloLevel;
             info.level = iManager.siloLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.siloCont;
@@ -414,14 +388,8 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Storages")
         {
-            if (waterButton.activeSelf)
-            {
-                waterButton.SetActive(false);
-            }
-            if (!countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(true);
-            }
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
             if (levelTMP != null) levelTMP.text = "Level." + iManager.storageLevel;
             info.level = iManager.storageLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.storageCount;
@@ -431,14 +399,8 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "GreenHouses")
         {
-            if (waterButton.activeSelf)
-            {
-                waterButton.SetActive(false);
-            }
-            if (!countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(true);
-            }
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
             if (levelTMP != null) levelTMP.text = "Level." + iManager.greenHouseLevel;
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
@@ -448,14 +410,8 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Animal_Farms")
         {
-            if (waterButton.activeSelf)
-            {
-                waterButton.SetActive(false);
-            }
-            if (!countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(true);
-            }
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
             if (levelTMP != null) levelTMP.text = "Level." + iManager.animalFarmLevel;
             info.level = iManager.animalFarmLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.animalFarmCount;
@@ -463,47 +419,29 @@ public class InfraClick : MonoBehaviour
             if (statusTMP != null) statusTMP.text = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
             info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
         }
-        //famrs
+        // farms
         else if (hitObj.name == "Wheat")
         {
-            if (!waterButton.activeSelf)
-            {
-                waterButton.SetActive(true);
-            }
-            if (countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(false);
-            }
+            if (!waterButton.activeSelf) waterButton.SetActive(true);
+            if (countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(false);
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.wheatFarmLevel;
             info.level = farmUpgrade.wheatFarmLevel;
-            if (statusTMP != null) statusTMP.text ="+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
+            if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
             info.status = "+" + (25 * farmUpgrade.wheatFarmLevel) + "/min";
         }
         else if (hitObj.name == "Carrot")
         {
-            if (!waterButton.activeSelf)
-            {
-                waterButton.SetActive(true);
-            }
-            if (countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(false);
-            }
+            if (!waterButton.activeSelf) waterButton.SetActive(true);
+            if (countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(false);
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.carrotFarmLevel;
             info.level = farmUpgrade.carrotFarmLevel;
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
-            info.status =  "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
+            info.status = "+" + (25 * farmUpgrade.carrotFarmLevel) + "/min";
         }
         else if (hitObj.name == "Cucumber")
         {
-            if (!waterButton.activeSelf)
-            {
-                waterButton.SetActive(true);
-            }
-            if (countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(false);
-            }
+            if (!waterButton.activeSelf) waterButton.SetActive(true);
+            if (countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(false);
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.cucumberFarmLevel;
             info.level = farmUpgrade.cucumberFarmLevel;
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.cucumberFarmLevel) + "/min";
@@ -511,14 +449,8 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Potato")
         {
-            if (!waterButton.activeSelf)
-            {
-                waterButton.SetActive(true);
-            }
-            if (countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(false);
-            }
+            if (!waterButton.activeSelf) waterButton.SetActive(true);
+            if (countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(false);
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.potatoFarmLevel;
             info.level = farmUpgrade.potatoFarmLevel;
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.potatoFarmLevel) + "/min";
@@ -526,14 +458,8 @@ public class InfraClick : MonoBehaviour
         }
         else if (hitObj.name == "Onion")
         {
-            if (!waterButton.activeSelf)
-            {
-                waterButton.SetActive(true);
-            }
-            if (countTMP.gameObject.activeSelf)
-            {
-                countTMP.gameObject.SetActive(false);
-            }
+            if (!waterButton.activeSelf) waterButton.SetActive(true);
+            if (countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(false);
             if (levelTMP != null) levelTMP.text = "Level." + farmUpgrade.onionFarmLevel;
             info.level = farmUpgrade.onionFarmLevel;
             if (statusTMP != null) statusTMP.text = "+" + (25 * farmUpgrade.onionFarmLevel) + "/min";

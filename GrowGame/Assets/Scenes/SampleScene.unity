@@ -259776,10 +259776,10 @@ MonoBehaviour:
   maxMoveSpeed: 100
   minMoveSpeed: 40
   stopDistance: 0.15
-  minY: 12
+  minY: 14
   minZ: 6
   returnY: 30
-  uiOffsetX: 5
+  uiOffsetX: 8
   smoothTimeMin: 0.04
   smoothTimeMax: 0.12
   preClickPosition: {x: 0, y: 0, z: 0}
@@ -259787,32 +259787,32 @@ MonoBehaviour:
   isReturning: 0
   returnFinished: 0
   Silo: {fileID: 233248177}
-  SiloViewTarget: {fileID: 0}
-  SiloUseForceZ: 1
+  SiloViewZ: 11
+  SiloUseForceZ: 0
   Storages: {fileID: 2052005083}
-  StoragesViewTarget: {fileID: 0}
-  StoragesUseForceZ: 1
+  StoragesViewZ: 6
+  StoragesUseForceZ: 0
   GreenHouses: {fileID: 1757938645}
-  GreenHousesViewTarget: {fileID: 0}
-  GreenHousesUseForceZ: 1
+  GreenHousesViewZ: 6
+  GreenHousesUseForceZ: 0
   Animal_Farms: {fileID: 434210593}
-  AnimalFarmsViewTarget: {fileID: 0}
-  AnimalFarmsUseForceZ: 1
+  AnimalFarmsViewZ: 6
+  AnimalFarmsUseForceZ: 0
   WheatField: {fileID: 247133600}
-  WheatFieldViewTarget: {fileID: 691831821}
-  WheatFieldUseForceZ: 1
+  WheatFieldViewZ: -13
+  WheatFieldUseForceZ: 0
   CarrotField: {fileID: 1469106899}
-  CarrotFieldViewTarget: {fileID: 1151642892}
-  CarrotFieldUseForceZ: 1
+  CarrotFieldViewZ: -13
+  CarrotFieldUseForceZ: 0
   CucumberField: {fileID: 703837691}
-  CucumberFieldViewTarget: {fileID: 181342119}
-  CucumberFieldUseForceZ: 1
+  CucumberFieldViewZ: -13
+  CucumberFieldUseForceZ: 0
   PotatoField: {fileID: 1708912988}
-  PotatoFieldViewTarget: {fileID: 1061267079}
-  PotatoFieldUseForceZ: 1
+  PotatoFieldViewZ: -13
+  PotatoFieldUseForceZ: 0
   OnionField: {fileID: 1921351367}
-  OnionFieldViewTarget: {fileID: 1980984520}
-  OnionFieldUseForceZ: 1
+  OnionFieldViewZ: -13
+  OnionFieldUseForceZ: 0
   waterButton: {fileID: 1172305640}
 --- !u!114 &2017528151
 MonoBehaviour:
