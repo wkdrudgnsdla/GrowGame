@@ -151,6 +151,7 @@ public class InfraClick : MonoBehaviour
         else
         {
             forceZToSixActive = false;
+            target.x += uiOffsetX;
             if (zOverride.HasValue)
             {
                 target.z = zOverride.Value;  

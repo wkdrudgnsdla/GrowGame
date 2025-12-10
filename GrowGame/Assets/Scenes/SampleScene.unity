@@ -259779,7 +259779,7 @@ MonoBehaviour:
   minY: 14
   minZ: 6
   returnY: 30
-  uiOffsetX: 8
+  uiOffsetX: 5
   smoothTimeMin: 0.04
   smoothTimeMax: 0.12
   preClickPosition: {x: 0, y: 0, z: 0}
@@ -259790,28 +259790,28 @@ MonoBehaviour:
   SiloViewZ: 11
   SiloUseForceZ: 0
   Storages: {fileID: 2052005083}
-  StoragesViewZ: 6
+  StoragesViewZ: 8
   StoragesUseForceZ: 0
   GreenHouses: {fileID: 1757938645}
-  GreenHousesViewZ: 6
+  GreenHousesViewZ: 8
   GreenHousesUseForceZ: 0
   Animal_Farms: {fileID: 434210593}
-  AnimalFarmsViewZ: 6
+  AnimalFarmsViewZ: 8
   AnimalFarmsUseForceZ: 0
   WheatField: {fileID: 247133600}
-  WheatFieldViewZ: -13
+  WheatFieldViewZ: -16
   WheatFieldUseForceZ: 0
   CarrotField: {fileID: 1469106899}
-  CarrotFieldViewZ: -13
+  CarrotFieldViewZ: -16
   CarrotFieldUseForceZ: 0
   CucumberField: {fileID: 703837691}
-  CucumberFieldViewZ: -13
+  CucumberFieldViewZ: -16
   CucumberFieldUseForceZ: 0
   PotatoField: {fileID: 1708912988}
-  PotatoFieldViewZ: -13
+  PotatoFieldViewZ: -16
   PotatoFieldUseForceZ: 0
   OnionField: {fileID: 1921351367}
-  OnionFieldViewZ: -13
+  OnionFieldViewZ: -16
   OnionFieldUseForceZ: 0
   waterButton: {fileID: 1172305640}
 --- !u!114 &2017528151
