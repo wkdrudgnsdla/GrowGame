@@ -154143,6 +154143,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2476776012604968550, guid: 665d8bbd7df08864c9c6271fadfc49ae, type: 3}
   m_PrefabInstance: {fileID: 617954903}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1172305642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7061475978936354716, guid: 665d8bbd7df08864c9c6271fadfc49ae, type: 3}
+  m_PrefabInstance: {fileID: 617954903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172305640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1172498266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259715,6 +259726,12 @@ MonoBehaviour:
   CucumberWaterCol: 0
   PotatoWaterCol: 0
   OnionWaterCol: 0
+  wheatWaterTime: 0
+  carrotWaterTime: 0
+  cucumberWaterTime: 0
+  potatoWaterTime: 0
+  onionWaterTime: 0
+  WaterUIImage: {fileID: 1172305642}
 --- !u!4 &2017528149
 Transform:
   m_ObjectHideFlags: 0
@@ -259797,7 +259814,6 @@ MonoBehaviour:
   OnionFieldViewTarget: {fileID: 1980984520}
   OnionFieldUseForceZ: 1
   waterButton: {fileID: 1172305640}
-  waterButtonBG: {fileID: 0}
 --- !u!114 &2017528151
 MonoBehaviour:
   m_ObjectHideFlags: 0

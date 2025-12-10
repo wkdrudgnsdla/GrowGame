@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -90,16 +87,16 @@ public class InfraManager : MonoBehaviour
                     WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
                     break;
                 case "Carrot":
-                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    WaterUIImage.fillAmount = 1 - CarrotWaterCol / 300;
                     break;
                 case "Cucumber":
-                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    WaterUIImage.fillAmount = 1 - CucumberWaterCol / 300;
                     break;
                 case "Potato":
-                    WaterUIImage.fillAmount = 1 - WheatWaterCol / 300;
+                    WaterUIImage.fillAmount = 1 - PotatoWaterCol / 300;
                     break;
                 case "Onion":
-                    WaterUIImage.fillAmount = 1- WheatWaterCol / 300;
+                    WaterUIImage.fillAmount = 1- OnionWaterCol / 300;
                     break;
             }
         }
