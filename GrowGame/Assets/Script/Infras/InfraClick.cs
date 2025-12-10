@@ -139,11 +139,11 @@ public class InfraClick : MonoBehaviour
         returnFinished = false;
 
         target.y = Mathf.Max(target.y, minY);
+        target.x += uiOffsetX;
 
         if (forceZToSix)
         {
             target.z = 6f;
-            target.x += uiOffsetX;
             forceZToSixActive = true;
             ignoreMinZForThisMove = true; 
             isReturning = false;
@@ -151,7 +151,6 @@ public class InfraClick : MonoBehaviour
         else
         {
             forceZToSixActive = false;
-            target.x += uiOffsetX;
             if (zOverride.HasValue)
             {
                 target.z = zOverride.Value;  
