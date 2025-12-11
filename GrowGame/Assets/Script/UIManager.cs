@@ -50,9 +50,10 @@ public class UIManager : MonoBehaviour
         nowCucumberText.text = ((int)fManager.nowCucumber).ToString();
         nowPotatoText.text = ((int)fManager.nowPotato).ToString();
         nowOnionText.text = ((int)fManager.nowOnion).ToString();
+        UIPositionUpdaate();
     }
 
-    public void FixedUpdate()
+    public void UIPositionUpdaate()
     {
         siloButton.transform.position = Camera.main.WorldToScreenPoint(silo.transform.position);
         storagesButton.transform.position = Camera.main.WorldToScreenPoint(storages.transform.position);
