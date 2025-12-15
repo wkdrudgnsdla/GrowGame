@@ -259915,7 +259915,7 @@ MonoBehaviour:
   upgradeType: {fileID: 0}
   UpgradeStatusText: {fileID: 751722822}
   uiImage: {fileID: 845998095}
-  maxMoveSpeed: 100
+  maxMoveSpeed: 180
   minMoveSpeed: 40
   stopDistance: 0.15
   minY: 14
@@ -259930,31 +259930,22 @@ MonoBehaviour:
   returnFinished: 0
   Silo: {fileID: 233248177}
   SiloViewZ: 11
-  SiloUseForceZ: 0
   Storages: {fileID: 2052005083}
   StoragesViewZ: 8
-  StoragesUseForceZ: 0
   GreenHouses: {fileID: 1757938645}
   GreenHousesViewZ: 8
-  GreenHousesUseForceZ: 0
   Animal_Farms: {fileID: 434210593}
   AnimalFarmsViewZ: 8
-  AnimalFarmsUseForceZ: 0
   WheatField: {fileID: 247133600}
   WheatFieldViewZ: -16
-  WheatFieldUseForceZ: 0
   CarrotField: {fileID: 1469106899}
   CarrotFieldViewZ: -16
-  CarrotFieldUseForceZ: 0
   CucumberField: {fileID: 703837691}
   CucumberFieldViewZ: -16
-  CucumberFieldUseForceZ: 0
   PotatoField: {fileID: 1708912988}
   PotatoFieldViewZ: -16
-  PotatoFieldUseForceZ: 0
   OnionField: {fileID: 1921351367}
   OnionFieldViewZ: -16
-  OnionFieldUseForceZ: 0
   waterButton: {fileID: 1172305640}
 --- !u!114 &2017528151
 MonoBehaviour:

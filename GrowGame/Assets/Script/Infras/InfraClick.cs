@@ -44,7 +44,6 @@ public class InfraClick : MonoBehaviour
     [SerializeField] private bool hasPreClickPosition = false;
     private Vector3 moveVelocity = Vector3.zero;
 
-    private bool forceZToSixActive = false;
     private bool ignoreMinZForThisMove = false;
 
     public bool isReturning = false;
@@ -53,40 +52,31 @@ public class InfraClick : MonoBehaviour
     [Header("infraData (use float Z instead of Transform)")]
     public GameObject Silo;
     public float SiloViewZ = 6f;
-    public bool SiloUseForceZ = true;
 
     public GameObject Storages;
     public float StoragesViewZ = 6f;
-    public bool StoragesUseForceZ = true;
 
     public GameObject GreenHouses;
     public float GreenHousesViewZ = 6f;
-    public bool GreenHousesUseForceZ = true;
 
     public GameObject Animal_Farms;
     public float AnimalFarmsViewZ = 6f;
-    public bool AnimalFarmsUseForceZ = true;
 
     // farms
     public GameObject WheatField;
     public float WheatFieldViewZ = 6f;
-    public bool WheatFieldUseForceZ = true;
 
     public GameObject CarrotField;
     public float CarrotFieldViewZ = 6f;
-    public bool CarrotFieldUseForceZ = true;
 
     public GameObject CucumberField;
     public float CucumberFieldViewZ = 6f;
-    public bool CucumberFieldUseForceZ = true;
 
     public GameObject PotatoField;
     public float PotatoFieldViewZ = 6f;
-    public bool PotatoFieldUseForceZ = true;
 
     public GameObject OnionField;
     public float OnionFieldViewZ = 6f;
-    public bool OnionFieldUseForceZ = true;
 
     [SerializeField] private GameObject waterButton;
 
@@ -132,35 +122,25 @@ public class InfraClick : MonoBehaviour
         HandleMovement();
     }
 
-    void StartMoveTo(Vector3 target, bool forceZToSix = false, float? zOverride = null)
+    void StartMoveTo(Vector3 target, float? zOverride = null)
     {
         if (playerView == null) return;
 
         returnFinished = false;
 
         target.y = Mathf.Max(target.y, minY);
+
         target.x += uiOffsetX;
 
-        if (forceZToSix)
+        if (zOverride.HasValue)
         {
-            target.z = 6f;
-            forceZToSixActive = true;
+            target.z = zOverride.Value;   
             ignoreMinZForThisMove = true; 
-            isReturning = false;
         }
         else
         {
-            forceZToSixActive = false;
-            if (zOverride.HasValue)
-            {
-                target.z = zOverride.Value;  
-                ignoreMinZForThisMove = true;
-            }
-            else
-            {
-                target.z = Mathf.Max(target.z, minZ);
-                ignoreMinZForThisMove = false;
-            }
+            target.z = Mathf.Max(target.z, minZ);
+            ignoreMinZForThisMove = false;
         }
 
         moveTarget = target;
@@ -181,7 +161,6 @@ public class InfraClick : MonoBehaviour
             playerView.transform.position = moveTarget;
             isMoving = false;
             moveVelocity = Vector3.zero;
-            forceZToSixActive = false;
             ignoreMinZForThisMove = false;
 
             if (isReturning)
@@ -210,7 +189,7 @@ public class InfraClick : MonoBehaviour
 
         newPos.y = Mathf.Max(newPos.y, minY);
 
-        if (!forceZToSixActive && !ignoreMinZForThisMove)
+        if (!ignoreMinZForThisMove)
         {
             newPos.z = Mathf.Max(newPos.z, minZ);
         }
@@ -290,13 +269,13 @@ public class InfraClick : MonoBehaviour
             isReturning = true;
             returnFinished = false;
 
-            StartMoveTo(returnTarget, forceZToSix: false);
+            StartMoveTo(returnTarget);
 
             hasPreClickPosition = false;
         }
     }
 
-    private void HandleButtonClick(GameObject infraObj, float viewZ, bool useForceZ)
+    private void HandleButtonClick(GameObject infraObj, float viewZ)
     {
         hitObj = infraObj;
 
@@ -306,8 +285,6 @@ public class InfraClick : MonoBehaviour
             if (playerView != null)
             {
                 preClickPosition = playerView.transform.position;
-               // preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
-                //preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
                 hasPreClickPosition = true;
             }
 
@@ -321,52 +298,52 @@ public class InfraClick : MonoBehaviour
 
         Vector3 targetPos = infraObj.transform.position;
         targetPos.y = Mathf.Max(targetPos.y, minY);
-        StartMoveTo(targetPos, forceZToSix: useForceZ, zOverride: viewZ);
+        StartMoveTo(targetPos, viewZ);
     }
 
     public void OnClickSilo()
     {
-        HandleButtonClick(Silo, SiloViewZ, SiloUseForceZ);
+        HandleButtonClick(Silo, SiloViewZ);
     }
 
     public void OnClickStorages()
     {
-        HandleButtonClick(Storages, StoragesViewZ, StoragesUseForceZ);
+        HandleButtonClick(Storages, StoragesViewZ);
     }
 
     public void OnClickGreenHouses()
     {
-        HandleButtonClick(GreenHouses, GreenHousesViewZ, GreenHousesUseForceZ);
+        HandleButtonClick(GreenHouses, GreenHousesViewZ);
     }
 
     public void OnClickAnimalFarms()
     {
-        HandleButtonClick(Animal_Farms, AnimalFarmsViewZ, AnimalFarmsUseForceZ);
+        HandleButtonClick(Animal_Farms, AnimalFarmsViewZ);
     }
 
     public void OnClickWheatField()
     {
-        HandleButtonClick(WheatField, WheatFieldViewZ, WheatFieldUseForceZ);
+        HandleButtonClick(WheatField, WheatFieldViewZ);
     }
 
     public void OnClickCarrotField()
     {
-        HandleButtonClick(CarrotField, CarrotFieldViewZ, CarrotFieldUseForceZ);
+        HandleButtonClick(CarrotField, CarrotFieldViewZ);
     }
 
     public void OnClickCucumberField()
     {
-        HandleButtonClick(CucumberField, CucumberFieldViewZ, CucumberFieldUseForceZ);
+        HandleButtonClick(CucumberField, CucumberFieldViewZ);
     }
 
     public void OnClickPotatoField()
     {
-        HandleButtonClick(PotatoField, PotatoFieldViewZ, PotatoFieldUseForceZ);
+        HandleButtonClick(PotatoField, PotatoFieldViewZ);
     }
 
     public void OnClickOnionField()
     {
-        HandleButtonClick(OnionField, OnionFieldViewZ, OnionFieldUseForceZ);
+        HandleButtonClick(OnionField, OnionFieldViewZ);
     }
 
     void LevelTxt(InfraInfo info)
