@@ -259919,7 +259919,7 @@ MonoBehaviour:
   minMoveSpeed: 40
   stopDistance: 0.15
   minY: 14
-  minZ: 6
+  minZ: -100
   returnY: 30
   uiOffsetX: 5
   smoothTimeMin: 0.04

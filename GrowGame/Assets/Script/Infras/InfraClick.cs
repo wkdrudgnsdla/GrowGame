@@ -306,8 +306,8 @@ public class InfraClick : MonoBehaviour
             if (playerView != null)
             {
                 preClickPosition = playerView.transform.position;
-                preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
-                preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
+               // preClickPosition.y = Mathf.Max(preClickPosition.y, minY);
+                //preClickPosition.z = Mathf.Max(preClickPosition.z, minZ);
                 hasPreClickPosition = true;
             }
 
