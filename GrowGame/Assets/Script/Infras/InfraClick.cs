@@ -49,7 +49,7 @@ public class InfraClick : MonoBehaviour
     public bool isReturning = false;
     public bool returnFinished = true;
 
-    [Header("infraData (use float Z instead of Transform)")]
+    [Header("infraData")]
     public GameObject Silo;
     public float SiloViewZ = 6f;
 
@@ -382,7 +382,7 @@ public class InfraClick : MonoBehaviour
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
             info.infraCount = iManager.greenHouseCount;
-            if (statusTMP != null) statusTMP.text = " + " + iManager.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "ExtraProduction + " + iManager.ExtraProduction + "%";
             info.status = "Silo Capacity  + " + iManager.storageCapacity;
         }
         else if (hitObj.name == "Animal_Farms")

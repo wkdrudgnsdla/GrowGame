@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public FarmManager fManager;
+    [SerializeField] private FarmManager fManager;
+    [SerializeField] private MoneyManager mManager;
 
+    [SerializeField] private GameObject SellUI;
+    [SerializeField] private GameObject SellPanel;
+
+    [Header("texts")]
+    //texts
     [SerializeField] private Text nowCropsText;
     [SerializeField] private Text nowWheatText;
     [SerializeField] private Text nowCarrotText;
@@ -14,12 +20,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text nowPotatoText;
     [SerializeField] private Text nowOnionText;
 
+    [SerializeField] private Text sellUI_nowWheatText;
+    [SerializeField] private Text sellUI_nowCarrotText;
+    [SerializeField] private Text sellUI_nowCucumberText;
+    [SerializeField] private Text sellUI_nowPotatoText;
+    [SerializeField] private Text sellUI_nowOnionText;
+
+    [SerializeField] private Text moneyText;
+    [SerializeField] private Text TotalPriceText;
+
     [Header("infraButtons")]
     //Infras
     [SerializeField] private GameObject siloButton;
     [SerializeField] private GameObject storagesButton;
     [SerializeField] private GameObject animalFarmsButton;
     [SerializeField] private GameObject greenHousesButton;
+    [SerializeField] private GameObject sellButton;
 
     //Farms
     [SerializeField] private GameObject WheatFieldButton;
@@ -34,6 +50,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject storages;
     [SerializeField] private GameObject animalFarms;
     [SerializeField] private GameObject greenHouses;
+    [SerializeField] private GameObject house;
 
     //Farms
     [SerializeField] private GameObject WheatField;
@@ -42,7 +59,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PotatoField;
     [SerializeField] private GameObject OnionField;
 
-    public void Update()
+    private void Update()
+    {
+        UIPositionUpdaate();
+
+        if (SellUI.activeSelf)
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SellUI.SetActive(false);
+                SellPanel.SetActive(false);
+            }
+        }
+    }
+
+    private void FixedUpdate()
     {
         nowCropsText.text = ((int)fManager.nowCrops).ToString() + "/" + ((int)fManager.totalCrops).ToString();
         nowWheatText.text = ((int)fManager.nowWheat).ToString();
@@ -50,20 +81,36 @@ public class UIManager : MonoBehaviour
         nowCucumberText.text = ((int)fManager.nowCucumber).ToString();
         nowPotatoText.text = ((int)fManager.nowPotato).ToString();
         nowOnionText.text = ((int)fManager.nowOnion).ToString();
-        UIPositionUpdaate();
+
+        sellUI_nowWheatText.text = ((int)fManager.nowWheat).ToString();
+        sellUI_nowCarrotText.text = ((int)fManager.nowCarrot).ToString();
+        sellUI_nowCucumberText.text = ((int)fManager.nowCucumber).ToString();
+        sellUI_nowPotatoText.text = ((int)fManager.nowPotato).ToString();
+        sellUI_nowOnionText.text = ((int)fManager.nowOnion).ToString();
+
+        moneyText.text = mManager.Money.ToString() + "$";
+        TotalPriceText.text = mManager.TotalSellPrice.ToString() + "$";
     }
 
-    public void UIPositionUpdaate()
+    private void UIPositionUpdaate()
     {
         siloButton.transform.position = Camera.main.WorldToScreenPoint(silo.transform.position);
         storagesButton.transform.position = Camera.main.WorldToScreenPoint(storages.transform.position);
         animalFarmsButton.transform.position = Camera.main.WorldToScreenPoint(animalFarms.transform.position);
         greenHousesButton.transform.position = Camera.main.WorldToScreenPoint(greenHouses.transform.position);
+        sellButton.transform.position = Camera.main.WorldToScreenPoint(house.transform.position);
 
         WheatFieldButton.transform.position = Camera.main.WorldToScreenPoint(WheatField.transform.position);
         CarrotFieldButton.transform.position = Camera.main.WorldToScreenPoint(CarrotField.transform.position);
         CucumberFieldButton.transform.position = Camera.main.WorldToScreenPoint(CucumberField.transform.position);
         PotatoFieldButton.transform.position = Camera.main.WorldToScreenPoint(PotatoField.transform.position);
         OnionFieldButton.transform.position = Camera.main.WorldToScreenPoint(OnionField.transform.position);
+    }
+
+    public void OnClickSellUI()
+    {
+        if (SellUI.activeSelf) return;
+        SellUI.SetActive(true);
+        SellPanel.SetActive(true);
     }
 }
