@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject animalFarmsButton;
     [SerializeField] private GameObject greenHousesButton;
     [SerializeField] private GameObject sellButton;
+    [SerializeField] private GameObject VillageButton;
 
     //Farms
     [SerializeField] private GameObject WheatFieldButton;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject animalFarms;
     [SerializeField] private GameObject greenHouses;
     [SerializeField] private GameObject house;
+    [SerializeField] private GameObject Village;
 
     //Farms
     [SerializeField] private GameObject WheatField;
@@ -99,6 +101,7 @@ public class UIManager : MonoBehaviour
         animalFarmsButton.transform.position = Camera.main.WorldToScreenPoint(animalFarms.transform.position);
         greenHousesButton.transform.position = Camera.main.WorldToScreenPoint(greenHouses.transform.position);
         sellButton.transform.position = Camera.main.WorldToScreenPoint(house.transform.position);
+        VillageButton.transform.position = Camera.main.WorldToScreenPoint(Village.transform.position);
 
         WheatFieldButton.transform.position = Camera.main.WorldToScreenPoint(WheatField.transform.position);
         CarrotFieldButton.transform.position = Camera.main.WorldToScreenPoint(CarrotField.transform.position);

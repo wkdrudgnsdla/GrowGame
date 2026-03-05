@@ -9,5 +9,5 @@ public class InfraInfo : MonoBehaviour
     public int infraCount = 0;
     public string status = "";
 
-    public Image infraImage;
+    public Sprite infraImage;
 }

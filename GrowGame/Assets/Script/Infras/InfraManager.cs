@@ -31,7 +31,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject silo3Lev2;
     [SerializeField] private GameObject silo4Lev2;
 
-    private float[] siloUpgreadeCost = { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f};
+    private float[] siloUpgreadeCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
 
     [Header("Storage")]
     public int storageLevel;
@@ -41,7 +41,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject storage2;
     [SerializeField] private GameObject storage3;
 
-    private float[] storageUpgreadeCost = { 0f, 0f, 0f};
+    private float[] storageUpgreadeCost = { 100000000000f, 100000000000f, 100000000000f};
 
     [Header("Animal_Farms")]
     public int animalFarmLevel;
@@ -49,7 +49,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject animalFarm1;
     [SerializeField] private GameObject animalFarm2;
 
-    private float[] animalFarmUpgreadeCost = { 0f, 0f};
+    private float[] animalFarmUpgreadeCost = { 200000000000f, 200000000000f };
 
     [Header("GreenHouse")]
     public int greenHouseLevel;
@@ -58,8 +58,15 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
-    private float[] greenHouseUpgreadeCost = { 0f, 0f};
+    private float[] greenHouseUpgreadeCost = { 150000000000f, 150000000000f };
 
+    [Header("Village")]
+    public int VillageLevel;
+    public int VillageCount;
+    [SerializeField] private GameObject[] Houses;
+    [SerializeField] private bool VillageActive = false;
+
+    private float[] VillageUpgreadCost = { 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f };
 
     [Header("Farm")]
     public float WheatWaterCol;
@@ -135,6 +142,9 @@ public class InfraManager : MonoBehaviour
 
         GreenHouseUpgrade();
         GreenHouseManage();
+
+        VillageUpgrade();
+        VillageManage();
 
         UpgradeStatusManage();
     }
@@ -332,6 +342,47 @@ public class InfraManager : MonoBehaviour
                             UpgradePriceText.text = animalFarmUpgreadeCost[animalFarmLevel].ToString() + "$";
                             break;
                         case 2:
+                            UpgradeStatus = "MAX LEVEL";
+                            UpgradePriceText.text = "";
+                            break;
+                    }
+                    break;
+                case "Village":
+                    switch (VillageLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "0% => 5%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 1:
+                            UpgradeStatus = "5% => 10%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 2:
+                            UpgradeStatus = "10% => 15%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 3:
+                            UpgradeStatus = "15% => 20%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 4:
+                            UpgradeStatus = "20% => 25%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 5:
+                            UpgradeStatus = "25% => 30%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 6:
+                            UpgradeStatus = "30% => 35%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 7:
+                            UpgradeStatus = "35% => 40%";
+                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            break;
+                        case 8:
                             UpgradeStatus = "MAX LEVEL";
                             UpgradePriceText.text = "";
                             break;
@@ -660,6 +711,78 @@ public class InfraManager : MonoBehaviour
         }
     }
 
+    private void VillageUpgrade()
+    {
+        switch (VillageLevel)
+        {
+            case 1:
+                VillageCount = 1;
+                break;
+            case 2:
+                VillageCount = 2;
+                break;
+            case 3:
+                VillageCount = 3;
+                break;
+            case 4:
+                VillageCount = 4;
+                break;
+            case 5:
+                VillageCount = 5;
+                break;
+            case 6:
+                VillageCount = 6;
+                break;
+            case 7:
+                VillageCount = 7;
+                break;
+            case 8:
+                VillageCount = 8;
+                break;
+        }
+    }
+
+    private void VillageManage()
+    {
+        switch (VillageLevel)
+        {
+            case 0:
+                Houses[0].SetActive(false);
+                Houses[1].SetActive(false);
+                Houses[2].SetActive(false);
+                Houses[3].SetActive(false);
+                Houses[4].SetActive(false);
+                Houses[5].SetActive(false);
+                Houses[6].SetActive(false);
+                Houses[7].SetActive(false);
+                break;
+            case 1:
+                Houses[0].SetActive(true);
+                break;
+            case 2:
+                Houses[1].SetActive(true);
+                break;
+            case 3:
+                Houses[2].SetActive(true);
+                break;
+            case 4:
+                Houses[3].SetActive(true);
+                break;
+            case 5:
+                Houses[4].SetActive(true);
+                break;
+            case 6:
+                Houses[5].SetActive(true);
+                break;
+            case 7:
+                Houses[6].SetActive(true);
+                break;
+            case 8:
+                Houses[7].SetActive(true);
+                break;
+        }
+    }
+
     public void OnClickWater()
     {
         if (infraclick.hitObj.name == "Wheat")
@@ -748,6 +871,18 @@ public class InfraManager : MonoBehaviour
                 }
                 UpgradeCostManage(animalFarmUpgreadeCost[animalFarmLevel]);
                 animalFarmLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Village")
+        {
+            if (VillageLevel != 8)
+            {
+                if (mManager.Money < VillageUpgreadCost[VillageLevel])
+                {
+                    return;
+                }
+                UpgradeCostManage(VillageUpgreadCost[VillageLevel]);
+                VillageLevel += 1;
             }
         }
         else if (infraclick.hitObj.name == "Wheat")

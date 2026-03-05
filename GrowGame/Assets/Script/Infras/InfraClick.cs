@@ -62,6 +62,9 @@ public class InfraClick : MonoBehaviour
     public GameObject Animal_Farms;
     public float AnimalFarmsViewZ = 6f;
 
+    public GameObject Village;
+    public float HousesViewZ = 6f;
+
     // farms
     public GameObject WheatField;
     public float WheatFieldViewZ = 6f;
@@ -215,7 +218,7 @@ public class InfraClick : MonoBehaviour
                 upgradeType.text = "Storage Capacity ก่";
             else if (titleForCheck == "GreenHouse")
                 upgradeType.text = "Extra Production ก่";
-            else if (titleForCheck == "Barn")
+            else if (titleForCheck == "Barn" || titleForCheck == "Village")
                 upgradeType.text = "Sell Price ก่";
             else
                 upgradeType.text = "-";
@@ -242,9 +245,9 @@ public class InfraClick : MonoBehaviour
                 uiImage.sprite = loaded;
                 uiImage.gameObject.SetActive(true);
             }
-            else if (info.infraImage != null && info.infraImage.sprite != null)
+            else if (info.infraImage != null)
             {
-                uiImage.sprite = info.infraImage.sprite;
+                uiImage.sprite = info.infraImage;
                 uiImage.gameObject.SetActive(true);
             }
             else
@@ -321,6 +324,11 @@ public class InfraClick : MonoBehaviour
         HandleButtonClick(Animal_Farms, AnimalFarmsViewZ);
     }
 
+    public void OnClickVillage()
+    {
+        HandleButtonClick(Village, HousesViewZ);
+    }
+
     public void OnClickWheatField()
     {
         HandleButtonClick(WheatField, WheatFieldViewZ);
@@ -395,6 +403,17 @@ public class InfraClick : MonoBehaviour
             info.infraCount = iManager.animalFarmCount;
             if (statusTMP != null) statusTMP.text = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
             info.status = "increase in profits + " + (20 * iManager.animalFarmCount).ToString() + "%";
+        }
+        else if (hitObj.name == "Village")
+        {
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
+            if (levelTMP != null) levelTMP.text = "Level." + iManager.VillageLevel;
+            info.level = iManager.VillageLevel;
+            if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.VillageCount;
+            info.infraCount = iManager.VillageCount;
+            if (statusTMP != null) statusTMP.text = "increase in profits + " + (5 * iManager.VillageCount).ToString() + "%";
+            info.status = "increase in profits + " + (5 * iManager.VillageCount).ToString() + "%";
         }
         // farms
         else if (hitObj.name == "Wheat")
