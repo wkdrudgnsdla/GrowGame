@@ -31,7 +31,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject silo3Lev2;
     [SerializeField] private GameObject silo4Lev2;
 
-    private float[] siloUpgreadeCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
+    private double[] siloUpgreadeCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
 
     [Header("Storage")]
     public int storageLevel;
@@ -41,7 +41,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject storage2;
     [SerializeField] private GameObject storage3;
 
-    private float[] storageUpgreadeCost = { 100000000000f, 100000000000f, 100000000000f};
+    private double[] storageUpgreadeCost = { 1000000000f, 1000000000f, 1000000000f};
 
     [Header("Animal_Farms")]
     public int animalFarmLevel;
@@ -49,7 +49,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject animalFarm1;
     [SerializeField] private GameObject animalFarm2;
 
-    private float[] animalFarmUpgreadeCost = { 200000000000f, 200000000000f };
+    private double[] animalFarmUpgreadeCost = { 2000000000f, 2000000000f };
 
     [Header("GreenHouse")]
     public int greenHouseLevel;
@@ -58,7 +58,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
-    private float[] greenHouseUpgreadeCost = { 150000000000f, 150000000000f };
+    private double[] greenHouseUpgreadeCost = { 1500000000f, 1500000000f };
 
     [Header("Village")]
     public int VillageLevel;
@@ -66,7 +66,15 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject[] Houses;
     [SerializeField] private bool VillageActive = false;
 
-    private float[] VillageUpgreadCost = { 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f };
+    private double[] villageUpgreadCost = { 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f };
+
+    [Header("Reservoir")]
+    public int ReservoirLevel;
+    public int ReservoirCount;
+
+    private double[] reservoirUpgreadCost = { 500000000f, 10f };
+    [SerializeField] private GameObject Ground;
+    [SerializeField] private GameObject Water;
 
     [Header("Farm")]
     public float WheatWaterCol;
@@ -74,6 +82,12 @@ public class InfraManager : MonoBehaviour
     public float CucumberWaterCol;
     public float PotatoWaterCol;
     public float OnionWaterCol;
+
+    private bool wheatFramActive = false;
+    private bool carrotFramActive = false;
+    private bool cucumberFramActive = false;
+    private bool potatoFramActive = false;
+    private bool onionFramActive = false;
 
     [SerializeField] private float wheatWaterTime;
     [SerializeField] private float carrotWaterTime;
@@ -135,39 +149,37 @@ public class InfraManager : MonoBehaviour
         SiloManage();
 
         StorageManage();
-        StrageUpgrade();
 
-        AnimalFarmUpgrade();
         AnimalFarmManage();
 
-        GreenHouseUpgrade();
         GreenHouseManage();
 
-        VillageUpgrade();
         VillageManage();
+
+        ReservoirManage();
 
         UpgradeStatusManage();
     }
 
     private void WaterManage()
     {
-        if (WheatWaterCol > 0)
+        if (WheatWaterCol > 0 && wheatFramActive)
         {
             WheatWaterCol -= Time.deltaTime;
         }
-        if (CarrotWaterCol > 0)
+        if (CarrotWaterCol > 0 && carrotFramActive)
         {
             CarrotWaterCol -= Time.deltaTime;
         }
-        if (CucumberWaterCol > 0)
+        if (CucumberWaterCol > 0 && cucumberFramActive)
         {
             CucumberWaterCol -= Time.deltaTime;
         }
-        if (PotatoWaterCol > 0)
+        if (PotatoWaterCol > 0 && potatoFramActive)
         {
             PotatoWaterCol -= Time.deltaTime;
         }
-        if (OnionWaterCol > 0)
+        if (OnionWaterCol > 0 && onionFramActive)
         {
             OnionWaterCol -= Time.deltaTime;
         }
@@ -352,37 +364,50 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0% => 5%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 1:
                             UpgradeStatus = "5% => 10%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 2:
                             UpgradeStatus = "10% => 15%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 3:
                             UpgradeStatus = "15% => 20%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 4:
                             UpgradeStatus = "20% => 25%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 5:
                             UpgradeStatus = "25% => 30%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 6:
                             UpgradeStatus = "30% => 35%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 7:
                             UpgradeStatus = "35% => 40%";
-                            UpgradePriceText.text = VillageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
                             break;
                         case 8:
+                            UpgradeStatus = "MAX LEVEL";
+                            UpgradePriceText.text = "";
+                            break;
+                    }
+                    break;
+                case "Reservoir":
+                    switch (ReservoirLevel)
+                    {
+                        case 0:
+                            UpgradeStatus = "0% => -10%";
+                            UpgradePriceText.text = reservoirUpgreadCost[ReservoirLevel].ToString() + "$";
+                            break;
+                        case 1:
                             UpgradeStatus = "MAX LEVEL";
                             UpgradePriceText.text = "";
                             break;
@@ -610,86 +635,51 @@ public class InfraManager : MonoBehaviour
         }
     }
 
-    private void StrageUpgrade()
-    {
-        switch (storageLevel)
-        {
-            case 1:
-                storageCount = 1;
-                storageCapacity = 1500;
-                break;
-            case 2:
-                storageCount = 2;
-                storageCapacity = 3000;
-                break;
-            case 3:
-                storageCount = 3;
-                storageCapacity = 4500;
-                break;
-        }
-    }
-
     private void StorageManage()
     {
         switch (storageCount)
         {
             case 0:
+                storageCount = 0;
+                storageCapacity = 0;
                 storage1.SetActive(false);
                 storage2.SetActive(false);
                 storage3.SetActive(false);
                 break;
             case 1:
+                storageCount = 1;
+                storageCapacity = 1500;
                 storage1.SetActive(true);
                 break;
             case 2:
+                storageCount = 2;
+                storageCapacity = 3000;
                 storage2.SetActive(true);
                 break;
             case 3:
+                storageCount = 3;
+                storageCapacity = 4500;
                 storage3.SetActive(true);
                 break;
         }
     }
 
-    private void AnimalFarmUpgrade()
-    {
-        switch (animalFarmLevel)
-        {
-            case 1:
-                animalFarmCount = 1;
-                break;
-            case 2:
-                animalFarmCount = 2;
-                break;
-        }
-    }
     private void AnimalFarmManage()
     {
         switch (animalFarmCount)
         {
             case 0:
+                animalFarmCount = 0;
                 animalFarm1.SetActive(false);
                 animalFarm2.SetActive(false);
                 break;
             case 1:
+                animalFarmCount = 1;
                 animalFarm1.SetActive(true);
                 break;
             case 2:
+                animalFarmCount = 2;
                 animalFarm2.SetActive(true);
-                break;
-        }
-    }
-
-    private void GreenHouseUpgrade()
-    {
-        switch (greenHouseLevel)
-        {
-            case 1:
-                greenHouseCount = 1;
-                ExtraProduction = 5;
-                break;
-            case 2:
-                greenHouseCount = 2;
-                ExtraProduction = 10;
                 break;
         }
     }
@@ -699,45 +689,20 @@ public class InfraManager : MonoBehaviour
         switch (greenHouseCount)
         {
             case 0:
+                greenHouseCount = 0;
+                ExtraProduction = 0;
                 GreenHouse1.SetActive(false);
                 GreenHouse2.SetActive(false);
                 break;
             case 1:
+                greenHouseCount = 1;
+                ExtraProduction = 5;
                 GreenHouse1.SetActive(true);
                 break;
             case 2:
+                greenHouseCount = 2;
+                ExtraProduction = 10;
                 GreenHouse2.SetActive(true);
-                break;
-        }
-    }
-
-    private void VillageUpgrade()
-    {
-        switch (VillageLevel)
-        {
-            case 1:
-                VillageCount = 1;
-                break;
-            case 2:
-                VillageCount = 2;
-                break;
-            case 3:
-                VillageCount = 3;
-                break;
-            case 4:
-                VillageCount = 4;
-                break;
-            case 5:
-                VillageCount = 5;
-                break;
-            case 6:
-                VillageCount = 6;
-                break;
-            case 7:
-                VillageCount = 7;
-                break;
-            case 8:
-                VillageCount = 8;
                 break;
         }
     }
@@ -747,6 +712,7 @@ public class InfraManager : MonoBehaviour
         switch (VillageLevel)
         {
             case 0:
+                VillageCount = 0;
                 Houses[0].SetActive(false);
                 Houses[1].SetActive(false);
                 Houses[2].SetActive(false);
@@ -757,28 +723,53 @@ public class InfraManager : MonoBehaviour
                 Houses[7].SetActive(false);
                 break;
             case 1:
+                VillageCount = 1;
                 Houses[0].SetActive(true);
                 break;
             case 2:
+                VillageCount = 2;
                 Houses[1].SetActive(true);
                 break;
             case 3:
+                VillageCount = 3;
                 Houses[2].SetActive(true);
                 break;
             case 4:
+                VillageCount = 4;
                 Houses[3].SetActive(true);
                 break;
             case 5:
+                VillageCount = 5;
                 Houses[4].SetActive(true);
                 break;
             case 6:
+                VillageCount = 6;
                 Houses[5].SetActive(true);
                 break;
             case 7:
+                VillageCount = 7;
                 Houses[6].SetActive(true);
                 break;
             case 8:
+                VillageCount = 8;
                 Houses[7].SetActive(true);
+                break;
+        }
+    }
+
+    private void ReservoirManage()
+    {
+        switch (ReservoirLevel)
+        {
+            case 0:
+                ReservoirCount = 0;
+                Water.SetActive(false);
+                Ground.SetActive(true);
+                break;
+            case 1:
+                ReservoirCount = 1;
+                Water.SetActive(true);
+                Ground.SetActive(false);
                 break;
         }
     }
@@ -877,12 +868,24 @@ public class InfraManager : MonoBehaviour
         {
             if (VillageLevel != 8)
             {
-                if (mManager.Money < VillageUpgreadCost[VillageLevel])
+                if (mManager.Money < villageUpgreadCost[VillageLevel])
                 {
                     return;
                 }
-                UpgradeCostManage(VillageUpgreadCost[VillageLevel]);
+                UpgradeCostManage(villageUpgreadCost[VillageLevel]);
                 VillageLevel += 1;
+            }
+        }
+        else if (infraclick.hitObj.name == "Reservoir")
+        {
+            if (ReservoirLevel != 1)
+            {
+                if (mManager.Money < reservoirUpgreadCost[ReservoirLevel])
+                {
+                    return;
+                }
+                UpgradeCostManage(reservoirUpgreadCost[ReservoirLevel]);
+                ReservoirLevel += 1;
             }
         }
         else if (infraclick.hitObj.name == "Wheat")
@@ -893,6 +896,7 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                wheatFramActive = true;
                 UpgradeCostManage(wheatUpgreadeCost[farmUpgrade.wheatFarmLevel]);
                 farmUpgrade.wheatFarmLevel += 1;
             }
@@ -905,6 +909,7 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                carrotFramActive = true;
                 UpgradeCostManage(carrotUpgreadeCost[farmUpgrade.carrotFarmLevel]);
                 farmUpgrade.carrotFarmLevel += 1;
             }
@@ -917,6 +922,7 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                cucumberFramActive = true;
                 UpgradeCostManage(cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel]);
                 farmUpgrade.cucumberFarmLevel += 1;
             }
@@ -929,6 +935,7 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                potatoFramActive = true;
                 UpgradeCostManage(potatoUpgreadeCost[farmUpgrade.potatoFarmLevel]);
                 farmUpgrade.potatoFarmLevel += 1;
             }
@@ -942,13 +949,14 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                onionFramActive = true;
                 UpgradeCostManage(onionUpgreadeCost[farmUpgrade.onionFarmLevel]);
                 farmUpgrade.onionFarmLevel += 1;
             }
         }
     }
 
-    private void UpgradeCostManage(float cost)
+    private void UpgradeCostManage(double cost)
     {
         mManager.Money -= cost;
     }

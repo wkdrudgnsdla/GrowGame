@@ -65,6 +65,9 @@ public class InfraClick : MonoBehaviour
     public GameObject Village;
     public float HousesViewZ = 6f;
 
+    public GameObject Reservoir;
+    public float ReservoirViewZ = 6f;
+
     // farms
     public GameObject WheatField;
     public float WheatFieldViewZ = 6f;
@@ -328,6 +331,11 @@ public class InfraClick : MonoBehaviour
     {
         HandleButtonClick(Village, HousesViewZ);
     }
+    
+    public void OnClickReservoir()
+    {
+        HandleButtonClick(Reservoir, ReservoirViewZ);
+    }
 
     public void OnClickWheatField()
     {
@@ -415,6 +423,17 @@ public class InfraClick : MonoBehaviour
             if (statusTMP != null) statusTMP.text = "increase in profits + " + (5 * iManager.VillageCount).ToString() + "%";
             info.status = "increase in profits + " + (5 * iManager.VillageCount).ToString() + "%";
         }
+        else if (hitObj.name == "Reservoir")
+        {
+            if (waterButton.activeSelf) waterButton.SetActive(false);
+            if (!countTMP.gameObject.activeSelf) countTMP.gameObject.SetActive(true);
+            if (levelTMP != null) levelTMP.text = "Level." + iManager.ReservoirLevel;
+            info.level = iManager.ReservoirLevel;
+            if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.ReservoirCount;
+            info.infraCount = iManager.ReservoirCount;
+            if (statusTMP != null) statusTMP.text = "water cooltime - " + (10 * iManager.ReservoirCount).ToString() + "%";
+            info.status = "water cooltime - " + (10 * iManager.ReservoirCount).ToString() + "%";
+        }
         // farms
         else if (hitObj.name == "Wheat")
         {
@@ -468,3 +487,4 @@ public class InfraClick : MonoBehaviour
         }
     }
 }
+
