@@ -263092,6 +263092,7 @@ MonoBehaviour:
   greenHouseLevel: 0
   greenHouseCount: 0
   ExtraProduction: 0
+  ActiveGreenHouse: 0
   GreenHouse1: {fileID: 577661703}
   GreenHouse2: {fileID: 485902667}
   VillageLevel: 0
@@ -263352,7 +263353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fManager: {fileID: 2017528151}
-  Money: 100000000000000
+  Money: 0
   MoneyExtra: 1
 --- !u!1001 &2017933076
 PrefabInstance:
