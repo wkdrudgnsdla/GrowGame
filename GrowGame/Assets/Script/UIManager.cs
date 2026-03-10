@@ -92,8 +92,8 @@ public class UIManager : MonoBehaviour
         sellUI_nowPotatoText.text = ((int)fManager.nowPotato).ToString();
         sellUI_nowOnionText.text = ((int)fManager.nowOnion).ToString();
 
-        moneyText.text = mManager.Money.ToString() + "$";
-        TotalPriceText.text = ((int)mManager.TotalSellPrice).ToString() + "$";
+        moneyText.text = mManager.Money.ToString("NO") + "$";
+        TotalPriceText.text = ((int)mManager.TotalSellPrice).ToString("NO") + "$";
     }
 
     private void UIPositionUpdaate()

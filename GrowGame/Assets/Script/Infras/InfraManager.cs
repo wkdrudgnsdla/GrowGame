@@ -31,7 +31,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject silo3Lev2;
     [SerializeField] private GameObject silo4Lev2;
 
-    private double[] siloUpgreadeCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
+    private double[] siloUpgreadeCost = { 100000f, 100000f, 100000f, 100000f, 100000f, 100000f, 100000f, 100000f };
 
     [Header("Storage")]
     public int storageLevel;
@@ -41,7 +41,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject storage2;
     [SerializeField] private GameObject storage3;
 
-    private double[] storageUpgreadeCost = { 1000000000f, 1000000000f, 1000000000f};
+    private double[] storageUpgreadeCost = { 1000000f, 1000000f, 1000000f};
 
     [Header("Animal_Farms")]
     public int animalFarmLevel;
@@ -49,7 +49,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject animalFarm1;
     [SerializeField] private GameObject animalFarm2;
 
-    private double[] animalFarmUpgreadeCost = { 2000000000f, 2000000000f };
+    private double[] animalFarmUpgreadeCost = { 200000000f, 200000000f };
 
     [Header("GreenHouse")]
     public int greenHouseLevel;
@@ -59,7 +59,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
-    private double[] greenHouseUpgreadeCost = { 1500000000f, 1500000000f };
+    private double[] greenHouseUpgreadeCost = { 1500000f, 1500000f };
 
     [Header("Village")]
     public int VillageLevel;
@@ -67,14 +67,14 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject[] Houses;
     [SerializeField] private bool VillageActive = false;
 
-    private double[] villageUpgreadCost = { 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f, 1000000000f };
+    private double[] villageUpgreadCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
 
     [Header("Reservoir")]
     public int ReservoirLevel;
     public int ReservoirCount;
     private bool reservoirActive = false;
 
-    private double[] reservoirUpgreadCost = { 500000000f, 10f };
+    private double[] reservoirUpgreadCost = { 5000000f, 10f };
     [SerializeField] private GameObject Ground;
     [SerializeField] private GameObject Water;
 
@@ -99,7 +99,7 @@ public class InfraManager : MonoBehaviour
 
     [SerializeField] private Image WaterUIImage;
 
-    private float[] wheatUpgreadeCost = { 0f, 50000f,10000f };
+    private float[] wheatUpgreadeCost = { 0f, 5000f,10000f };
     private float[] carrotUpgreadeCost = { 20000f, 30000f, 50000f };
     private float[] cucumberUpgreadeCost = { 75000f, 100000f, 200000f };
     private float[] potatoUpgreadeCost = { 500000f, 1000000f, 1200000f };
@@ -296,35 +296,35 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0 => 300";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "300 => 500";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "500 => 800";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "800 => 1000";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 4:
                             UpgradeStatus = "1000 => 1300";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 5:
                             UpgradeStatus = "1300 => 1500";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 6:
                             UpgradeStatus = "1500 => 1800";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 7:
                             UpgradeStatus = "1800 => 2000";
-                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString() + "$";
+                            UpgradePriceText.text = siloUpgreadeCost[siloLevel].ToString("NO") + "$";
                             break;
                         case 8:
                             UpgradeStatus = "MAX LEVEL";
@@ -337,15 +337,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0 => 1500";
-                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString() + "$";
+                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "1500 => 3000";
-                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString() + "$";
+                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "3000 => 4500";
-                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString() + "$";
+                            UpgradePriceText.text = storageUpgreadeCost[storageLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradePriceText.text = "";
@@ -358,12 +358,12 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0% => 50%";
-                            UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString() + "$";
+                            UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString("NO") + "$";
 
                             break;
                         case 1:
                             UpgradeStatus = "50% => 100%";
-                            UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString() + "$";
+                            UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "MAX LEVEL";
@@ -376,11 +376,11 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0% => 20%";
-                            UpgradePriceText.text = animalFarmUpgreadeCost[animalFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = animalFarmUpgreadeCost[animalFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "20% => 40%";
-                            UpgradePriceText.text = animalFarmUpgreadeCost[animalFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = animalFarmUpgreadeCost[animalFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "MAX LEVEL";
@@ -393,35 +393,35 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0% => 5%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "5% => 10%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "10% => 15%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "15% => 20%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 4:
                             UpgradeStatus = "20% => 25%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 5:
                             UpgradeStatus = "25% => 30%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 6:
                             UpgradeStatus = "30% => 35%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 7:
                             UpgradeStatus = "35% => 40%";
-                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString() + "$";
+                            UpgradePriceText.text = villageUpgreadCost[VillageLevel].ToString("NO") + "$";
                             break;
                         case 8:
                             UpgradeStatus = "MAX LEVEL";
@@ -434,7 +434,7 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "0% => -200%";
-                            UpgradePriceText.text = reservoirUpgreadCost[ReservoirLevel].ToString() + "$";
+                            UpgradePriceText.text = reservoirUpgreadCost[ReservoirLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "MAX LEVEL";
@@ -447,15 +447,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "+0/min => +20/min";
-                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "+25/min => +50/min";
-                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "+50/min => +75/min";
-                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = wheatUpgreadeCost[farmUpgrade.wheatFarmLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "MAX LEVEL";
@@ -468,15 +468,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "+0/min => +20/min";
-                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "+25/min => +50/min";
-                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "+50/min => +75/min";
-                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = carrotUpgreadeCost[farmUpgrade.carrotFarmLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "MAX LEVEL";
@@ -489,15 +489,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "+0/min => +20/min";
-                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "+25/min => +50/min";
-                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "+50/min => +75/min";
-                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "MAX LEVEL";
@@ -510,15 +510,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "+0/min => +20/min";
-                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "+25/min => +50/min";
-                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "+50/min => +75/min";
-                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = potatoUpgreadeCost[farmUpgrade.potatoFarmLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "MAX LEVEL";
@@ -531,15 +531,15 @@ public class InfraManager : MonoBehaviour
                     {
                         case 0:
                             UpgradeStatus = "+0/min => +20/min";
-                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString("NO") + "$";
                             break;
                         case 1:
                             UpgradeStatus = "+25/min => +50/min";
-                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString("NO") + "$";
                             break;
                         case 2:
                             UpgradeStatus = "+50/min => +75/min";
-                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString() + "$";
+                            UpgradePriceText.text = onionUpgreadeCost[farmUpgrade.onionFarmLevel].ToString("NO") + "$";
                             break;
                         case 3:
                             UpgradeStatus = "MAX LEVEL";
