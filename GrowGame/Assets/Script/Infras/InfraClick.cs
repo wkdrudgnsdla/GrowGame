@@ -398,8 +398,8 @@ public class InfraClick : MonoBehaviour
             info.level = iManager.greenHouseLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.greenHouseCount;
             info.infraCount = iManager.greenHouseCount;
-            if (statusTMP != null) statusTMP.text = "ExtraProduction + " + iManager.ExtraProduction + "%";
-            info.status = "Silo Capacity  + " + iManager.storageCapacity;
+            if (statusTMP != null) statusTMP.text = "ExtraProduction + " + (50 * iManager.greenHouseLevel).ToString() + "%";
+            info.status = "ExtraProduction + " + (50 * iManager.greenHouseLevel).ToString() + "%";
         }
         else if (hitObj.name == "Animal_Farms")
         {

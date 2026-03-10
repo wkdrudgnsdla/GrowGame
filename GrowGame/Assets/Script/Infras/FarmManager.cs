@@ -35,69 +35,142 @@ public class FarmManager : MonoBehaviour
 
     public void GrowWheat()
     {
-        if (!FU.wheatFarmWater)
+        if (!IM.ActiveGreenHouse)
         {
-            switch (FU.wheatFarmLevel)
+            if (!FU.wheatFarmWater)
             {
-                case 1:
-                    nowWheat += perSecondBase[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowWheat += perSecondBase[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowWheat += perSecondBase[2] * Time.deltaTime;
-                    break;
+                switch (FU.wheatFarmLevel)
+                {
+                    case 1:
+                        nowWheat += perSecondBase[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowWheat += perSecondBase[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowWheat += perSecondBase[2] * Time.deltaTime;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.wheatFarmLevel)
+                {
+                    case 1:
+                        nowWheat += perSecondWater[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowWheat += perSecondWater[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowWheat += perSecondWater[2] * Time.deltaTime;
+                        break;
+                }
             }
         }
-        else
+        else if (IM.ActiveGreenHouse)
         {
-            switch (FU.wheatFarmLevel)
+            if (!FU.wheatFarmWater)
             {
-                case 1:
-                    nowWheat += perSecondWater[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowWheat += perSecondWater[1] * Time.deltaTime;
-                    break;  
-                case 3:
-                    nowWheat += perSecondWater[2] * Time.deltaTime;
-                    break;
+                switch (FU.wheatFarmLevel)
+                {
+                    case 1:
+                        nowWheat += perSecondBase[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowWheat += perSecondBase[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowWheat += perSecondBase[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.wheatFarmLevel)
+                {
+                    case 1:
+                        nowWheat += perSecondWater[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowWheat += perSecondWater[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowWheat += perSecondWater[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
             }
         }
-       
+
+
     }
 
     public void GrowCarrot()
     {
-        if (!FU.carrotFarmWater)
+        if (!IM.ActiveGreenHouse)
         {
-            switch (FU.carrotFarmLevel)
+            if (!FU.carrotFarmWater)
             {
-                case 1:
-                    nowCarrot += perSecondBase[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowCarrot += perSecondBase[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowCarrot += perSecondBase[2] * Time.deltaTime;
-                    break;
+                switch (FU.carrotFarmLevel)
+                {
+                    case 1:
+                        nowCarrot += perSecondBase[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowCarrot += perSecondBase[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowCarrot += perSecondBase[2] * Time.deltaTime;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.carrotFarmLevel)
+                {
+                    case 1:
+                        nowCarrot += perSecondWater[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowCarrot += perSecondWater[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowCarrot += perSecondWater[2] * Time.deltaTime;
+                        break;
+                }
             }
         }
-        else
+        else if (IM.ActiveGreenHouse)
         {
-            switch (FU.carrotFarmLevel)
+            if (!FU.carrotFarmWater)
             {
-                case 1:
-                    nowCarrot += perSecondWater[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowCarrot += perSecondWater[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowCarrot += perSecondWater[2] * Time.deltaTime;
-                    break;
+                switch (FU.carrotFarmLevel)
+                {
+                    case 1:
+                        nowCarrot += perSecondBase[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowCarrot += perSecondBase[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowCarrot += perSecondBase[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.carrotFarmLevel)
+                {
+                    case 1:
+                        nowCarrot += perSecondWater[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowCarrot += perSecondWater[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowCarrot += perSecondWater[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
             }
         }
 
@@ -105,34 +178,70 @@ public class FarmManager : MonoBehaviour
 
     public void GrowCucumber()
     {
-        if (!FU.cucumberFarmWater)
+        if (!IM.ActiveGreenHouse)
         {
-            switch (FU.cucumberFarmLevel)
+            if (!FU.cucumberFarmWater)
             {
-                case 1:
-                    nowCucumber += perSecondBase[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowCucumber += perSecondBase[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowCucumber += perSecondBase[2] * Time.deltaTime;
-                    break;
+                switch (FU.cucumberFarmLevel)
+                {
+                    case 1:
+                        nowCucumber += perSecondBase[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowCucumber += perSecondBase[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowCucumber += perSecondBase[2] * Time.deltaTime;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.cucumberFarmLevel)
+                {
+                    case 1:
+                        nowCucumber += perSecondWater[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowCucumber += perSecondWater[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowCucumber += perSecondWater[2] * Time.deltaTime;
+                        break;
+                }
             }
         }
-        else
+        else if(IM.ActiveGreenHouse)
         {
-            switch (FU.cucumberFarmLevel)
+            if (!FU.cucumberFarmWater)
             {
-                case 1:
-                    nowCucumber += perSecondWater[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowCucumber += perSecondWater[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowCucumber += perSecondWater[2] * Time.deltaTime;
-                    break;
+                switch (FU.cucumberFarmLevel)
+                {
+                    case 1:
+                        nowCucumber += perSecondBase[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowCucumber += perSecondBase[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowCucumber += perSecondBase[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.cucumberFarmLevel)
+                {
+                    case 1:
+                        nowCucumber += perSecondWater[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowCucumber += perSecondWater[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowCucumber += perSecondWater[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
             }
         }
 
@@ -140,69 +249,142 @@ public class FarmManager : MonoBehaviour
 
     public void GrowPotato()
     {
-        if (!FU.potatoFarmWater)
+        if (!IM.ActiveGreenHouse)
         {
-            switch (FU.potatoFarmLevel)
+            if (!FU.potatoFarmWater)
             {
-                case 1:
-                    nowPotato += perSecondBase[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowPotato += perSecondBase[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowPotato += perSecondBase[2] * Time.deltaTime;
-                    break;
+                switch (FU.potatoFarmLevel)
+                {
+                    case 1:
+                        nowPotato += perSecondBase[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowPotato += perSecondBase[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowPotato += perSecondBase[2] * Time.deltaTime;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.potatoFarmLevel)
+                {
+                    case 1:
+                        nowPotato += perSecondWater[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowPotato += perSecondWater[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowPotato += perSecondWater[2] * Time.deltaTime;
+                        break;
+                }
             }
         }
-        else
+        else if (IM.ActiveGreenHouse)
         {
-            switch (FU.potatoFarmLevel)
+            if (!FU.potatoFarmWater)
             {
-                case 1:
-                    nowPotato += perSecondWater[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowPotato += perSecondWater[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowPotato += perSecondWater[2] * Time.deltaTime;
-                    break;
+                switch (FU.potatoFarmLevel)
+                {
+                    case 1:
+                        nowPotato += perSecondBase[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowPotato += perSecondBase[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowPotato += perSecondBase[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.potatoFarmLevel)
+                {
+                    case 1:
+                        nowPotato += perSecondWater[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowPotato += perSecondWater[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowPotato += perSecondWater[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
             }
         }
+        
 
     }
 
     public void GrowOnion()
     {
-        if (!FU.onionFarmWater)
+        if (!IM.ActiveGreenHouse)
         {
-            switch (FU.onionFarmLevel)
+            if (!FU.onionFarmWater)
             {
-                case 1:
-                    nowOnion += perSecondBase[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowOnion += perSecondBase[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowOnion += perSecondBase[2] * Time.deltaTime;
-                    break;
+                switch (FU.onionFarmLevel)
+                {
+                    case 1:
+                        nowOnion += perSecondBase[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowOnion += perSecondBase[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowOnion += perSecondBase[2] * Time.deltaTime;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.onionFarmLevel)
+                {
+                    case 1:
+                        nowOnion += perSecondWater[0] * Time.deltaTime;
+                        break;
+                    case 2:
+                        nowOnion += perSecondWater[1] * Time.deltaTime;
+                        break;
+                    case 3:
+                        nowOnion += perSecondWater[2] * Time.deltaTime;
+                        break;
+                }
             }
         }
-        else
+        if (IM.ActiveGreenHouse)
         {
-            switch (FU.onionFarmLevel)
+            if (!FU.onionFarmWater)
             {
-                case 1:
-                    nowOnion += perSecondWater[0] * Time.deltaTime;
-                    break;
-                case 2:
-                    nowOnion += perSecondWater[1] * Time.deltaTime;
-                    break;
-                case 3:
-                    nowOnion += perSecondWater[2] * Time.deltaTime;
-                    break;
+                switch (FU.onionFarmLevel)
+                {
+                    case 1:
+                        nowOnion += perSecondBase[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowOnion += perSecondBase[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowOnion += perSecondBase[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
+            }
+            else
+            {
+                switch (FU.onionFarmLevel)
+                {
+                    case 1:
+                        nowOnion += perSecondWater[0] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 2:
+                        nowOnion += perSecondWater[1] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                    case 3:
+                        nowOnion += perSecondWater[2] * Time.deltaTime * IM.ExtraProduction;
+                        break;
+                }
             }
         }
 

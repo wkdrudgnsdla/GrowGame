@@ -54,7 +54,8 @@ public class InfraManager : MonoBehaviour
     [Header("GreenHouse")]
     public int greenHouseLevel;
     public int greenHouseCount = 0;
-    public int ExtraProduction = 0;
+    public float ExtraProduction = 0;
+    public bool ActiveGreenHouse = false;
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
@@ -356,12 +357,12 @@ public class InfraManager : MonoBehaviour
                     switch (greenHouseLevel)
                     {
                         case 0:
-                            UpgradeStatus = "0% => 5%";
+                            UpgradeStatus = "0% => 50%";
                             UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString() + "$";
 
                             break;
                         case 1:
-                            UpgradeStatus = "5% => 10%";
+                            UpgradeStatus = "50% => 100%";
                             UpgradePriceText.text = greenHouseUpgreadeCost[greenHouseLevel].ToString() + "$";
                             break;
                         case 2:
@@ -714,22 +715,25 @@ public class InfraManager : MonoBehaviour
 
     private void GreenHouseManage()
     {
-        switch (greenHouseCount)
+        switch (greenHouseLevel)
         {
             case 0:
+                ActiveGreenHouse = false;
                 greenHouseCount = 0;
                 ExtraProduction = 0;
                 GreenHouse1.SetActive(false);
                 GreenHouse2.SetActive(false);
                 break;
             case 1:
+                ActiveGreenHouse = true;
                 greenHouseCount = 1;
-                ExtraProduction = 5;
+                ExtraProduction = 1.5f;
                 GreenHouse1.SetActive(true);
                 break;
             case 2:
+                ActiveGreenHouse = true;
                 greenHouseCount = 2;
-                ExtraProduction = 10;
+                ExtraProduction = 2f;
                 GreenHouse2.SetActive(true);
                 break;
         }
