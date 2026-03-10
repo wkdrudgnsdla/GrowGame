@@ -71,6 +71,7 @@ public class InfraManager : MonoBehaviour
     [Header("Reservoir")]
     public int ReservoirLevel;
     public int ReservoirCount;
+    private bool reservoirActive = false;
 
     private double[] reservoirUpgreadCost = { 500000000f, 10f };
     [SerializeField] private GameObject Ground;
@@ -163,26 +164,53 @@ public class InfraManager : MonoBehaviour
 
     private void WaterManage()
     {
-        if (WheatWaterCol > 0 && wheatFramActive)
+        if (!reservoirActive)
         {
-            WheatWaterCol -= Time.deltaTime;
+            if (WheatWaterCol > 0 && wheatFramActive)
+            {
+                WheatWaterCol -= Time.deltaTime;
+            }
+            if (CarrotWaterCol > 0 && carrotFramActive)
+            {
+                CarrotWaterCol -= Time.deltaTime;
+            }
+            if (CucumberWaterCol > 0 && cucumberFramActive)
+            {
+                CucumberWaterCol -= Time.deltaTime;
+            }
+            if (PotatoWaterCol > 0 && potatoFramActive)
+            {
+                PotatoWaterCol -= Time.deltaTime;
+            }
+            if (OnionWaterCol > 0 && onionFramActive)
+            {
+                OnionWaterCol -= Time.deltaTime;
+            }
         }
-        if (CarrotWaterCol > 0 && carrotFramActive)
+        else if (reservoirActive)
         {
-            CarrotWaterCol -= Time.deltaTime;
+            if (WheatWaterCol > 0 && wheatFramActive)
+            {
+                WheatWaterCol -= Time.deltaTime * 2f;
+            }
+            if (CarrotWaterCol > 0 && carrotFramActive)
+            {
+                CarrotWaterCol -= Time.deltaTime * 2f;
+            }
+            if (CucumberWaterCol > 0 && cucumberFramActive)
+            {
+                CucumberWaterCol -= Time.deltaTime * 2f;
+            }
+            if (PotatoWaterCol > 0 && potatoFramActive)
+            {
+                PotatoWaterCol -= Time.deltaTime * 2f;
+            }
+            if (OnionWaterCol > 0 && onionFramActive)
+            {
+                OnionWaterCol -= Time.deltaTime * 2f;
+            }
         }
-        if (CucumberWaterCol > 0 && cucumberFramActive)
-        {
-            CucumberWaterCol -= Time.deltaTime;
-        }
-        if (PotatoWaterCol > 0 && potatoFramActive)
-        {
-            PotatoWaterCol -= Time.deltaTime;
-        }
-        if (OnionWaterCol > 0 && onionFramActive)
-        {
-            OnionWaterCol -= Time.deltaTime;
-        }
+        
 
         if (farmUpgrade.wheatFarmWater)
         {
@@ -231,27 +259,27 @@ public class InfraManager : MonoBehaviour
 
         if (wheatWaterTime <= 0)
         {
-            WheatWaterCol = 480;
+            WheatWaterCol = 300;
             farmUpgrade.wheatFarmWater = false;
         }
         if (carrotWaterTime <= 0)
         {
-            CarrotWaterCol = 480;
+            CarrotWaterCol = 300;
             farmUpgrade.carrotFarmWater = false;
         }
         if (cucumberWaterTime <= 0)
         {
-            CucumberWaterCol = 480;
+            CucumberWaterCol = 300;
             farmUpgrade.cucumberFarmWater = false;
         }
         if (potatoWaterTime <= 0)
         {
-            PotatoWaterCol = 480;
+            PotatoWaterCol = 300;
             farmUpgrade.potatoFarmWater = false;
         }
         if (onionWaterTime <= 0)
         {
-            OnionWaterCol = 480;
+            OnionWaterCol = 300;
             farmUpgrade.onionFarmWater = false;
         }
     }
@@ -404,7 +432,7 @@ public class InfraManager : MonoBehaviour
                     switch (ReservoirLevel)
                     {
                         case 0:
-                            UpgradeStatus = "0% => -10%";
+                            UpgradeStatus = "0% => -200%";
                             UpgradePriceText.text = reservoirUpgreadCost[ReservoirLevel].ToString() + "$";
                             break;
                         case 1:
@@ -768,6 +796,7 @@ public class InfraManager : MonoBehaviour
                 break;
             case 1:
                 ReservoirCount = 1;
+                reservoirActive = true;
                 Water.SetActive(true);
                 Ground.SetActive(false);
                 break;

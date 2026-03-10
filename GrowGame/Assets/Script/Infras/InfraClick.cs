@@ -431,8 +431,8 @@ public class InfraClick : MonoBehaviour
             info.level = iManager.ReservoirLevel;
             if (countTMP != null) countTMP.text = "Infra Count :  " + iManager.ReservoirCount;
             info.infraCount = iManager.ReservoirCount;
-            if (statusTMP != null) statusTMP.text = "water cooltime - " + (10 * iManager.ReservoirCount).ToString() + "%";
-            info.status = "water cooltime - " + (10 * iManager.ReservoirCount).ToString() + "%";
+            if (statusTMP != null) statusTMP.text = "water cooltime - " + (200 * iManager.ReservoirCount).ToString() + "%";
+            info.status = "water cooltime - " + (200 * iManager.ReservoirCount).ToString() + "%";
         }
         // farms
         else if (hitObj.name == "Wheat")
