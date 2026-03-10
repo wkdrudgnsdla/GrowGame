@@ -49,7 +49,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject animalFarm1;
     [SerializeField] private GameObject animalFarm2;
 
-    private double[] animalFarmUpgreadeCost = { 200000000f, 200000000f };
+    private double[] animalFarmUpgreadeCost = { 500000f, 500000f };
 
     [Header("GreenHouse")]
     public int greenHouseLevel;
@@ -59,7 +59,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject GreenHouse1;
     [SerializeField] private GameObject GreenHouse2;
 
-    private double[] greenHouseUpgreadeCost = { 1500000f, 1500000f };
+    private double[] greenHouseUpgreadeCost = { 300000f, 300000f };
 
     [Header("Village")]
     public int VillageLevel;
@@ -100,10 +100,10 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private Image WaterUIImage;
 
     private float[] wheatUpgreadeCost = { 0f, 5000f,10000f };
-    private float[] carrotUpgreadeCost = { 20000f, 30000f, 50000f };
-    private float[] cucumberUpgreadeCost = { 75000f, 100000f, 200000f };
-    private float[] potatoUpgreadeCost = { 500000f, 1000000f, 1200000f };
-    private float[] onionUpgreadeCost = { 1500000f, 2000000f , 2500000f };
+    private float[] carrotUpgreadeCost = { 20000f, 30000f, 40000f };
+    private float[] cucumberUpgreadeCost = { 50000f, 70000f, 100000f };
+    private float[] potatoUpgreadeCost = { 200000f, 500000f, 1000000f };
+    private float[] onionUpgreadeCost = { 1200000f, 1500000f , 2000000f };
 
 
     private void Start()
