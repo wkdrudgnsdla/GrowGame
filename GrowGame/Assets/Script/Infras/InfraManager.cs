@@ -67,7 +67,7 @@ public class InfraManager : MonoBehaviour
     [SerializeField] private GameObject[] Houses;
     [SerializeField] private bool VillageActive = false;
 
-    private double[] villageUpgreadCost = { 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f, 10000000f };
+    private double[] villageUpgreadCost = { 100000f, 100000f, 100000f, 100000f, 100000f, 100000f, 100000f, 100000f };
 
     [Header("Reservoir")]
     public int ReservoirLevel;
