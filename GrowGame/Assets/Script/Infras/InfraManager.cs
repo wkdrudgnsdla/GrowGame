@@ -861,6 +861,7 @@ public class InfraManager : MonoBehaviour
                     return;
                 }
                 UpgradeCostManage(animalFarmUpgreadeCost[animalFarmLevel]);
+                mManager.MoneyExtra += 0.2f;
                 animalFarmLevel += 1;
             }
         }
@@ -872,6 +873,7 @@ public class InfraManager : MonoBehaviour
                 {
                     return;
                 }
+                mManager.MoneyExtra += 0.05f;
                 UpgradeCostManage(villageUpgreadCost[VillageLevel]);
                 VillageLevel += 1;
             }

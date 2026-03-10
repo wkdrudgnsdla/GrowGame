@@ -263186,7 +263186,7 @@ MonoBehaviour:
   Village: {fileID: 1439944719}
   HousesViewZ: 6
   Reservoir: {fileID: 610541202}
-  ReservoirViewZ: 6
+  ReservoirViewZ: -80
   WheatField: {fileID: 247133600}
   WheatFieldViewZ: -16
   CarrotField: {fileID: 1469106899}
@@ -263353,7 +263353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fManager: {fileID: 2017528151}
   Money: 100000000000000
-  TotalSellPrice: 0
+  MoneyExtra: 1
 --- !u!1001 &2017933076
 PrefabInstance:
   m_ObjectHideFlags: 0
