@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class InfraManager : MonoBehaviour
 {
+    [SerializeField] private ButtonSoundManager soundManager;
     [SerializeField] private InfraClick infraclick;
     [SerializeField] private FarmUpgrade farmUpgrade;
     [SerializeField] private MoneyManager mManager;
@@ -859,6 +860,7 @@ public class InfraManager : MonoBehaviour
                 }
                 UpgradeCostManage(siloUpgreadeCost[siloLevel]);
                 siloLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Storages")
@@ -871,6 +873,7 @@ public class InfraManager : MonoBehaviour
                 }
                 UpgradeCostManage(storageUpgreadeCost[storageLevel]);
                 storageLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "GreenHouses")
@@ -883,6 +886,7 @@ public class InfraManager : MonoBehaviour
                 }
                 UpgradeCostManage(greenHouseUpgreadeCost[greenHouseLevel]);
                 greenHouseLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Animal_Farms")
@@ -896,6 +900,7 @@ public class InfraManager : MonoBehaviour
                 UpgradeCostManage(animalFarmUpgreadeCost[animalFarmLevel]);
                 mManager.MoneyExtra += 0.2f;
                 animalFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Village")
@@ -909,6 +914,7 @@ public class InfraManager : MonoBehaviour
                 mManager.MoneyExtra += 0.05f;
                 UpgradeCostManage(villageUpgreadCost[VillageLevel]);
                 VillageLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Reservoir")
@@ -921,6 +927,7 @@ public class InfraManager : MonoBehaviour
                 }
                 UpgradeCostManage(reservoirUpgreadCost[ReservoirLevel]);
                 ReservoirLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Wheat")
@@ -934,6 +941,7 @@ public class InfraManager : MonoBehaviour
                 wheatFramActive = true;
                 UpgradeCostManage(wheatUpgreadeCost[farmUpgrade.wheatFarmLevel]);
                 farmUpgrade.wheatFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Carrot")
@@ -947,6 +955,7 @@ public class InfraManager : MonoBehaviour
                 carrotFramActive = true;
                 UpgradeCostManage(carrotUpgreadeCost[farmUpgrade.carrotFarmLevel]);
                 farmUpgrade.carrotFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Cucumber")
@@ -960,6 +969,7 @@ public class InfraManager : MonoBehaviour
                 cucumberFramActive = true;
                 UpgradeCostManage(cucumberUpgreadeCost[farmUpgrade.cucumberFarmLevel]);
                 farmUpgrade.cucumberFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
         else if (infraclick.hitObj.name == "Potato")
@@ -973,6 +983,7 @@ public class InfraManager : MonoBehaviour
                 potatoFramActive = true;
                 UpgradeCostManage(potatoUpgreadeCost[farmUpgrade.potatoFarmLevel]);
                 farmUpgrade.potatoFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
 
@@ -987,6 +998,7 @@ public class InfraManager : MonoBehaviour
                 onionFramActive = true;
                 UpgradeCostManage(onionUpgreadeCost[farmUpgrade.onionFarmLevel]);
                 farmUpgrade.onionFarmLevel += 1;
+                soundManager.buildSoundPlay();
             }
         }
     }

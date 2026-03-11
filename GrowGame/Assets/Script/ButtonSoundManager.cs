@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonSoundManager : MonoBehaviour
 {
-    public AudioClip Clicksounds;
-    public AudioSource AudioSource;
+    [SerializeField] private AudioClip clicksounds;
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioSource buildSoundSource;
 
     void Start()
     {
@@ -27,6 +29,11 @@ public class ButtonSoundManager : MonoBehaviour
 
     void PlayClickSound()
     {
-        AudioSource.PlayOneShot(Clicksounds);
+        audioSource.PlayOneShot(clicksounds);
+    }
+
+    public void buildSoundPlay()
+    {
+        buildSoundSource.Play();
     }
 }
