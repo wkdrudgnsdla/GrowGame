@@ -63,6 +63,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PotatoField;
     [SerializeField] private GameObject OnionField;
 
+    private void Start()
+    {
+        SellUI.SetActive(false);
+        SellPanel.SetActive(false);
+    }
+
     private void Update()
     {
         UIPositionUpdaate();
