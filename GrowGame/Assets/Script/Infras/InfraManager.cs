@@ -667,7 +667,7 @@ public class InfraManager : MonoBehaviour
 
     private void StorageManage()
     {
-        switch (storageCount)
+        switch (storageLevel)
         {
             case 0:
                 storageCount = 0;
@@ -696,7 +696,7 @@ public class InfraManager : MonoBehaviour
 
     private void AnimalFarmManage()
     {
-        switch (animalFarmCount)
+        switch (animalFarmLevel)
         {
             case 0:
                 animalFarmCount = 0;
