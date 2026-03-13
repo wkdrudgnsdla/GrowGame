@@ -826,14 +826,14 @@ public class InfraManager : MonoBehaviour
         }
         else if (infraclick.hitObj.name == "Cucumber")
         {
-            if (!farmUpgrade.cucumberFarmWater && CarrotWaterCol <= 0)
+            if (!farmUpgrade.cucumberFarmWater && CucumberWaterCol <= 0)
             {
                 farmUpgrade.cucumberFarmWater = true;
             }
         }
         else if (infraclick.hitObj.name == "Potato")
         {
-            if (!farmUpgrade.potatoFarmWater && CarrotWaterCol <= 0)
+            if (!farmUpgrade.potatoFarmWater && PotatoWaterCol <= 0)
             {
                 farmUpgrade.potatoFarmWater = true;
             }
@@ -841,7 +841,7 @@ public class InfraManager : MonoBehaviour
 
         else if (infraclick.hitObj.name == "Onion")
         {
-            if (!farmUpgrade.onionFarmWater && CarrotWaterCol <= 0)
+            if (!farmUpgrade.onionFarmWater && OnionWaterCol <= 0)
             {
                 farmUpgrade.onionFarmWater = true;
             }
