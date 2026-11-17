@@ -134,17 +134,11 @@ GrowGame/
 
 ---
 
-## 🚀 실행 방법
+## 🚀 다운로드 및 실행 (Windows 64비트)
 
-1. 저장소를 클론합니다.
-
-   ```bash
-   git clone https://github.com/wkdrudgnsdla/GrowGame.git
-   ```
-
-2. Unity Hub에서 저장소 안의 `GrowGame` 폴더를 엽니다.
-3. Unity `2022.3.28f1` 버전으로 프로젝트를 실행합니다.
-4. `Assets/Scenes/SampleScene.unity` 씬을 열고 Play 버튼을 누릅니다.
+1. [GrowGame-Windows.zip](https://github.com/wkdrudgnsdla/GrowGame/releases/latest/download/GrowGame-Windows.zip)을 다운로드합니다.
+2. ZIP 파일을 우클릭하고 **모두 압축 풀기**를 선택합니다.
+3. 압축을 푼 폴더에서 `GrowGame.exe`를 실행합니다.
 
 ---
 
